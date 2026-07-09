@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administración de Carteras</title>
+<style>
+  /* ===== cw- : estilos de la seccion "Cartera por comitente" ===== */
+  /* Variables aisladas bajo .cw-app para poder repintar esta seccion */
+  /* sin afectar al resto del sitio cuando se agreguen mas pestañas.  */
+  .cw-app {
+    --cw-bg: #f4f5f7;
+    --cw-panel: #ffffff;
+    --cw-border: #e3e6ea;
+    --cw-text: #1a1d29;
+    --cw-text-muted: #6b7280;
+    --cw-text-faint: #9aa1ac;
+    --cw-primary: #1f3a5f;
+    --cw-primary-soft: #eaf0f8;
+    --cw-radius: 10px;
+    --cw-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 8px rgba(16, 24, 40, 0.04);
+    --cw-c-on: #1f3a5f;
+    --cw-c-bonos: #4c6fa5;
+    --cw-c-cedear: #8aa6c9;
+    --cw-c-acciones: #a67c52;
+    --cw-c-letras: #6b8f71;
+    --cw-c-futuros: #9b6b9e;
+    --cw-c-opcion: #c98a3a;
+    --cw-c-default: #9aa1ac;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: var(--cw-bg);
+    color: var(--cw-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .cw-app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  /* ---------- Header ---------- */
+  .cw-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 18px 28px;
+    background: var(--cw-panel);
+    border-bottom: 1px solid var(--cw-border);
+    flex-shrink: 0;
+  }
+  .cw-header h1 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .cw-header .cw-header-sub {
+    font-size: 13px;
+    color: var(--cw-text-muted);
+  }
+
+  /* ---------- Layout principal ---------- */
+  .cw-body {
+    flex: 1;
+    display: flex;
+    min-height: 0;
+  }
+
+  /* ---------- Sidebar ---------- */
+  .cw-sidebar {
+    width: 300px;
+    flex-shrink: 0;
+    background: var(--cw-panel);
+    border-right: 1px solid var(--cw-border);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .cw-search-wrap {
+    padding: 16px;
+    border-bottom: 1px solid var(--cw-border);
+    flex-shrink: 0;
+  }
+  .cw-search-wrap input {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--cw-border);
+    border-radius: 8px;
+    font-size: 13.5px;
+    color: var(--cw-text);
+    background: var(--cw-bg);
+    outline: none;
+    transition: border-color .15s ease;
+  }
+  .cw-search-wrap input:focus {
+    border-color: var(--cw-primary);
+    background: var(--cw-panel);
+  }
+  .cw-search-count {
+    margin-top: 8px;
+    font-size: 11.5px;
+    color: var(--cw-text-faint);
+  }
+
+  .cw-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 6px 0;
+  }
+  .cw-list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 9px 16px;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+  }
+  .cw-list-item:hover {
+    background: var(--cw-bg);
+  }
+  .cw-list-item.is-active {
+    background: var(--cw-primary-soft);
+    border-left-color: var(--cw-primary);
+  }
+  .cw-list-item .cw-item-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--cw-text);
+    line-height: 1.3;
+  }
+  .cw-list-item .cw-item-meta {
+    font-size: 11.5px;
+    color: var(--cw-text-muted);
+  }
+  .cw-list-empty {
+    padding: 24px 16px;
+    font-size: 13px;
+    color: var(--cw-text-faint);
+    text-align: center;
+  }
+
+  /* ---------- Panel derecho ---------- */
+  .cw-main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 28px 32px;
+    min-height: 0;
+  }
+
+  .cw-placeholder {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--cw-text-faint);
+    gap: 6px;
+  }
+  .cw-placeholder .cw-placeholder-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--cw-text-muted);
+  }
+  .cw-placeholder-stats {
+    margin-top: 18px;
+    display: flex;
+    gap: 12px;
+  }
+  .cw-stat-chip {
+    background: var(--cw-panel);
+    border: 1px solid var(--cw-border);
+    border-radius: var(--cw-radius);
+    padding: 10px 18px;
+    box-shadow: var(--cw-shadow);
+  }
+  .cw-stat-chip .cw-stat-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--cw-text);
+  }
+  .cw-stat-chip .cw-stat-label {
+    font-size: 11.5px;
+    color: var(--cw-text-muted);
+    margin-top: 2px;
+  }
+
+  /* ---------- Detalle de comitente ---------- */
+  .cw-detail-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 22px;
+  }
+  .cw-detail-title {
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .cw-detail-sub {
+    font-size: 13px;
+    color: var(--cw-text-muted);
+    margin-top: 3px;
+  }
+  .cw-detail-total {
+    text-align: right;
+  }
+  .cw-detail-total .cw-total-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cw-primary);
+  }
+  .cw-detail-total .cw-total-label {
+    font-size: 11.5px;
+    color: var(--cw-text-muted);
+    margin-top: 2px;
+  }
+
+  /* ---------- Card: composicion por tipo ---------- */
+  .cw-card {
+    background: var(--cw-panel);
+    border: 1px solid var(--cw-border);
+    border-radius: var(--cw-radius);
+    box-shadow: var(--cw-shadow);
+    padding: 20px 22px;
+    margin-bottom: 20px;
+  }
+  .cw-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--cw-text-muted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin: 0 0 16px 0;
+  }
+
+  .cw-type-row {
+    display: grid;
+    grid-template-columns: 130px 1fr 84px 64px;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 0;
+    font-size: 13px;
+  }
+  .cw-type-row .cw-type-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+  }
+  .cw-type-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .cw-type-bar-track {
+    height: 8px;
+    border-radius: 4px;
+    background: var(--cw-bg);
+    overflow: hidden;
+  }
+  .cw-type-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+  }
+  .cw-type-amount {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: var(--cw-text);
+  }
+  .cw-type-pct {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: var(--cw-text-muted);
+  }
+
+  /* ---------- Tabla de tenencias ---------- */
+  .cw-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  .cw-table thead th {
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--cw-text-muted);
+    font-weight: 600;
+    padding: 0 10px 10px 10px;
+    border-bottom: 1px solid var(--cw-border);
+  }
+  .cw-table thead th.cw-num {
+    text-align: right;
+  }
+  .cw-table tbody td {
+    padding: 10px;
+    border-bottom: 1px solid var(--cw-border);
+  }
+  .cw-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .cw-table tbody tr:hover {
+    background: var(--cw-bg);
+  }
+  .cw-table td.cw-num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .cw-ticker {
+    font-weight: 600;
+  }
+  .cw-tipo-tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: var(--cw-bg);
+    color: var(--cw-text-muted);
+  }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-thumb { background: #d7dbe1; border-radius: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+</style>
+</head>
+<body>
+
+<div class="cw-app">
+  <header class="cw-header">
+    <h1>Administración de Carteras</h1>
+    <span class="cw-header-sub" id="cw-header-fecha"></span>
+  </header>
+
+  <div class="cw-body">
+    <aside class="cw-sidebar">
+      <div class="cw-search-wrap">
+        <input type="text" id="cw-search" placeholder="Buscar por nombre o número de comitente…" autocomplete="off">
+        <div class="cw-search-count" id="cw-search-count"></div>
+      </div>
+      <div class="cw-list" id="cw-list"></div>
+    </aside>
+
+    <main class="cw-main" id="cw-main">
+      <div class="cw-placeholder" id="cw-placeholder">
+        <div class="cw-placeholder-title">Seleccioná un comitente</div>
+        <div>Elegí un comitente de la lista para ver el detalle de su cartera.</div>
+        <div class="cw-placeholder-stats" id="cw-placeholder-stats"></div>
+      </div>
+      <div id="cw-detail" style="display:none;"></div>
+    </main>
+  </div>
+</div>
+
+<script>
+(function () {
+  var DATA_URL = 'data/tenencias.json';
+  var data = null;
+  var filtered = [];
+  var activeComitente = null;
+
+  var TYPE_COLOR = {
+    'ON': 'var(--cw-c-on)',
+    'Bonos': 'var(--cw-c-bonos)',
+    'Cedear': 'var(--cw-c-cedear)',
+    'Acciones': 'var(--cw-c-acciones)',
+    'Letras': 'var(--cw-c-letras)',
+    'Futuros': 'var(--cw-c-futuros)',
+    'Opción de Futuro': 'var(--cw-c-opcion)'
+  };
+
+  function tipoColor(tipo) {
+    return TYPE_COLOR[tipo] || 'var(--cw-c-default)';
+  }
+
+  function normalize(s) {
+    return (s || '')
+      .toString()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
+  }
+
+  function fmtMoney(n) {
+    return '$ ' + Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function fmtPct(n) {
+    return Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '%';
+  }
+
+  function el(tag, attrs, html) {
+    var e = document.createElement(tag);
+    if (attrs) {
+      Object.keys(attrs).forEach(function (k) { e.setAttribute(k, attrs[k]); });
+    }
+    if (html !== undefined) e.innerHTML = html;
+    return e;
+  }
+
+  function renderList() {
+    var listEl = document.getElementById('cw-list');
+    var countEl = document.getElementById('cw-search-count');
+    listEl.innerHTML = '';
+
+    if (!filtered.length) {
+      listEl.appendChild(el('div', { class: 'cw-list-empty' }, 'No se encontraron comitentes.'));
+      countEl.textContent = '0 comitentes';
+      return;
+    }
+
+    countEl.textContent = filtered.length + (filtered.length === 1 ? ' comitente' : ' comitentes');
+
+    filtered.forEach(function (c) {
+      var item = el('div', { class: 'cw-list-item' + (c.comitente === activeComitente ? ' is-active' : '') });
+      item.appendChild(el('div', { class: 'cw-item-name' }, c.nombre));
+      item.appendChild(el('div', { class: 'cw-item-meta' }, 'N.º ' + c.comitente + ' · ' + fmtMoney(c.total)));
+      item.addEventListener('click', function () { selectComitente(c.comitente); });
+      listEl.appendChild(item);
+    });
+  }
+
+  function applyFilter(query) {
+    var q = normalize(query.trim());
+    if (!q) {
+      filtered = data.comitentes.slice();
+    } else {
+      filtered = data.comitentes.filter(function (c) {
+        return normalize(c.nombre).indexOf(q) !== -1 || c.comitente.indexOf(q) !== -1;
+      });
+    }
+    renderList();
+  }
+
+  function computeTipoBreakdown(comitente) {
+    var totals = {};
+    comitente.tenencias.forEach(function (t) {
+      totals[t.tipo] = (totals[t.tipo] || 0) + t.importe;
+    });
+    var rows = Object.keys(totals).map(function (tipo) {
+      return { tipo: tipo, importe: totals[tipo], pct: (totals[tipo] / comitente.total) * 100 };
+    });
+    rows.sort(function (a, b) { return b.importe - a.importe; });
+    return rows;
+  }
+
+  function renderDetail(comitente) {
+    var maxPct = 0;
+    var tipoRows = computeTipoBreakdown(comitente);
+    tipoRows.forEach(function (r) { if (r.pct > maxPct) maxPct = r.pct; });
+
+    var tipoRowsHtml = tipoRows.map(function (r) {
+      var barWidth = maxPct > 0 ? (r.pct / maxPct) * 100 : 0;
+      return (
+        '<div class="cw-type-row">' +
+          '<div class="cw-type-name"><span class="cw-type-dot" style="background:' + tipoColor(r.tipo) + '"></span>' + r.tipo + '</div>' +
+          '<div class="cw-type-bar-track"><div class="cw-type-bar-fill" style="width:' + barWidth.toFixed(1) + '%;background:' + tipoColor(r.tipo) + '"></div></div>' +
+          '<div class="cw-type-amount">' + fmtMoney(r.importe) + '</div>' +
+          '<div class="cw-type-pct">' + fmtPct(r.pct) + '</div>' +
+        '</div>'
+      );
+    }).join('');
+
+    var tableRowsHtml = comitente.tenencias.map(function (t) {
+      return (
+        '<tr>' +
+          '<td class="cw-ticker">' + t.ticker + '</td>' +
+          '<td><span class="cw-tipo-tag">' + t.tipo + '</span></td>' +
+          '<td class="cw-num">' + fmtMoney(t.importe) + '</td>' +
+          '<td class="cw-num">' + fmtPct(t.participacion_pct) + '</td>' +
+        '</tr>'
+      );
+    }).join('');
+
+    var html = (
+      '<div class="cw-detail-header">' +
+        '<div>' +
+          '<div class="cw-detail-title">' + comitente.nombre + '</div>' +
+          '<div class="cw-detail-sub">Comitente N.º ' + comitente.comitente + '</div>' +
+        '</div>' +
+        '<div class="cw-detail-total">' +
+          '<div class="cw-total-value">' + fmtMoney(comitente.total) + '</div>' +
+          '<div class="cw-total-label">Total de cartera</div>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="cw-card">' +
+        '<div class="cw-card-title">Composición por tipo de instrumento</div>' +
+        tipoRowsHtml +
+      '</div>' +
+
+      '<div class="cw-card">' +
+        '<div class="cw-card-title">Detalle por instrumento</div>' +
+        '<table class="cw-table">' +
+          '<thead><tr>' +
+            '<th>Ticker</th><th>Tipo</th><th class="cw-num">Importe</th><th class="cw-num">Participación %</th>' +
+          '</tr></thead>' +
+          '<tbody>' + tableRowsHtml + '</tbody>' +
+        '</table>' +
+      '</div>'
+    );
+
+    document.getElementById('cw-detail').innerHTML = html;
+  }
+
+  function selectComitente(comitenteId) {
+    var comitente = data.comitentes.find(function (c) { return c.comitente === comitenteId; });
+    if (!comitente) return;
+    activeComitente = comitenteId;
+    document.getElementById('cw-placeholder').style.display = 'none';
+    document.getElementById('cw-detail').style.display = 'block';
+    renderDetail(comitente);
+    renderList();
+  }
+
+  function renderPlaceholderStats() {
+    var wrap = document.getElementById('cw-placeholder-stats');
+    wrap.innerHTML =
+      '<div class="cw-stat-chip"><div class="cw-stat-value">' + data.cantidad_comitentes + '</div><div class="cw-stat-label">Comitentes</div></div>' +
+      '<div class="cw-stat-chip"><div class="cw-stat-value">' + fmtMoney(data.aum_total) + '</div><div class="cw-stat-label">AUM total</div></div>';
+  }
+
+  fetch(DATA_URL)
+    .then(function (r) { return r.json(); })
+    .then(function (json) {
+      data = json;
+      filtered = data.comitentes.slice();
+      renderList();
+      renderPlaceholderStats();
+      var fecha = new Date(data.generado);
+      document.getElementById('cw-header-fecha').textContent = 'Datos actualizados al ' + fecha.toLocaleString('es-AR');
+    })
+    .catch(function (err) {
+      document.getElementById('cw-list').innerHTML = '<div class="cw-list-empty">No se pudieron cargar los datos.</div>';
+      console.error(err);
+    });
+
+  document.getElementById('cw-search').addEventListener('input', function (e) {
+    applyFilter(e.target.value);
+  });
+})();
+</script>
+
+</body>
+</html>
