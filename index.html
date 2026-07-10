@@ -5,28 +5,68 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Administración de Carteras</title>
 <style>
-  /* ===== cw- : estilos de la seccion "Cartera por comitente" ===== */
-  /* Variables aisladas bajo .cw-app para poder repintar esta seccion */
-  /* sin afectar al resto del sitio cuando se agreguen mas pestañas.  */
+  /* =====================================================================
+     cw- : Design system de la seccion "Cartera por comitente"
+     Paleta, tipografia y espaciados aislados bajo .cw-app para poder
+     repintar esta seccion sin afectar al resto del sitio si se agregan
+     mas pestañas mas adelante.
+     ===================================================================== */
   .cw-app {
-    --cw-bg: #12141c;
-    --cw-panel: #1b1e29;
-    --cw-border: #2c303e;
-    --cw-text: #e6e8ee;
-    --cw-text-muted: #9aa3b5;
-    --cw-text-faint: #6b7280;
-    --cw-primary: #6d9eeb;
-    --cw-primary-soft: #1f2c42;
-    --cw-radius: 10px;
-    --cw-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 14px rgba(0, 0, 0, 0.28);
-    --cw-c-on: #6d9eeb;
-    --cw-c-bonos: #5b8dd9;
-    --cw-c-cedear: #8fb3d9;
-    --cw-c-acciones: #d9a066;
-    --cw-c-letras: #7fb586;
-    --cw-c-futuros: #b98cc4;
-    --cw-c-opcion: #e0a851;
-    --cw-c-default: #6b7280;
+    /* --- Superficies --- */
+    --cw-bg: #111827;
+    --cw-bg-sidebar: #0f172a;
+    --cw-panel: #1e293b;
+    --cw-panel-2: #243244;
+    --cw-border: rgba(255, 255, 255, 0.08);
+    --cw-border-strong: rgba(255, 255, 255, 0.14);
+
+    /* --- Texto --- */
+    --cw-text: #f8fafc;
+    --cw-text-secondary: #cbd5e1;
+    --cw-text-tertiary: #94a3b8;
+
+    /* --- Acento y semaforo --- */
+    --cw-primary: #3b82f6;
+    --cw-primary-soft: rgba(59, 130, 246, 0.14);
+    --cw-green: #22c55e;
+    --cw-green-soft: rgba(34, 197, 94, 0.14);
+    --cw-red: #ef4444;
+    --cw-red-soft: rgba(239, 68, 68, 0.14);
+
+    /* --- Radios y sombras --- */
+    --cw-radius-sm: 10px;
+    --cw-radius-md: 14px;
+    --cw-radius-lg: 18px;
+    --cw-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.28);
+    --cw-shadow-md: 0 10px 30px rgba(0, 0, 0, 0.32);
+
+    /* --- Escala tipografica --- */
+    --cw-fs-display: 36px;
+    --cw-fs-h1: 24px;
+    --cw-fs-kpi: 30px;
+    --cw-fs-section: 12px;
+    --cw-fs-body: 14px;
+    --cw-fs-secondary: 13px;
+    --cw-fs-label: 11px;
+
+    /* --- Escala de espaciado --- */
+    --cw-sp-1: 4px;
+    --cw-sp-2: 8px;
+    --cw-sp-3: 12px;
+    --cw-sp-4: 16px;
+    --cw-sp-5: 24px;
+    --cw-sp-6: 32px;
+    --cw-sp-7: 40px;
+
+    /* Colores por tipo de instrumento */
+    --cw-c-on: #3b82f6;
+    --cw-c-bonos: #60a5fa;
+    --cw-c-cedear: #38bdf8;
+    --cw-c-acciones: #f59e0b;
+    --cw-c-letras: #22c55e;
+    --cw-c-futuros: #a78bfa;
+    --cw-c-opcion: #fb923c;
+    --cw-c-default: #64748b;
   }
 
   * { box-sizing: border-box; }
@@ -39,6 +79,7 @@
     color: var(--cw-text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
+    font-size: var(--cw-fs-body);
   }
 
   .cw-app {
@@ -47,25 +88,34 @@
     height: 100vh;
   }
 
-  /* ---------- Header ---------- */
+  a, button { font-family: inherit; }
+
+  :focus-visible {
+    outline: 2px solid var(--cw-primary);
+    outline-offset: 2px;
+  }
+
+  /* ---------- Top bar ---------- */
   .cw-header {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
-    padding: 18px 28px;
-    background: var(--cw-panel);
+    padding: var(--cw-sp-4) var(--cw-sp-6);
+    background: var(--cw-bg-sidebar);
     border-bottom: 1px solid var(--cw-border);
     flex-shrink: 0;
   }
   .cw-header h1 {
-    font-size: 17px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 700;
     margin: 0;
     letter-spacing: -0.01em;
+    color: var(--cw-text);
   }
   .cw-header .cw-header-sub {
-    font-size: 13px;
-    color: var(--cw-text-muted);
+    font-size: var(--cw-fs-label);
+    color: var(--cw-text-tertiary);
+    font-variant-numeric: tabular-nums;
   }
 
   /* ---------- Layout principal ---------- */
@@ -79,7 +129,7 @@
   .cw-sidebar {
     width: 300px;
     flex-shrink: 0;
-    background: var(--cw-panel);
+    background: var(--cw-bg-sidebar);
     border-right: 1px solid var(--cw-border);
     display: flex;
     flex-direction: column;
@@ -87,65 +137,112 @@
   }
 
   .cw-search-wrap {
-    padding: 16px;
+    padding: var(--cw-sp-4);
     border-bottom: 1px solid var(--cw-border);
     flex-shrink: 0;
   }
+  .cw-search-input-wrap {
+    position: relative;
+  }
+  .cw-search-icon {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--cw-text-tertiary);
+    pointer-events: none;
+  }
   .cw-search-wrap input {
     width: 100%;
-    padding: 9px 12px;
+    padding: 9px 12px 9px 32px;
     border: 1px solid var(--cw-border);
-    border-radius: 8px;
-    font-size: 13.5px;
+    border-radius: var(--cw-radius-sm);
+    font-size: var(--cw-fs-secondary);
     color: var(--cw-text);
-    background: var(--cw-bg);
+    background: rgba(255, 255, 255, 0.03);
     outline: none;
-    transition: border-color .15s ease;
+    transition: border-color .2s ease, background .2s ease;
+  }
+  .cw-search-wrap input::placeholder {
+    color: var(--cw-text-tertiary);
   }
   .cw-search-wrap input:focus {
     border-color: var(--cw-primary);
-    background: var(--cw-panel);
+    background: rgba(255, 255, 255, 0.05);
   }
   .cw-search-count {
-    margin-top: 8px;
-    font-size: 11.5px;
-    color: var(--cw-text-faint);
+    margin-top: var(--cw-sp-2);
+    font-size: var(--cw-fs-label);
+    color: var(--cw-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: .04em;
   }
 
   .cw-list {
     flex: 1;
     overflow-y: auto;
-    padding: 6px 0;
+    padding: var(--cw-sp-2) var(--cw-sp-2);
   }
   .cw-list-item {
     display: flex;
-    flex-direction: column;
-    gap: 2px;
-    padding: 9px 16px;
+    align-items: center;
+    gap: var(--cw-sp-3);
+    padding: var(--cw-sp-3);
+    margin-bottom: 2px;
+    border-radius: var(--cw-radius-sm);
     cursor: pointer;
-    border-left: 3px solid transparent;
+    transition: background .15s ease;
   }
   .cw-list-item:hover {
-    background: var(--cw-bg);
+    background: rgba(255, 255, 255, 0.04);
   }
   .cw-list-item.is-active {
     background: var(--cw-primary-soft);
-    border-left-color: var(--cw-primary);
+  }
+  .cw-list-item.is-active .cw-item-name {
+    color: var(--cw-text);
+  }
+  .cw-avatar {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--cw-panel-2);
+    color: var(--cw-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .01em;
+  }
+  .cw-list-item.is-active .cw-avatar {
+    background: var(--cw-primary);
+    color: #fff;
+  }
+  .cw-item-body {
+    min-width: 0;
+    flex: 1;
   }
   .cw-list-item .cw-item-name {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--cw-text);
+    font-size: var(--cw-fs-secondary);
+    font-weight: 600;
+    color: var(--cw-text-secondary);
     line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .cw-list-item .cw-item-meta {
-    font-size: 11.5px;
-    color: var(--cw-text-muted);
+    font-size: var(--cw-fs-label);
+    color: var(--cw-text-tertiary);
+    margin-top: 1px;
+    font-variant-numeric: tabular-nums;
   }
   .cw-list-empty {
-    padding: 24px 16px;
-    font-size: 13px;
-    color: var(--cw-text-faint);
+    padding: var(--cw-sp-6) var(--cw-sp-4);
+    font-size: var(--cw-fs-secondary);
+    color: var(--cw-text-tertiary);
     text-align: center;
   }
 
@@ -153,7 +250,7 @@
   .cw-main {
     flex: 1;
     overflow-y: auto;
-    padding: 28px 32px;
+    padding: var(--cw-sp-6) var(--cw-sp-7);
     min-height: 0;
   }
 
@@ -164,244 +261,344 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: var(--cw-text-faint);
-    gap: 6px;
+    color: var(--cw-text-tertiary);
+    gap: var(--cw-sp-2);
   }
   .cw-placeholder .cw-placeholder-title {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--cw-text-muted);
+    font-size: var(--cw-fs-h1);
+    font-weight: 700;
+    color: var(--cw-text);
   }
   .cw-placeholder-stats {
-    margin-top: 18px;
+    margin-top: var(--cw-sp-5);
     display: flex;
-    gap: 12px;
+    gap: var(--cw-sp-3);
   }
   .cw-stat-chip {
     background: var(--cw-panel);
     border: 1px solid var(--cw-border);
-    border-radius: var(--cw-radius);
-    padding: 10px 18px;
-    box-shadow: var(--cw-shadow);
+    border-radius: var(--cw-radius-md);
+    padding: var(--cw-sp-3) var(--cw-sp-5);
+    box-shadow: var(--cw-shadow-sm);
   }
   .cw-stat-chip .cw-stat-value {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 700;
     color: var(--cw-text);
+    font-variant-numeric: tabular-nums;
   }
   .cw-stat-chip .cw-stat-label {
-    font-size: 11.5px;
-    color: var(--cw-text-muted);
+    font-size: var(--cw-fs-label);
+    color: var(--cw-text-tertiary);
     margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
   }
 
-  /* ---------- Detalle de comitente ---------- */
-  .cw-detail-header {
+  /* ---------- Encabezado ejecutivo del comitente ---------- */
+  .cw-exec-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 22px;
+    gap: var(--cw-sp-6);
+    padding-bottom: var(--cw-sp-5);
+    margin-bottom: var(--cw-sp-5);
+    border-bottom: 1px solid var(--cw-border);
+    flex-wrap: wrap;
   }
-  .cw-detail-title {
-    font-size: 19px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
+  .cw-exec-identity {
+    display: flex;
+    align-items: center;
+    gap: var(--cw-sp-4);
+    min-width: 0;
   }
-  .cw-detail-sub {
-    font-size: 13px;
-    color: var(--cw-text-muted);
-    margin-top: 3px;
-  }
-  .cw-detail-total {
-    text-align: right;
-  }
-  .cw-detail-total .cw-total-value {
-    font-size: 22px;
+  .cw-exec-avatar {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(160deg, var(--cw-primary), #1d4ed8);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
     font-weight: 700;
-    color: var(--cw-primary);
   }
-  .cw-detail-total .cw-total-label {
-    font-size: 11.5px;
-    color: var(--cw-text-muted);
-    margin-top: 2px;
+  .cw-exec-name {
+    font-size: var(--cw-fs-h1);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--cw-text);
+    line-height: 1.25;
+  }
+  .cw-exec-tag {
+    display: inline-flex;
+    align-items: center;
+    margin-top: var(--cw-sp-1);
+    font-size: var(--cw-fs-label);
+    font-weight: 600;
+    color: var(--cw-text-tertiary);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--cw-border);
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-variant-numeric: tabular-nums;
+  }
+  .cw-exec-total {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .cw-exec-total .cw-exec-total-label {
+    font-size: var(--cw-fs-label);
+    color: var(--cw-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-weight: 600;
+  }
+  .cw-exec-total .cw-exec-total-value {
+    font-size: var(--cw-fs-display);
+    font-weight: 800;
+    color: var(--cw-text);
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.15;
+  }
+  .cw-exec-total .cw-exec-total-date {
+    font-size: var(--cw-fs-label);
+    color: var(--cw-text-tertiary);
+    margin-top: var(--cw-sp-1);
   }
 
-  /* ---------- Card: composicion por tipo ---------- */
+  /* ---------- Cards ---------- */
   .cw-card {
     background: var(--cw-panel);
     border: 1px solid var(--cw-border);
-    border-radius: var(--cw-radius);
-    box-shadow: var(--cw-shadow);
-    padding: 20px 22px;
-    margin-bottom: 20px;
+    border-radius: var(--cw-radius-lg);
+    box-shadow: var(--cw-shadow-sm);
+    padding: var(--cw-sp-5);
+    margin-bottom: var(--cw-sp-5);
   }
   .cw-card-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--cw-text-muted);
+    font-size: var(--cw-fs-section);
+    font-weight: 700;
+    color: var(--cw-text-tertiary);
     text-transform: uppercase;
-    letter-spacing: .04em;
-    margin: 0 0 16px 0;
+    letter-spacing: .06em;
+    margin: 0 0 var(--cw-sp-4) 0;
+  }
+
+  /* ---------- Composicion: barra apilada + leyenda ---------- */
+  .cw-stacked-bar {
+    display: flex;
+    width: 100%;
+    height: 10px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.04);
+    margin-bottom: var(--cw-sp-5);
+  }
+  .cw-stacked-seg {
+    height: 100%;
+    transition: opacity .15s ease;
+  }
+  .cw-stacked-seg:hover {
+    opacity: 0.82;
   }
 
   .cw-type-row {
     display: grid;
-    grid-template-columns: 130px 1fr 84px 64px;
+    grid-template-columns: 1fr 130px 64px;
     align-items: center;
-    gap: 12px;
-    padding: 6px 0;
-    font-size: 13px;
+    gap: var(--cw-sp-3);
+    padding: var(--cw-sp-2) 0;
+    font-size: var(--cw-fs-secondary);
+    border-top: 1px solid var(--cw-border);
+  }
+  .cw-type-row:first-of-type {
+    border-top: none;
   }
   .cw-type-row .cw-type-name {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-weight: 500;
+    gap: var(--cw-sp-2);
+    font-weight: 600;
+    color: var(--cw-text-secondary);
   }
   .cw-type-dot {
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     flex-shrink: 0;
-  }
-  .cw-type-bar-track {
-    height: 8px;
-    border-radius: 4px;
-    background: var(--cw-bg);
-    overflow: hidden;
-  }
-  .cw-type-bar-fill {
-    height: 100%;
-    border-radius: 4px;
   }
   .cw-type-amount {
     text-align: right;
     font-variant-numeric: tabular-nums;
     color: var(--cw-text);
+    font-weight: 600;
   }
   .cw-type-pct {
     text-align: right;
     font-variant-numeric: tabular-nums;
-    color: var(--cw-text-muted);
+    color: var(--cw-text-tertiary);
   }
 
   /* ---------- Tabla de tenencias ---------- */
   .cw-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 13.5px;
+    font-size: var(--cw-fs-secondary);
   }
   .cw-table thead th {
     text-align: left;
-    font-size: 11px;
+    font-size: var(--cw-fs-label);
     text-transform: uppercase;
-    letter-spacing: .04em;
-    color: var(--cw-text-muted);
-    font-weight: 600;
-    padding: 0 10px 10px 10px;
+    letter-spacing: .05em;
+    color: var(--cw-text-tertiary);
+    font-weight: 700;
+    padding: 0 var(--cw-sp-3) var(--cw-sp-3) var(--cw-sp-3);
     border-bottom: 1px solid var(--cw-border);
   }
   .cw-table thead th.cw-num {
     text-align: right;
   }
   .cw-table tbody td {
-    padding: 10px;
+    padding: 11px var(--cw-sp-3);
     border-bottom: 1px solid var(--cw-border);
+    color: var(--cw-text-secondary);
   }
   .cw-table tbody tr:last-child td {
     border-bottom: none;
   }
+  .cw-table tbody tr {
+    transition: background .12s ease;
+  }
   .cw-table tbody tr:hover {
-    background: var(--cw-bg);
+    background: rgba(255, 255, 255, 0.025);
   }
   .cw-table td.cw-num {
     text-align: right;
     font-variant-numeric: tabular-nums;
   }
   .cw-ticker {
-    font-weight: 600;
+    font-weight: 700;
+    color: var(--cw-text);
   }
   .cw-tipo-tag {
     display: inline-block;
-    font-size: 11px;
-    padding: 2px 8px;
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 3px 9px;
     border-radius: 20px;
-    background: var(--cw-bg);
-    color: var(--cw-text-muted);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--cw-text-tertiary);
   }
-  .cw-metric-pos { color: #4fbf82; }
-  .cw-metric-neg { color: #e2685a; }
+  .cw-metric-pos { color: var(--cw-green); }
+  .cw-metric-neg { color: var(--cw-red); }
   .cw-metric-na {
-    color: var(--cw-text-faint);
+    color: var(--cw-text-tertiary);
     font-style: italic;
     font-size: 12px;
   }
   .cw-metric-note {
-    font-size: 11px;
-    color: var(--cw-text-faint);
-    margin-top: 10px;
+    font-size: var(--cw-fs-label);
+    color: var(--cw-text-tertiary);
+    margin-top: var(--cw-sp-3);
+    line-height: 1.5;
   }
 
-  /* ---------- Tarjetas de rendimiento esperado por escenario ---------- */
+  /* ---------- Tarjetas KPI de escenario ---------- */
   .cw-scenario-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin-bottom: 20px;
+    gap: var(--cw-sp-4);
+    margin-bottom: var(--cw-sp-5);
   }
   .cw-scenario-card {
     background: var(--cw-panel);
     border: 1px solid var(--cw-border);
-    border-radius: var(--cw-radius);
-    box-shadow: var(--cw-shadow);
-    padding: 18px 20px;
+    border-radius: var(--cw-radius-lg);
+    box-shadow: var(--cw-shadow-sm);
+    padding: var(--cw-sp-5);
     cursor: pointer;
-    transition: border-color .15s ease;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
   .cw-scenario-card:hover {
-    border-color: var(--cw-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--cw-shadow-md);
+    border-color: var(--cw-border-strong);
   }
   .cw-scenario-card.is-active {
     border-color: var(--cw-primary);
   }
   .cw-scenario-title {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--cw-text-muted);
+    font-size: var(--cw-fs-label);
+    font-weight: 700;
+    color: var(--cw-text-tertiary);
     text-transform: uppercase;
-    letter-spacing: .03em;
-    margin-bottom: 10px;
+    letter-spacing: .05em;
+    margin-bottom: var(--cw-sp-3);
   }
   .cw-scenario-total {
-    font-size: 26px;
-    font-weight: 700;
+    font-size: var(--cw-fs-kpi);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+    color: var(--cw-text);
   }
-  .cw-scenario-total-label {
-    font-size: 11.5px;
-    color: var(--cw-text-muted);
+  .cw-scenario-desc {
+    font-size: var(--cw-fs-secondary);
+    color: var(--cw-text-secondary);
+    margin-top: var(--cw-sp-2);
+    line-height: 1.45;
   }
-  .cw-scenario-hint {
-    font-size: 10.5px;
-    color: var(--cw-text-faint);
-    margin-top: 10px;
+  .cw-scenario-action {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--cw-fs-label);
+    font-weight: 600;
+    color: var(--cw-primary);
+    margin-top: var(--cw-sp-4);
+    padding-top: var(--cw-sp-3);
+    border-top: 1px solid var(--cw-border);
   }
   .cw-scenario-coverage {
-    font-size: 10.5px;
-    color: var(--cw-text-faint);
-    margin-top: 8px;
+    font-size: var(--cw-fs-label);
+    color: var(--cw-text-tertiary);
+    margin-top: var(--cw-sp-3);
     font-style: italic;
-  }
-  .cw-scenario-empty {
-    font-size: 12.5px;
-    color: var(--cw-text-faint);
+    line-height: 1.5;
   }
   .cw-scenario-detail {
-    margin-top: -6px;
+    background: var(--cw-panel-2);
   }
 
   ::-webkit-scrollbar { width: 8px; height: 8px; }
-  ::-webkit-scrollbar-thumb { background: #3a3f4f; border-radius: 8px; }
+  ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.14); border-radius: 8px; }
   ::-webkit-scrollbar-track { background: transparent; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1024px) {
+    .cw-sidebar { width: 260px; }
+    .cw-scenario-grid { grid-template-columns: repeat(2, 1fr); }
+    .cw-main { padding: var(--cw-sp-5); }
+  }
+
+  @media (max-width: 720px) {
+    .cw-body { flex-direction: column; }
+    .cw-sidebar {
+      width: 100%;
+      max-height: 42vh;
+      border-right: none;
+      border-bottom: 1px solid var(--cw-border);
+    }
+    .cw-scenario-grid { grid-template-columns: 1fr; }
+    .cw-exec-header { flex-direction: column; align-items: flex-start; }
+    .cw-exec-total { text-align: left; }
+    .cw-main { padding: var(--cw-sp-4); }
+    .cw-header { padding: var(--cw-sp-3) var(--cw-sp-4); }
+  }
 </style>
 </head>
 <body>
@@ -415,7 +612,10 @@
   <div class="cw-body">
     <aside class="cw-sidebar">
       <div class="cw-search-wrap">
-        <input type="text" id="cw-search" placeholder="Buscar por nombre o número de comitente…" autocomplete="off">
+        <div class="cw-search-input-wrap">
+          <svg class="cw-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="cw-search" placeholder="Buscar por nombre o número…" autocomplete="off">
+        </div>
         <div class="cw-search-count" id="cw-search-count"></div>
       </div>
       <div class="cw-list" id="cw-list"></div>
@@ -450,6 +650,7 @@
     {
       key: 'sma200',
       label: 'Reversión a media de 200 ruedas',
+      descripcion: 'Asume que cada acción/cedear converge a su precio promedio de las últimas 200 ruedas.',
       retorno: function (m) {
         if (!m || m.sma200_usd === null || m.sma200_usd === undefined || !m.precio_actual_usd) return null;
         return (m.sma200_usd - m.precio_actual_usd) / m.precio_actual_usd * 100;
@@ -458,6 +659,7 @@
     {
       key: 'cagr',
       label: 'Continuidad del rendimiento anual (CAGR 10a)',
+      descripcion: 'Asume que cada acción/cedear mantiene su tasa de crecimiento anual promedio histórica.',
       retorno: function (m) {
         if (!m || m.rendimiento_anual_pct === null || m.rendimiento_anual_pct === undefined) return null;
         return m.rendimiento_anual_pct;
@@ -466,6 +668,7 @@
     {
       key: 'maximo',
       label: 'Recuperación al máximo histórico',
+      descripcion: 'Asume que cada acción/cedear recupera su máximo precio histórico dentro de la ventana de datos.',
       retorno: function (m) {
         if (!m || m.maximo_periodo_usd === null || m.maximo_periodo_usd === undefined || !m.precio_actual_usd) return null;
         return (m.maximo_periodo_usd - m.precio_actual_usd) / m.precio_actual_usd * 100;
@@ -485,6 +688,14 @@
 
   function tipoColor(tipo) {
     return TYPE_COLOR[tipo] || 'var(--cw-c-default)';
+  }
+
+  function initials(nombre) {
+    if (!nombre) return '?';
+    var partes = nombre.trim().split(/\s+/).filter(Boolean);
+    if (!partes.length) return '?';
+    if (partes.length === 1) return partes[0].substring(0, 2).toUpperCase();
+    return (partes[0].charAt(0) + partes[1].charAt(0)).toUpperCase();
   }
 
   function normalize(s) {
@@ -581,6 +792,7 @@
 
       return {
         label: esc.label,
+        descripcion: esc.descripcion,
         rfRendimiento: rfRendimiento,
         rfCobertura: rfCobertura,
         rvRendimiento: rvRendimiento,
@@ -613,7 +825,7 @@
     );
   }
 
-  // Construye el markup de las 3 tarjetas de escenario (con click para
+  // Construye el markup de las 3 tarjetas KPI de escenario (con click para
   // desplegar, debajo de la grilla, el detalle por instrumento de ESE
   // escenario) y devuelve tambien la lista de esos detalles para poder
   // insertarlos dinamicamente al hacer click (ver wireScenarioCards).
@@ -627,8 +839,8 @@
         '<div class="cw-scenario-card" data-esc-idx="' + idx + '">' +
           '<div class="cw-scenario-title">' + esc.label + '</div>' +
           '<div class="cw-scenario-total ' + totalCls + '">' + fmtSignedPct(esc.total) + '</div>' +
-          '<div class="cw-scenario-total-label">Rendimiento esperado de la cartera</div>' +
-          '<div class="cw-scenario-hint">Ver rendimientos considerados ▾</div>' +
+          '<div class="cw-scenario-desc">' + esc.descripcion + '</div>' +
+          '<div class="cw-scenario-action">Ver rendimientos por instrumento <span>&rarr;</span></div>' +
         '</div>'
       );
     }).join('');
@@ -719,8 +931,11 @@
 
     filtered.forEach(function (c) {
       var item = el('div', { class: 'cw-list-item' + (c.comitente === activeComitente ? ' is-active' : '') });
-      item.appendChild(el('div', { class: 'cw-item-name' }, c.nombre));
-      item.appendChild(el('div', { class: 'cw-item-meta' }, 'N.º ' + c.comitente + ' · ' + fmtMoney(c.total)));
+      item.appendChild(el('div', { class: 'cw-avatar' }, initials(c.nombre)));
+      var body = el('div', { class: 'cw-item-body' });
+      body.appendChild(el('div', { class: 'cw-item-name' }, c.nombre));
+      body.appendChild(el('div', { class: 'cw-item-meta' }, 'N.º ' + c.comitente + ' · ' + fmtMoney(c.total)));
+      item.appendChild(body);
       item.addEventListener('click', function () { selectComitente(c.comitente); });
       listEl.appendChild(item);
     });
@@ -751,16 +966,16 @@
   }
 
   function renderDetail(comitente) {
-    var maxPct = 0;
     var tipoRows = computeTipoBreakdown(comitente);
-    tipoRows.forEach(function (r) { if (r.pct > maxPct) maxPct = r.pct; });
+
+    var stackedBarHtml = tipoRows.map(function (r) {
+      return '<div class="cw-stacked-seg" style="width:' + r.pct.toFixed(2) + '%;background:' + tipoColor(r.tipo) + '" title="' + r.tipo + ' — ' + fmtPct(r.pct) + '"></div>';
+    }).join('');
 
     var tipoRowsHtml = tipoRows.map(function (r) {
-      var barWidth = maxPct > 0 ? (r.pct / maxPct) * 100 : 0;
       return (
         '<div class="cw-type-row">' +
           '<div class="cw-type-name"><span class="cw-type-dot" style="background:' + tipoColor(r.tipo) + '"></span>' + r.tipo + '</div>' +
-          '<div class="cw-type-bar-track"><div class="cw-type-bar-fill" style="width:' + barWidth.toFixed(1) + '%;background:' + tipoColor(r.tipo) + '"></div></div>' +
           '<div class="cw-type-amount">' + fmtMoney(r.importe) + '</div>' +
           '<div class="cw-type-pct">' + fmtPct(r.pct) + '</div>' +
         '</div>'
@@ -795,21 +1010,27 @@
     }).join('');
 
     var escenarios = buildEscenariosMarkup(comitente);
+    var fechaTexto = data && data.generado ? new Date(data.generado).toLocaleString('es-AR') : '';
 
     var html = (
-      '<div class="cw-detail-header">' +
-        '<div>' +
-          '<div class="cw-detail-title">' + comitente.nombre + '</div>' +
-          '<div class="cw-detail-sub">Comitente N.º ' + comitente.comitente + '</div>' +
+      '<div class="cw-exec-header">' +
+        '<div class="cw-exec-identity">' +
+          '<div class="cw-exec-avatar">' + initials(comitente.nombre) + '</div>' +
+          '<div>' +
+            '<div class="cw-exec-name">' + comitente.nombre + '</div>' +
+            '<div class="cw-exec-tag">Comitente N.º ' + comitente.comitente + '</div>' +
+          '</div>' +
         '</div>' +
-        '<div class="cw-detail-total">' +
-          '<div class="cw-total-value">' + fmtMoney(comitente.total) + '</div>' +
-          '<div class="cw-total-label">Total de cartera</div>' +
+        '<div class="cw-exec-total">' +
+          '<div class="cw-exec-total-label">Patrimonio total</div>' +
+          '<div class="cw-exec-total-value">' + fmtMoney(comitente.total) + '</div>' +
+          '<div class="cw-exec-total-date">Actualizado al ' + fechaTexto + '</div>' +
         '</div>' +
       '</div>' +
 
       '<div class="cw-card">' +
         '<div class="cw-card-title">Composición por tipo de instrumento</div>' +
+        '<div class="cw-stacked-bar">' + stackedBarHtml + '</div>' +
         tipoRowsHtml +
       '</div>' +
 
