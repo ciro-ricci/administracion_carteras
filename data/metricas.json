@@ -229,7 +229,7 @@
       "maximo_periodo_usd": 36.59,
       "distancia_maximo_pct": -63.02,
       "ticker_usd": "ETHA",
-      "beta": 0.0
+      "beta": 2.6
     },
     "EWZ": {
       "precio_actual_usd": 35.93,
@@ -328,7 +328,7 @@
       "maximo_periodo_usd": 71.29,
       "distancia_maximo_pct": -49.18,
       "ticker_usd": "IBIT",
-      "beta": 0.0
+      "beta": 2.14
     },
     "IBM": {
       "precio_actual_usd": 287.56,
@@ -822,7 +822,7 @@
       "motivo": "Fondo cerrado local (FCI Puerto Nizuc); no se encontro ningun ticker publico (ni USD ni ARS)."
     }
   },
-  "generado": "2026-07-10T23:45:05.741736+00:00",
+  "generado": "2026-07-10T23:51:02.016905+00:00",
   "metodologia": {
     "distancia_sma200_pct": "Distancia % entre precio actual y media movil de 200 ruedas.",
     "rendimiento_anual_pct": "CAGR anualizado sobre hasta 10 anios de historial disponible (ver anios_usados por ticker).",

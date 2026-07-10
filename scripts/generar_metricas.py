@@ -14,7 +14,16 @@ en dolares:
   - beta: beta de mercado tal como lo publica Yahoo Finance (campo "beta"
     para acciones/ADRs, o "beta3Year" para ETFs/fondos, que es el campo que
     Yahoo usa para ese tipo de instrumento). Null si Yahoo no lo publica
-    para ese ticker. No se calcula localmente, es el dato de Yahoo tal cual.
+    para ese ticker. No se calcula localmente, es el dato de Yahoo tal cual,
+    salvo las excepciones puntuales en BETA_OVERRIDE (ver mas abajo).
+
+  Excepcion: ETHA e IBIT (ETFs de Ether y Bitcoin) tienen "beta3Year"=0.0 en
+  Yahoo, pero no porque no se muevan con el mercado sino porque son
+  productos demasiado nuevos y todavia no tienen 3 anios de historial para
+  que Yahoo lo calcule (artefacto de datos, no una medida real). A pedido
+  del usuario, se reemplaza por un valor fijo: ETHA=2.6, IBIT=2.14 (ver
+  BETA_OVERRIDE). No es un dato de Yahoo, es una asuncion explicita del
+  usuario y se deja documentada aca para que quede clara la diferencia.
 
 Fuentes:
   - Yahoo Finance via la libreria yfinance (sin API key), para precios de
@@ -96,6 +105,16 @@ SIN_DATO_MOTIVO = {
     "PNIZF": "Fondo cerrado local (FCI Puerto Nizuc); no se encontro ningun ticker publico (ni USD ni ARS).",
 }
 
+# Override manual de beta, definido explicitamente por el usuario (NO es un
+# dato de Yahoo Finance). Yahoo reporta beta3Year=0.0 para ETHA e IBIT
+# porque son ETFs demasiado nuevos y no tienen 3 anios de historial todavia;
+# ese 0.0 no refleja sensibilidad real al mercado. Se pisa con estos valores
+# fijos hasta que Yahoo tenga historial suficiente para calcularlo.
+BETA_OVERRIDE = {
+    "ETHA": 2.6,
+    "IBIT": 2.14,
+}
+
 
 def get_tickers_renta_variable():
     with open(TENENCIAS_PATH, encoding="utf-8") as f:
@@ -136,13 +155,18 @@ def obtener_beta_individual(ticker_yahoo):
 
 def obtener_betas(tickers_yahoo):
     """Trae el beta de una lista de tickers de Yahoo en paralelo (son llamadas
-    de red independientes por ticker, no hay endpoint batch para "info")."""
+    de red independientes por ticker, no hay endpoint batch para "info").
+    Aplica BETA_OVERRIDE al final para los tickers con excepcion manual
+    definida por el usuario (ver comentario junto a BETA_OVERRIDE)."""
     resultados = {}
     with ThreadPoolExecutor(max_workers=12) as ex:
         futuros = {ex.submit(obtener_beta_individual, t): t for t in tickers_yahoo}
         for fut in as_completed(futuros):
             ticker_yahoo, beta = fut.result()
             resultados[ticker_yahoo] = beta
+    for ticker_yahoo in resultados:
+        if ticker_yahoo in BETA_OVERRIDE:
+            resultados[ticker_yahoo] = BETA_OVERRIDE[ticker_yahoo]
     return resultados
 
 
@@ -319,6 +343,7 @@ def generar():
         "fuente": "Yahoo Finance (via yfinance) para precios; api.argentinadatos.com para el dolar MEP historico usado en la conversion de TGNO4, TRAN y TXAR.",
         "conversion_mep": "TGNO4, TRAN y TXAR cotizan solo en pesos en BYMA; se convierten a USD dividiendo el cierre diario en ARS por el dolar MEP (venta) del mismo dia.",
         "beta": "Beta publicado por Yahoo Finance (campo 'beta' para acciones/ADRs, 'beta3Year' para ETFs/fondos). Null si Yahoo no lo publica para ese ticker.",
+        "beta_override": "ETHA e IBIT usan un beta fijo definido por el usuario (2.6 y 2.14) en vez del beta3Year=0.0 de Yahoo, que es un artefacto por falta de 3 anios de historial y no una medida real.",
     }
 
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
