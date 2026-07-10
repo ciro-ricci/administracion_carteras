@@ -342,6 +342,62 @@
     margin-top: 10px;
   }
 
+  /* ---------- Tarjetas de rendimiento esperado por escenario ---------- */
+  .cw-scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .cw-scenario-card {
+    background: var(--cw-panel);
+    border: 1px solid var(--cw-border);
+    border-radius: var(--cw-radius);
+    box-shadow: var(--cw-shadow);
+    padding: 18px 20px;
+  }
+  .cw-scenario-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--cw-text-muted);
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    margin-bottom: 10px;
+  }
+  .cw-scenario-total {
+    font-size: 26px;
+    font-weight: 700;
+  }
+  .cw-scenario-total-label {
+    font-size: 11.5px;
+    color: var(--cw-text-muted);
+    margin-bottom: 14px;
+  }
+  .cw-scenario-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12.5px;
+    padding: 5px 0;
+    border-top: 1px solid var(--cw-border);
+  }
+  .cw-scenario-row .cw-scenario-row-label {
+    color: var(--cw-text-muted);
+  }
+  .cw-scenario-row .cw-scenario-row-value {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+  .cw-scenario-coverage {
+    font-size: 10.5px;
+    color: var(--cw-text-faint);
+    margin-top: 8px;
+    font-style: italic;
+  }
+  .cw-scenario-empty {
+    font-size: 12.5px;
+    color: var(--cw-text-faint);
+  }
+
   ::-webkit-scrollbar { width: 8px; height: 8px; }
   ::-webkit-scrollbar-thumb { background: #d7dbe1; border-radius: 8px; }
   ::-webkit-scrollbar-track { background: transparent; }
@@ -379,11 +435,42 @@
 (function () {
   var DATA_URL = 'data/tenencias.json';
   var METRICAS_URL = 'data/metricas.json';
+  var RENTA_FIJA_URL = 'data/renta_fija.json';
   var data = null;
   var metricas = null;
+  var rentaFija = null;
   var filtered = [];
   var activeComitente = null;
   var TIPOS_CON_METRICAS = { 'Acciones': true, 'Cedear': true };
+  var TIPOS_RENTA_FIJA = { 'ON': true, 'Bonos': true, 'Letras': true };
+  var TIPOS_RENTA_VARIABLE = { 'Acciones': true, 'Cedear': true };
+
+  var ESCENARIOS_RV = [
+    {
+      key: 'sma200',
+      label: 'Reversión a media de 200 ruedas',
+      retorno: function (m) {
+        if (!m || m.sma200_usd === null || m.sma200_usd === undefined || !m.precio_actual_usd) return null;
+        return (m.sma200_usd - m.precio_actual_usd) / m.precio_actual_usd * 100;
+      }
+    },
+    {
+      key: 'cagr',
+      label: 'Continuidad del rendimiento anual (CAGR 10a)',
+      retorno: function (m) {
+        if (!m || m.rendimiento_anual_pct === null || m.rendimiento_anual_pct === undefined) return null;
+        return m.rendimiento_anual_pct;
+      }
+    },
+    {
+      key: 'maximo',
+      label: 'Recuperación al máximo histórico',
+      retorno: function (m) {
+        if (!m || m.maximo_periodo_usd === null || m.maximo_periodo_usd === undefined || !m.precio_actual_usd) return null;
+        return (m.maximo_periodo_usd - m.precio_actual_usd) / m.precio_actual_usd * 100;
+      }
+    }
+  ];
 
   var TYPE_COLOR = {
     'ON': 'var(--cw-c-on)',
@@ -425,6 +512,128 @@
   function metricasDeTicker(ticker) {
     if (!metricas || !metricas.tickers) return null;
     return metricas.tickers[ticker] || null;
+  }
+
+  function rentaFijaDeTicker(ticker) {
+    if (!rentaFija || !rentaFija.tickers) return null;
+    return rentaFija.tickers[ticker] || null;
+  }
+
+  function fmtSignedPct(n) {
+    var sign = n > 0 ? '+' : '';
+    return sign + fmtPct(n);
+  }
+
+  // Calcula, para un comitente, el rendimiento esperado de su cartera bajo
+  // los 3 escenarios de renta variable, combinado con la TIR de su renta
+  // fija (ON, Bonos, Letras). Excluye por completo Futuros y Opción de
+  // Futuro (no se consideran en esta estimación, a pedido del usuario).
+  function computeRendimientoEsperado(comitente) {
+    var rfItems = comitente.tenencias.filter(function (t) { return !!TIPOS_RENTA_FIJA[t.tipo]; });
+    var rvItems = comitente.tenencias.filter(function (t) { return !!TIPOS_RENTA_VARIABLE[t.tipo]; });
+
+    var rfTotal = rfItems.reduce(function (s, t) { return s + t.importe; }, 0);
+    var rvTotal = rvItems.reduce(function (s, t) { return s + t.importe; }, 0);
+    var baseTotal = rfTotal + rvTotal;
+    if (baseTotal <= 0) return null;
+
+    var pesoRF = rfTotal / baseTotal;
+    var pesoRV = rvTotal / baseTotal;
+
+    var rfSumPonderado = 0, rfImporteConDato = 0;
+    rfItems.forEach(function (t) {
+      var rf = rentaFijaDeTicker(t.ticker);
+      if (rf && typeof rf.tir_usd_pct === 'number') {
+        rfSumPonderado += t.importe * rf.tir_usd_pct;
+        rfImporteConDato += t.importe;
+      }
+    });
+    var rfRendimiento = rfImporteConDato > 0 ? rfSumPonderado / rfImporteConDato : null;
+    var rfCobertura = rfTotal > 0 ? (rfImporteConDato / rfTotal) * 100 : null;
+
+    var escenarios = ESCENARIOS_RV.map(function (esc) {
+      var sumPonderado = 0, importeConDato = 0;
+      rvItems.forEach(function (t) {
+        var m = metricasDeTicker(t.ticker);
+        var retorno = (m && !m.sin_dato_usd) ? esc.retorno(m) : null;
+        if (retorno !== null && retorno !== undefined) {
+          sumPonderado += t.importe * retorno;
+          importeConDato += t.importe;
+        }
+      });
+      var rvRendimiento = importeConDato > 0 ? sumPonderado / importeConDato : null;
+      var rvCobertura = rvTotal > 0 ? (importeConDato / rvTotal) * 100 : null;
+
+      var total = pesoRF * (rfRendimiento || 0) + pesoRV * (rvRendimiento || 0);
+
+      return {
+        label: esc.label,
+        rfRendimiento: rfRendimiento,
+        rfCobertura: rfCobertura,
+        rvRendimiento: rvRendimiento,
+        rvCobertura: rvCobertura,
+        total: total
+      };
+    });
+
+    return {
+      pesoRF: pesoRF,
+      pesoRV: pesoRV,
+      rfTotal: rfTotal,
+      rvTotal: rvTotal,
+      escenarios: escenarios
+    };
+  }
+
+  function renderEscenariosHtml(comitente) {
+    var r = computeRendimientoEsperado(comitente);
+    if (!r) return '';
+
+    var cardsHtml = r.escenarios.map(function (esc) {
+      var totalCls = esc.total > 0 ? 'cw-metric-pos' : (esc.total < 0 ? 'cw-metric-neg' : '');
+
+      var filaRF = (
+        '<div class="cw-scenario-row">' +
+          '<span class="cw-scenario-row-label">Renta fija (' + fmtPct(r.pesoRF * 100) + ')</span>' +
+          '<span class="cw-scenario-row-value">' + (esc.rfRendimiento !== null ? fmtSignedPct(esc.rfRendimiento) : 's/d') + '</span>' +
+        '</div>'
+      );
+      var filaRV = (
+        '<div class="cw-scenario-row">' +
+          '<span class="cw-scenario-row-label">Renta variable (' + fmtPct(r.pesoRV * 100) + ')</span>' +
+          '<span class="cw-scenario-row-value">' + (esc.rvRendimiento !== null ? fmtSignedPct(esc.rvRendimiento) : 's/d') + '</span>' +
+        '</div>'
+      );
+
+      var coberturaNotas = [];
+      if (esc.rfCobertura !== null && esc.rfCobertura < 99.95) {
+        coberturaNotas.push('Renta fija con TIR disponible: ' + fmtPct(esc.rfCobertura) + ' del bloque.');
+      }
+      if (esc.rvCobertura !== null && esc.rvCobertura < 99.95) {
+        coberturaNotas.push('Renta variable con dato para este escenario: ' + fmtPct(esc.rvCobertura) + ' del bloque.');
+      }
+      var coberturaHtml = coberturaNotas.length
+        ? '<div class="cw-scenario-coverage">' + coberturaNotas.join(' ') + '</div>'
+        : '';
+
+      return (
+        '<div class="cw-scenario-card">' +
+          '<div class="cw-scenario-title">' + esc.label + '</div>' +
+          '<div class="cw-scenario-total ' + totalCls + '">' + fmtSignedPct(esc.total) + '</div>' +
+          '<div class="cw-scenario-total-label">Rendimiento esperado de la cartera</div>' +
+          filaRF + filaRV +
+          coberturaHtml +
+        '</div>'
+      );
+    }).join('');
+
+    return (
+      '<div class="cw-card">' +
+        '<div class="cw-card-title">Rendimiento esperado por escenario</div>' +
+        '<div class="cw-scenario-grid">' + cardsHtml + '</div>' +
+        '<div class="cw-metric-note">Renta fija (ON, Bonos, Letras) a su TIR en dólares (planilla de seguimiento, o 6% fijo cuando no hay dato de mercado). Renta variable (Acciones, Cedear) según el escenario. No incluye Futuros ni Opción de Futuro.</div>' +
+      '</div>'
+    );
   }
 
   function el(tag, attrs, html) {
@@ -538,6 +747,8 @@
         '</div>' +
       '</div>' +
 
+      renderEscenariosHtml(comitente) +
+
       '<div class="cw-card">' +
         '<div class="cw-card-title">Composición por tipo de instrumento</div>' +
         tipoRowsHtml +
@@ -578,11 +789,13 @@
 
   Promise.all([
     fetch(DATA_URL).then(function (r) { return r.json(); }),
-    fetch(METRICAS_URL).then(function (r) { return r.json(); }).catch(function () { return null; })
+    fetch(METRICAS_URL).then(function (r) { return r.json(); }).catch(function () { return null; }),
+    fetch(RENTA_FIJA_URL).then(function (r) { return r.json(); }).catch(function () { return null; })
   ])
     .then(function (results) {
       data = results[0];
       metricas = results[1];
+      rentaFija = results[2];
       filtered = data.comitentes.slice();
       renderList();
       renderPlaceholderStats();
