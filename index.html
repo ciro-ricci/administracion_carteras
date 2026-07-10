@@ -67,6 +67,13 @@
     --cw-c-futuros: #a78bfa;
     --cw-c-opcion: #fb923c;
     --cw-c-default: #64748b;
+
+    /* Fallback explicito: estas variables solo existen dentro de .cw-app,
+       asi que el fondo/color no le llegan al <body> (es ancestro, no
+       descendiente). Se fijan aca tambien para que toda la app quede
+       cubierta aunque html/body no puedan resolver la variable. */
+    background: var(--cw-bg);
+    color: var(--cw-text);
   }
 
   * { box-sizing: border-box; }
@@ -252,6 +259,7 @@
     overflow-y: auto;
     padding: var(--cw-sp-6) var(--cw-sp-7);
     min-height: 0;
+    background: var(--cw-bg);
   }
 
   .cw-placeholder {
