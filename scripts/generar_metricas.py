@@ -27,10 +27,11 @@ Fuentes:
 
 Reglas de negocio / mapeo de tickers (verificado, no inventado):
   - Los CEDEARs (tipo "Cedear" en tenencias.json) son casi siempre el mismo
-    ticker que el activo subyacente en su mercado de origen. Dos excepciones
+    ticker que el activo subyacente en su mercado de origen. Excepciones
     confirmadas contra el listado oficial de BYMA (CEDEARs Negociables en
-    BYMA, actualizado 3/2/2026): "BRKB" -> "BRK-B" (Berkshire Hathaway) y
-    "DISN" -> "DIS" (Walt Disney Co).
+    BYMA): "BRKB" -> "BRK-B" (Berkshire Hathaway), "DISN" -> "DIS" (Walt
+    Disney Co) y "ADGO" -> "AGRO" (Adecoagro S.A., NYSE, ratio 1:1;
+    verificado via busqueda publica + yfinance: currency=USD).
   - Las acciones argentinas locales (tipo "Acciones") se traducen a su ADR
     en dolares cuando existe uno verificado (ver ADR_MAP). BYMA y MOLI no
     tienen ADR pero si cotizan OTC en USD (BYMAF y MOPLF, verificado via
@@ -62,6 +63,7 @@ MEP_HISTORICO_URL = "https://api.argentinadatos.com/v1/cotizaciones/dolares/bols
 CEDEAR_EXCEPCIONES = {
     "BRKB": "BRK-B",
     "DISN": "DIS",
+    "ADGO": "AGRO",
 }
 
 ADR_MAP = {

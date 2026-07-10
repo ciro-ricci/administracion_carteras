@@ -33,6 +33,17 @@
       "ticker_usd": "ADBE",
       "beta": 1.433
     },
+    "ADGO": {
+      "precio_actual_usd": 10.31,
+      "sma200_usd": 10.014,
+      "distancia_sma200_pct": 2.96,
+      "rendimiento_anual_pct": -0.48,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 15.25,
+      "distancia_maximo_pct": -32.39,
+      "ticker_usd": "AGRO",
+      "beta": -0.065
+    },
     "AMD": {
       "precio_actual_usd": 557.89,
       "sma200_usd": 287.6637,
@@ -811,7 +822,7 @@
       "motivo": "Fondo cerrado local (FCI Puerto Nizuc); no se encontro ningun ticker publico (ni USD ni ARS)."
     }
   },
-  "generado": "2026-07-10T23:38:27.921403+00:00",
+  "generado": "2026-07-10T23:45:05.741736+00:00",
   "metodologia": {
     "distancia_sma200_pct": "Distancia % entre precio actual y media movil de 200 ruedas.",
     "rendimiento_anual_pct": "CAGR anualizado sobre hasta 10 anios de historial disponible (ver anios_usados por ticker).",
