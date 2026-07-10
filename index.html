@@ -329,6 +329,18 @@
     background: var(--cw-bg);
     color: var(--cw-text-muted);
   }
+  .cw-metric-pos { color: #2f7d4f; }
+  .cw-metric-neg { color: #b5432e; }
+  .cw-metric-na {
+    color: var(--cw-text-faint);
+    font-style: italic;
+    font-size: 12px;
+  }
+  .cw-metric-note {
+    font-size: 11px;
+    color: var(--cw-text-faint);
+    margin-top: 10px;
+  }
 
   ::-webkit-scrollbar { width: 8px; height: 8px; }
   ::-webkit-scrollbar-thumb { background: #d7dbe1; border-radius: 8px; }
@@ -366,9 +378,12 @@
 <script>
 (function () {
   var DATA_URL = 'data/tenencias.json';
+  var METRICAS_URL = 'data/metricas.json';
   var data = null;
+  var metricas = null;
   var filtered = [];
   var activeComitente = null;
+  var TIPOS_CON_METRICAS = { 'Acciones': true, 'Cedear': true };
 
   var TYPE_COLOR = {
     'ON': 'var(--cw-c-on)',
@@ -398,6 +413,18 @@
 
   function fmtPct(n) {
     return Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '%';
+  }
+
+  function fmtMetricPct(n) {
+    if (n === null || n === undefined) return '<span class="cw-metric-na">s/d</span>';
+    var cls = n > 0 ? 'cw-metric-pos' : (n < 0 ? 'cw-metric-neg' : '');
+    var sign = n > 0 ? '+' : '';
+    return '<span class="' + cls + '">' + sign + fmtPct(n) + '</span>';
+  }
+
+  function metricasDeTicker(ticker) {
+    if (!metricas || !metricas.tickers) return null;
+    return metricas.tickers[ticker] || null;
   }
 
   function el(tag, attrs, html) {
@@ -473,12 +500,28 @@
     }).join('');
 
     var tableRowsHtml = comitente.tenencias.map(function (t) {
+      var esRentaVariable = !!TIPOS_CON_METRICAS[t.tipo];
+      var m = esRentaVariable ? metricasDeTicker(t.ticker) : null;
+      var sma200Html, rendHtml, maxHtml;
+      if (!esRentaVariable) {
+        sma200Html = rendHtml = maxHtml = '<span class="cw-metric-na">—</span>';
+      } else if (!m || m.sin_dato_usd) {
+        var motivo = m && m.motivo ? m.motivo : 'Sin dato disponible en dólares.';
+        sma200Html = rendHtml = maxHtml = '<span class="cw-metric-na" title="' + motivo.replace(/"/g, '&quot;') + '">s/d</span>';
+      } else {
+        sma200Html = fmtMetricPct(m.distancia_sma200_pct);
+        rendHtml = fmtMetricPct(m.rendimiento_anual_pct);
+        maxHtml = fmtMetricPct(m.distancia_maximo_pct);
+      }
       return (
         '<tr>' +
           '<td class="cw-ticker">' + t.ticker + '</td>' +
           '<td><span class="cw-tipo-tag">' + t.tipo + '</span></td>' +
           '<td class="cw-num">' + fmtMoney(t.importe) + '</td>' +
           '<td class="cw-num">' + fmtPct(t.participacion_pct) + '</td>' +
+          '<td class="cw-num">' + sma200Html + '</td>' +
+          '<td class="cw-num">' + rendHtml + '</td>' +
+          '<td class="cw-num">' + maxHtml + '</td>' +
         '</tr>'
       );
     }).join('');
@@ -505,9 +548,11 @@
         '<table class="cw-table">' +
           '<thead><tr>' +
             '<th>Ticker</th><th>Tipo</th><th class="cw-num">Importe</th><th class="cw-num">Participación %</th>' +
+            '<th class="cw-num">Dist. media 200d</th><th class="cw-num">Rend. anual (10a)</th><th class="cw-num">Dist. máximo</th>' +
           '</tr></thead>' +
           '<tbody>' + tableRowsHtml + '</tbody>' +
         '</table>' +
+        '<div class="cw-metric-note">Métricas de renta variable (Acciones y Cedear) en dólares, vía Yahoo Finance. "s/d" = sin dato disponible.</div>' +
       '</div>'
     );
 
@@ -531,10 +576,13 @@
       '<div class="cw-stat-chip"><div class="cw-stat-value">' + fmtMoney(data.aum_total) + '</div><div class="cw-stat-label">AUM total</div></div>';
   }
 
-  fetch(DATA_URL)
-    .then(function (r) { return r.json(); })
-    .then(function (json) {
-      data = json;
+  Promise.all([
+    fetch(DATA_URL).then(function (r) { return r.json(); }),
+    fetch(METRICAS_URL).then(function (r) { return r.json(); }).catch(function () { return null; })
+  ])
+    .then(function (results) {
+      data = results[0];
+      metricas = results[1];
       filtered = data.comitentes.slice();
       renderList();
       renderPlaceholderStats();
