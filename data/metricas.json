@@ -1,0 +1,716 @@
+{
+  "tickers": {
+    "AAPL": {
+      "precio_actual_usd": 316.22,
+      "sma200_usd": 272.1535,
+      "distancia_sma200_pct": 16.19,
+      "rendimiento_anual_pct": 29.28,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 316.22,
+      "distancia_maximo_pct": 0.0,
+      "ticker_usd": "AAPL"
+    },
+    "ABT": {
+      "precio_actual_usd": 94.4,
+      "sma200_usd": 111.0446,
+      "distancia_sma200_pct": -14.99,
+      "rendimiento_anual_pct": 8.4,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 141.46,
+      "distancia_maximo_pct": -33.27,
+      "ticker_usd": "ABT"
+    },
+    "ADBE": {
+      "precio_actual_usd": 222.65,
+      "sma200_usd": 285.8517,
+      "distancia_sma200_pct": -22.11,
+      "rendimiento_anual_pct": 8.65,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 688.37,
+      "distancia_maximo_pct": -67.66,
+      "ticker_usd": "ADBE"
+    },
+    "AMD": {
+      "precio_actual_usd": 546.72,
+      "sma200_usd": 285.6732,
+      "distancia_sma200_pct": 91.38,
+      "rendimiento_anual_pct": 59.88,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 580.91,
+      "distancia_maximo_pct": -5.89,
+      "ticker_usd": "AMD"
+    },
+    "AMZN": {
+      "precio_actual_usd": 247.04,
+      "sma200_usd": 233.2447,
+      "distancia_sma200_pct": 5.91,
+      "rendimiento_anual_pct": 20.69,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 274.99,
+      "distancia_maximo_pct": -10.16,
+      "ticker_usd": "AMZN"
+    },
+    "AXP": {
+      "precio_actual_usd": 346.72,
+      "sma200_usd": 338.3695,
+      "distancia_sma200_pct": 2.47,
+      "rendimiento_anual_pct": 18.75,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 384.89,
+      "distancia_maximo_pct": -9.92,
+      "ticker_usd": "AXP"
+    },
+    "BABA": {
+      "precio_actual_usd": 111.14,
+      "sma200_usd": 145.896,
+      "distancia_sma200_pct": -23.82,
+      "rendimiento_anual_pct": 3.16,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 317.14,
+      "distancia_maximo_pct": -64.96,
+      "ticker_usd": "BABA"
+    },
+    "BBAR": {
+      "precio_actual_usd": 19.4,
+      "sma200_usd": 15.7849,
+      "distancia_sma200_pct": 22.9,
+      "rendimiento_anual_pct": -0.5,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 26.6,
+      "distancia_maximo_pct": -27.07,
+      "ticker_usd": "BBAR"
+    },
+    "BKNG": {
+      "precio_actual_usd": 175.52,
+      "sma200_usd": 187.9546,
+      "distancia_sma200_pct": -6.62,
+      "rendimiento_anual_pct": 12.5,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 232.6368,
+      "distancia_maximo_pct": -24.55,
+      "ticker_usd": "BKNG"
+    },
+    "BMA": {
+      "precio_actual_usd": 89.82,
+      "sma200_usd": 79.905,
+      "distancia_sma200_pct": 12.41,
+      "rendimiento_anual_pct": 1.71,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 135.46,
+      "distancia_maximo_pct": -33.69,
+      "ticker_usd": "BMA"
+    },
+    "BRKB": {
+      "precio_actual_usd": 495.45,
+      "sma200_usd": 490.4181,
+      "distancia_sma200_pct": 1.03,
+      "rendimiento_anual_pct": 13.16,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 539.8,
+      "distancia_maximo_pct": -8.22,
+      "ticker_usd": "BRK-B"
+    },
+    "CEPU": {
+      "precio_actual_usd": 14.41,
+      "sma200_usd": 14.6807,
+      "distancia_sma200_pct": -1.84,
+      "rendimiento_anual_pct": -2.41,
+      "anios_usados": 8.44,
+      "maximo_periodo_usd": 18.4,
+      "distancia_maximo_pct": -21.68,
+      "ticker_usd": "CEPU"
+    },
+    "COIN": {
+      "precio_actual_usd": 158.44,
+      "sma200_usd": 227.5475,
+      "distancia_sma200_pct": -30.37,
+      "rendimiento_anual_pct": -12.98,
+      "anios_usados": 5.24,
+      "maximo_periodo_usd": 419.78,
+      "distancia_maximo_pct": -62.26,
+      "ticker_usd": "COIN"
+    },
+    "COPX": {
+      "precio_actual_usd": 75.4,
+      "sma200_usd": 75.8225,
+      "distancia_sma200_pct": -0.56,
+      "rendimiento_anual_pct": 16.54,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 95.7,
+      "distancia_maximo_pct": -21.21,
+      "ticker_usd": "COPX"
+    },
+    "CRES": {
+      "precio_actual_usd": 10.41,
+      "sma200_usd": 11.4132,
+      "distancia_sma200_pct": -8.79,
+      "rendimiento_anual_pct": -2.29,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 20.2909,
+      "distancia_maximo_pct": -48.7,
+      "ticker_usd": "CRESY"
+    },
+    "DISN": {
+      "precio_actual_usd": 96.17,
+      "sma200_usd": 105.9656,
+      "distancia_sma200_pct": -9.24,
+      "rendimiento_anual_pct": -0.39,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 201.91,
+      "distancia_maximo_pct": -52.37,
+      "ticker_usd": "DIS"
+    },
+    "EDN": {
+      "precio_actual_usd": 24.5,
+      "sma200_usd": 27.0122,
+      "distancia_sma200_pct": -9.3,
+      "rendimiento_anual_pct": 3.88,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 62.55,
+      "distancia_maximo_pct": -60.83,
+      "ticker_usd": "EDN"
+    },
+    "EEM": {
+      "precio_actual_usd": 66.78,
+      "sma200_usd": 59.4404,
+      "distancia_sma200_pct": 12.35,
+      "rendimiento_anual_pct": 6.73,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 71.21,
+      "distancia_maximo_pct": -6.22,
+      "ticker_usd": "EEM"
+    },
+    "ETHA": {
+      "precio_actual_usd": 13.19,
+      "sma200_usd": 20.1774,
+      "distancia_sma200_pct": -34.63,
+      "rendimiento_anual_pct": -29.58,
+      "anios_usados": 1.96,
+      "maximo_periodo_usd": 36.59,
+      "distancia_maximo_pct": -63.95,
+      "ticker_usd": "ETHA"
+    },
+    "EWZ": {
+      "precio_actual_usd": 34.96,
+      "sma200_usd": 34.9742,
+      "distancia_sma200_pct": -0.04,
+      "rendimiento_anual_pct": 1.31,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 48.41,
+      "distancia_maximo_pct": -27.78,
+      "ticker_usd": "EWZ"
+    },
+    "FCX": {
+      "precio_actual_usd": 60.53,
+      "sma200_usd": 55.4006,
+      "distancia_sma200_pct": 9.26,
+      "rendimiento_anual_pct": 17.91,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 71.72,
+      "distancia_maximo_pct": -15.6,
+      "ticker_usd": "FCX"
+    },
+    "FXI": {
+      "precio_actual_usd": 33.41,
+      "sma200_usd": 37.751,
+      "distancia_sma200_pct": -11.5,
+      "rendimiento_anual_pct": -0.3,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 54.47,
+      "distancia_maximo_pct": -38.66,
+      "ticker_usd": "FXI"
+    },
+    "GDX": {
+      "precio_actual_usd": 75.78,
+      "sma200_usd": 87.6071,
+      "distancia_sma200_pct": -13.5,
+      "rendimiento_anual_pct": 9.49,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 115.84,
+      "distancia_maximo_pct": -34.58,
+      "ticker_usd": "GDX"
+    },
+    "GGAL": {
+      "precio_actual_usd": 49.39,
+      "sma200_usd": 46.9606,
+      "distancia_sma200_pct": 5.17,
+      "rendimiento_anual_pct": 4.71,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 72.88,
+      "distancia_maximo_pct": -32.23,
+      "ticker_usd": "GGAL"
+    },
+    "GLD": {
+      "precio_actual_usd": 378.18,
+      "sma200_usd": 410.7006,
+      "distancia_sma200_pct": -7.92,
+      "rendimiento_anual_pct": 11.33,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 495.9,
+      "distancia_maximo_pct": -23.74,
+      "ticker_usd": "GLD"
+    },
+    "GOOGL": {
+      "precio_actual_usd": 358.89,
+      "sma200_usd": 318.3878,
+      "distancia_sma200_pct": 12.72,
+      "rendimiento_anual_pct": 25.73,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 402.62,
+      "distancia_maximo_pct": -10.86,
+      "ticker_usd": "GOOGL"
+    },
+    "GPRK": {
+      "precio_actual_usd": 9.82,
+      "sma200_usd": 8.4409,
+      "distancia_sma200_pct": 16.34,
+      "rendimiento_anual_pct": 11.29,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 22.14,
+      "distancia_maximo_pct": -55.65,
+      "ticker_usd": "GPRK"
+    },
+    "IBIT": {
+      "precio_actual_usd": 35.81,
+      "sma200_usd": 47.2832,
+      "distancia_sma200_pct": -24.26,
+      "rendimiento_anual_pct": 12.61,
+      "anios_usados": 2.49,
+      "maximo_periodo_usd": 71.29,
+      "distancia_maximo_pct": -49.77,
+      "ticker_usd": "IBIT"
+    },
+    "IBM": {
+      "precio_actual_usd": 295.3,
+      "sma200_usd": 275.055,
+      "distancia_sma200_pct": 7.36,
+      "rendimiento_anual_pct": 7.12,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 329.23,
+      "distancia_maximo_pct": -10.31,
+      "ticker_usd": "IBM"
+    },
+    "ILF": {
+      "precio_actual_usd": 33.82,
+      "sma200_usd": 33.0911,
+      "distancia_sma200_pct": 2.2,
+      "rendimiento_anual_pct": 2.43,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 39.5,
+      "distancia_maximo_pct": -14.38,
+      "ticker_usd": "ILF"
+    },
+    "IRSA": {
+      "precio_actual_usd": 15.07,
+      "sma200_usd": 15.0629,
+      "distancia_sma200_pct": 0.05,
+      "rendimiento_anual_pct": -1.15,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 32.6914,
+      "distancia_maximo_pct": -53.9,
+      "ticker_usd": "IRS"
+    },
+    "KO": {
+      "precio_actual_usd": 82.63,
+      "sma200_usd": 74.6579,
+      "distancia_sma200_pct": 10.68,
+      "rendimiento_anual_pct": 6.13,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 84.14,
+      "distancia_maximo_pct": -1.79,
+      "ticker_usd": "KO"
+    },
+    "LOMA": {
+      "precio_actual_usd": 10.95,
+      "sma200_usd": 10.9671,
+      "distancia_sma200_pct": -0.16,
+      "rendimiento_anual_pct": -7.4,
+      "anios_usados": 8.69,
+      "maximo_periodo_usd": 25.02,
+      "distancia_maximo_pct": -56.24,
+      "ticker_usd": "LOMA"
+    },
+    "MCD": {
+      "precio_actual_usd": 276.49,
+      "sma200_usd": 303.0265,
+      "distancia_sma200_pct": -8.76,
+      "rendimiento_anual_pct": 8.53,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 341.06,
+      "distancia_maximo_pct": -18.93,
+      "ticker_usd": "MCD"
+    },
+    "MELI": {
+      "precio_actual_usd": 1807.83,
+      "sma200_usd": 1929.9432,
+      "distancia_sma200_pct": -6.33,
+      "rendimiento_anual_pct": 28.35,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 2613.6299,
+      "distancia_maximo_pct": -30.83,
+      "ticker_usd": "MELI"
+    },
+    "META": {
+      "precio_actual_usd": 631.48,
+      "sma200_usd": 643.1977,
+      "distancia_sma200_pct": -1.82,
+      "rendimiento_anual_pct": 18.28,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 790.0,
+      "distancia_maximo_pct": -20.07,
+      "ticker_usd": "META"
+    },
+    "MSFT": {
+      "precio_actual_usd": 384.36,
+      "sma200_usd": 442.9253,
+      "distancia_sma200_pct": -13.22,
+      "rendimiento_anual_pct": 22.01,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 542.07,
+      "distancia_maximo_pct": -29.09,
+      "ticker_usd": "MSFT"
+    },
+    "MSTR": {
+      "precio_actual_usd": 93.89,
+      "sma200_usd": 176.3993,
+      "distancia_sma200_pct": -46.77,
+      "rendimiento_anual_pct": 17.92,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 473.83,
+      "distancia_maximo_pct": -80.18,
+      "ticker_usd": "MSTR"
+    },
+    "NFLX": {
+      "precio_actual_usd": 75.47,
+      "sma200_usd": 95.1871,
+      "distancia_sma200_pct": -20.71,
+      "rendimiento_anual_pct": 23.07,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 133.913,
+      "distancia_maximo_pct": -43.64,
+      "ticker_usd": "NFLX"
+    },
+    "NKE": {
+      "precio_actual_usd": 42.78,
+      "sma200_usd": 56.7411,
+      "distancia_sma200_pct": -24.6,
+      "rendimiento_anual_pct": -2.8,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 177.51,
+      "distancia_maximo_pct": -75.9,
+      "ticker_usd": "NKE"
+    },
+    "NU": {
+      "precio_actual_usd": 13.67,
+      "sma200_usd": 15.2332,
+      "distancia_sma200_pct": -10.26,
+      "rendimiento_anual_pct": 6.3,
+      "anios_usados": 4.58,
+      "maximo_periodo_usd": 18.76,
+      "distancia_maximo_pct": -27.13,
+      "ticker_usd": "NU"
+    },
+    "NVDA": {
+      "precio_actual_usd": 202.78,
+      "sma200_usd": 191.5337,
+      "distancia_sma200_pct": 5.87,
+      "rendimiento_anual_pct": 65.69,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 235.74,
+      "distancia_maximo_pct": -13.98,
+      "ticker_usd": "NVDA"
+    },
+    "OKLO": {
+      "precio_actual_usd": 49.27,
+      "sma200_usd": 82.8255,
+      "distancia_sma200_pct": -40.51,
+      "rendimiento_anual_pct": 37.57,
+      "anios_usados": 5.01,
+      "maximo_periodo_usd": 174.14,
+      "distancia_maximo_pct": -71.71,
+      "ticker_usd": "OKLO"
+    },
+    "ORCL": {
+      "precio_actual_usd": 144.22,
+      "sma200_usd": 196.6614,
+      "distancia_sma200_pct": -26.67,
+      "rendimiento_anual_pct": 13.46,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 328.33,
+      "distancia_maximo_pct": -56.07,
+      "ticker_usd": "ORCL"
+    },
+    "PAMP": {
+      "precio_actual_usd": 81.21,
+      "sma200_usd": 81.5804,
+      "distancia_sma200_pct": -0.45,
+      "rendimiento_anual_pct": 11.06,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 94.88,
+      "distancia_maximo_pct": -14.41,
+      "ticker_usd": "PAM"
+    },
+    "PEP": {
+      "precio_actual_usd": 137.86,
+      "sma200_usd": 150.097,
+      "distancia_sma200_pct": -8.15,
+      "rendimiento_anual_pct": 2.39,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 196.12,
+      "distancia_maximo_pct": -29.71,
+      "ticker_usd": "PEP"
+    },
+    "PLTR": {
+      "precio_actual_usd": 129.04,
+      "sma200_usd": 157.0658,
+      "distancia_sma200_pct": -17.84,
+      "rendimiento_anual_pct": 57.1,
+      "anios_usados": 5.78,
+      "maximo_periodo_usd": 207.18,
+      "distancia_maximo_pct": -37.72,
+      "ticker_usd": "PLTR"
+    },
+    "PYPL": {
+      "precio_actual_usd": 45.32,
+      "sma200_usd": 53.3161,
+      "distancia_sma200_pct": -15.0,
+      "rendimiento_anual_pct": 1.74,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 308.53,
+      "distancia_maximo_pct": -85.31,
+      "ticker_usd": "PYPL"
+    },
+    "QQQ": {
+      "precio_actual_usd": 723.28,
+      "sma200_usd": 637.3851,
+      "distancia_sma200_pct": 13.48,
+      "rendimiento_anual_pct": 20.62,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 746.16,
+      "distancia_maximo_pct": -3.07,
+      "ticker_usd": "QQQ"
+    },
+    "SMH": {
+      "precio_actual_usd": 607.73,
+      "sma200_usd": 431.8089,
+      "distancia_sma200_pct": 40.74,
+      "rendimiento_anual_pct": 35.39,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 668.91,
+      "distancia_maximo_pct": -9.15,
+      "ticker_usd": "SMH"
+    },
+    "SPCX": {
+      "precio_actual_usd": 152.16,
+      "sma200_usd": null,
+      "distancia_sma200_pct": null,
+      "rendimiento_anual_pct": -53.2,
+      "anios_usados": 0.07,
+      "maximo_periodo_usd": 211.39,
+      "distancia_maximo_pct": -28.02,
+      "ticker_usd": "SPCX"
+    },
+    "SPOT": {
+      "precio_actual_usd": 485.88,
+      "sma200_usd": 540.5293,
+      "distancia_sma200_pct": -10.11,
+      "rendimiento_anual_pct": 15.36,
+      "anios_usados": 8.27,
+      "maximo_periodo_usd": 775.9,
+      "distancia_maximo_pct": -37.38,
+      "ticker_usd": "SPOT"
+    },
+    "SPXL": {
+      "precio_actual_usd": 275.79,
+      "sma200_usd": 229.0052,
+      "distancia_sma200_pct": 20.43,
+      "rendimiento_anual_pct": 28.06,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 288.03,
+      "distancia_maximo_pct": -4.25,
+      "ticker_usd": "SPXL"
+    },
+    "SPY": {
+      "precio_actual_usd": 751.71,
+      "sma200_usd": 694.0413,
+      "distancia_sma200_pct": 8.31,
+      "rendimiento_anual_pct": 13.42,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 759.57,
+      "distancia_maximo_pct": -1.03,
+      "ticker_usd": "SPY"
+    },
+    "SUPV": {
+      "precio_actual_usd": 9.28,
+      "sma200_usd": 9.6148,
+      "distancia_sma200_pct": -3.48,
+      "rendimiento_anual_pct": -3.07,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 33.01,
+      "distancia_maximo_pct": -71.89,
+      "ticker_usd": "SUPV"
+    },
+    "TQQQ": {
+      "precio_actual_usd": 76.34,
+      "sma200_usd": 58.014,
+      "distancia_sma200_pct": 31.59,
+      "rendimiento_anual_pct": 42.59,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 87.22,
+      "distancia_maximo_pct": -12.47,
+      "ticker_usd": "TQQQ"
+    },
+    "TSLA": {
+      "precio_actual_usd": 406.55,
+      "sma200_usd": 418.2721,
+      "distancia_sma200_pct": -2.8,
+      "rendimiento_anual_pct": 39.11,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 489.88,
+      "distancia_maximo_pct": -17.01,
+      "ticker_usd": "TSLA"
+    },
+    "TSM": {
+      "precio_actual_usd": 436.96,
+      "sma200_usd": 347.5231,
+      "distancia_sma200_pct": 25.74,
+      "rendimiento_anual_pct": 32.0,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 477.57,
+      "distancia_maximo_pct": -8.5,
+      "ticker_usd": "TSM"
+    },
+    "UBER": {
+      "precio_actual_usd": 74.35,
+      "sma200_usd": 80.6721,
+      "distancia_sma200_pct": -7.84,
+      "rendimiento_anual_pct": 8.45,
+      "anios_usados": 7.17,
+      "maximo_periodo_usd": 100.1,
+      "distancia_maximo_pct": -25.72,
+      "ticker_usd": "UBER"
+    },
+    "URA": {
+      "precio_actual_usd": 42.35,
+      "sma200_usd": 50.0538,
+      "distancia_sma200_pct": -15.39,
+      "rendimiento_anual_pct": 11.74,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 61.81,
+      "distancia_maximo_pct": -31.48,
+      "ticker_usd": "URA"
+    },
+    "V": {
+      "precio_actual_usd": 348.2,
+      "sma200_usd": 329.0909,
+      "distancia_sma200_pct": 5.81,
+      "rendimiento_anual_pct": 16.36,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 373.31,
+      "distancia_maximo_pct": -6.73,
+      "ticker_usd": "V"
+    },
+    "VEA": {
+      "precio_actual_usd": 70.73,
+      "sma200_usd": 65.538,
+      "distancia_sma200_pct": 7.92,
+      "rendimiento_anual_pct": 7.12,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 72.39,
+      "distancia_maximo_pct": -2.29,
+      "ticker_usd": "VEA"
+    },
+    "VIST": {
+      "precio_actual_usd": 63.75,
+      "sma200_usd": 57.2259,
+      "distancia_sma200_pct": 11.4,
+      "rendimiento_anual_pct": 32.28,
+      "anios_usados": 6.96,
+      "maximo_periodo_usd": 79.25,
+      "distancia_maximo_pct": -19.56,
+      "ticker_usd": "VIST"
+    },
+    "WMT": {
+      "precio_actual_usd": 112.21,
+      "sma200_usd": 117.232,
+      "distancia_sma200_pct": -4.28,
+      "rendimiento_anual_pct": 16.35,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 134.2,
+      "distancia_maximo_pct": -16.39,
+      "ticker_usd": "WMT"
+    },
+    "XLF": {
+      "precio_actual_usd": 55.54,
+      "sma200_usd": 52.6051,
+      "distancia_sma200_pct": 5.58,
+      "rendimiento_anual_pct": 11.49,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 56.4,
+      "distancia_maximo_pct": -1.52,
+      "ticker_usd": "XLF"
+    },
+    "XLP": {
+      "precio_actual_usd": 83.2,
+      "sma200_usd": 81.8126,
+      "distancia_sma200_pct": 1.7,
+      "rendimiento_anual_pct": 4.09,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 90.01,
+      "distancia_maximo_pct": -7.57,
+      "ticker_usd": "XLP"
+    },
+    "XLV": {
+      "precio_actual_usd": 162.17,
+      "sma200_usd": 150.7343,
+      "distancia_sma200_pct": 7.59,
+      "rendimiento_anual_pct": 8.24,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 164.44,
+      "distancia_maximo_pct": -1.38,
+      "ticker_usd": "XLV"
+    },
+    "YPFD": {
+      "precio_actual_usd": 47.04,
+      "sma200_usd": 39.0095,
+      "distancia_sma200_pct": 20.59,
+      "rendimiento_anual_pct": 9.32,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 56.35,
+      "distancia_maximo_pct": -16.52,
+      "ticker_usd": "YPF"
+    },
+    "TXAR": {
+      "sin_dato_usd": true,
+      "motivo": "Ternium Argentina no tiene ADR propio (TX es la controlante, no equivalente)."
+    },
+    "PNIZF": {
+      "sin_dato_usd": true,
+      "motivo": "Fondo cerrado local (FCI Puerto Nizuc), sin ADR en dolares."
+    },
+    "TGNO4": {
+      "sin_dato_usd": true,
+      "motivo": "No se encontro ADR en dolares para este ticker."
+    },
+    "MOLI": {
+      "sin_dato_usd": true,
+      "motivo": "Solo cotiza OTC (MOPLF) en EE.UU.; sin cobertura confiable gratuita."
+    },
+    "BYMA": {
+      "sin_dato_usd": true,
+      "motivo": "Solo cotiza OTC (BYMA.F) en EE.UU.; sin cobertura confiable gratuita."
+    },
+    "TRAN": {
+      "sin_dato_usd": true,
+      "motivo": "No se encontro ADR en dolares para este ticker."
+    }
+  },
+  "generado": "2026-07-10T00:21:46.898297+00:00",
+  "metodologia": {
+    "distancia_sma200_pct": "Distancia % entre precio actual y media movil de 200 ruedas.",
+    "rendimiento_anual_pct": "CAGR anualizado sobre hasta 10 anios de historial disponible (ver anios_usados por ticker).",
+    "distancia_maximo_pct": "Distancia % entre precio actual y el maximo de cierre dentro de la ventana de datos usada.",
+    "moneda": "Todos los valores en dolares estadounidenses (USD).",
+    "fuente": "Yahoo Finance (via yfinance)."
+  }
+}
