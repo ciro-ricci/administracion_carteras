@@ -110,6 +110,16 @@
       "distancia_maximo_pct": -8.22,
       "ticker_usd": "BRK-B"
     },
+    "BYMA": {
+      "precio_actual_usd": 0.22,
+      "sma200_usd": 1.0042,
+      "distancia_sma200_pct": -78.09,
+      "rendimiento_anual_pct": -30.86,
+      "anios_usados": 6.7,
+      "maximo_periodo_usd": 2.6056,
+      "distancia_maximo_pct": -91.56,
+      "ticker_usd": "BYMAF"
+    },
     "CEPU": {
       "precio_actual_usd": 14.41,
       "sma200_usd": 14.6807,
@@ -359,6 +369,16 @@
       "maximo_periodo_usd": 790.0,
       "distancia_maximo_pct": -20.07,
       "ticker_usd": "META"
+    },
+    "MOLI": {
+      "precio_actual_usd": 2.35,
+      "sma200_usd": 1.882,
+      "distancia_sma200_pct": 24.87,
+      "rendimiento_anual_pct": -7.48,
+      "anios_usados": 10.0,
+      "maximo_periodo_usd": 6.2677,
+      "distancia_maximo_pct": -62.51,
+      "ticker_usd": "MOPLF"
     },
     "MSFT": {
       "precio_actual_usd": 384.36,
@@ -680,37 +700,51 @@
       "distancia_maximo_pct": -16.52,
       "ticker_usd": "YPF"
     },
+    "TGNO4": {
+      "precio_actual_usd": 2.5986,
+      "sma200_usd": 2.7777,
+      "distancia_sma200_pct": -6.45,
+      "rendimiento_anual_pct": 9.17,
+      "anios_usados": 7.7,
+      "maximo_periodo_usd": 3.9193,
+      "distancia_maximo_pct": -33.7,
+      "ticker_usd": "TGNO4.BA",
+      "conversion": "ARS -> USD via dolar MEP diario (api.argentinadatos.com)"
+    },
+    "TRAN": {
+      "precio_actual_usd": 2.4043,
+      "sma200_usd": 2.414,
+      "distancia_sma200_pct": -0.4,
+      "rendimiento_anual_pct": 11.11,
+      "anios_usados": 7.7,
+      "maximo_periodo_usd": 2.9794,
+      "distancia_maximo_pct": -19.3,
+      "ticker_usd": "TRAN.BA",
+      "conversion": "ARS -> USD via dolar MEP diario (api.argentinadatos.com)"
+    },
     "TXAR": {
-      "sin_dato_usd": true,
-      "motivo": "Ternium Argentina no tiene ADR propio (TX es la controlante, no equivalente)."
+      "precio_actual_usd": 0.4339,
+      "sma200_usd": 0.4726,
+      "distancia_sma200_pct": -8.2,
+      "rendimiento_anual_pct": 1.64,
+      "anios_usados": 7.7,
+      "maximo_periodo_usd": 1.2934,
+      "distancia_maximo_pct": -66.45,
+      "ticker_usd": "TXAR.BA",
+      "conversion": "ARS -> USD via dolar MEP diario (api.argentinadatos.com)"
     },
     "PNIZF": {
       "sin_dato_usd": true,
-      "motivo": "Fondo cerrado local (FCI Puerto Nizuc), sin ADR en dolares."
-    },
-    "TGNO4": {
-      "sin_dato_usd": true,
-      "motivo": "No se encontro ADR en dolares para este ticker."
-    },
-    "MOLI": {
-      "sin_dato_usd": true,
-      "motivo": "Solo cotiza OTC (MOPLF) en EE.UU.; sin cobertura confiable gratuita."
-    },
-    "BYMA": {
-      "sin_dato_usd": true,
-      "motivo": "Solo cotiza OTC (BYMA.F) en EE.UU.; sin cobertura confiable gratuita."
-    },
-    "TRAN": {
-      "sin_dato_usd": true,
-      "motivo": "No se encontro ADR en dolares para este ticker."
+      "motivo": "Fondo cerrado local (FCI Puerto Nizuc); no se encontro ningun ticker publico (ni USD ni ARS)."
     }
   },
-  "generado": "2026-07-10T00:21:46.898297+00:00",
+  "generado": "2026-07-10T00:32:51.462916+00:00",
   "metodologia": {
     "distancia_sma200_pct": "Distancia % entre precio actual y media movil de 200 ruedas.",
     "rendimiento_anual_pct": "CAGR anualizado sobre hasta 10 anios de historial disponible (ver anios_usados por ticker).",
     "distancia_maximo_pct": "Distancia % entre precio actual y el maximo de cierre dentro de la ventana de datos usada.",
     "moneda": "Todos los valores en dolares estadounidenses (USD).",
-    "fuente": "Yahoo Finance (via yfinance)."
+    "fuente": "Yahoo Finance (via yfinance) para precios; api.argentinadatos.com para el dolar MEP historico usado en la conversion de TGNO4, TRAN y TXAR.",
+    "conversion_mep": "TGNO4, TRAN y TXAR cotizan solo en pesos en BYMA; se convierten a USD dividiendo el cierre diario en ARS por el dolar MEP (venta) del mismo dia."
   }
 }
