@@ -451,6 +451,26 @@
     color: var(--cw-text-tertiary);
   }
 
+  .cw-beta-summary {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-top: var(--cw-sp-3);
+    padding-top: var(--cw-sp-4);
+    border-top: 1px solid var(--cw-border-strong);
+  }
+  .cw-beta-label {
+    font-size: var(--cw-fs-secondary);
+    font-weight: 600;
+    color: var(--cw-text-secondary);
+  }
+  .cw-beta-value {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--cw-text);
+    font-variant-numeric: tabular-nums;
+  }
+
   /* ---------- Tabla de tenencias ---------- */
   .cw-table {
     width: 100%;
@@ -973,8 +993,35 @@
     return rows;
   }
 
+  // Beta ponderado de la cartera, calculado solo sobre el bloque de renta
+  // variable (Acciones/Cedear), ponderado por importe. A pedido del usuario,
+  // no se mezcla con renta fija (ON/Bonos/Letras no tienen beta de mercado
+  // propio). Igual que en computeRendimientoEsperado, los tickers sin dato
+  // de beta se excluyen y se prorratea sobre los que si tienen dato.
+  function computeBetaPonderado(comitente) {
+    var rvItems = comitente.tenencias.filter(function (t) { return !!TIPOS_RENTA_VARIABLE[t.tipo]; });
+    var rvTotal = rvItems.reduce(function (s, t) { return s + t.importe; }, 0);
+    if (rvTotal <= 0) return null;
+
+    var sumPonderado = 0, importeConDato = 0;
+    rvItems.forEach(function (t) {
+      var m = metricasDeTicker(t.ticker);
+      if (m && !m.sin_dato_usd && typeof m.beta === 'number') {
+        sumPonderado += t.importe * m.beta;
+        importeConDato += t.importe;
+      }
+    });
+    if (importeConDato <= 0) return null;
+
+    return {
+      beta: sumPonderado / importeConDato,
+      cobertura: (importeConDato / rvTotal) * 100
+    };
+  }
+
   function renderDetail(comitente) {
     var tipoRows = computeTipoBreakdown(comitente);
+    var betaInfo = computeBetaPonderado(comitente);
 
     var stackedBarHtml = tipoRows.map(function (r) {
       return '<div class="cw-stacked-seg" style="width:' + r.pct.toFixed(2) + '%;background:' + tipoColor(r.tipo) + '" title="' + r.tipo + ' — ' + fmtPct(r.pct) + '"></div>';
@@ -1040,6 +1087,15 @@
         '<div class="cw-card-title">Composición por tipo de instrumento</div>' +
         '<div class="cw-stacked-bar">' + stackedBarHtml + '</div>' +
         tipoRowsHtml +
+        (betaInfo ? (
+          '<div class="cw-beta-summary">' +
+            '<span class="cw-beta-label">Beta ponderado (renta variable)</span>' +
+            '<span class="cw-beta-value">' + betaInfo.beta.toFixed(2) + '</span>' +
+          '</div>' +
+          (betaInfo.cobertura < 99.95
+            ? '<div class="cw-metric-note">Calculado sobre el ' + fmtPct(betaInfo.cobertura) + ' del bloque de renta variable con beta disponible en Yahoo Finance (el resto no tiene beta publicado).</div>'
+            : '<div class="cw-metric-note">Promedio ponderado por importe del beta de mercado (Yahoo Finance) de Acciones y Cedear. No incluye renta fija.</div>')
+        ) : '') +
       '</div>' +
 
       (escenarios ? escenarios.html : '') +

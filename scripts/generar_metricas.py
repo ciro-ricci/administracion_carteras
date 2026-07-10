@@ -11,6 +11,10 @@ en dolares:
     la cantidad real de anios usada en "anios_usados").
   - distancia_maximo_pct: % de distancia entre el precio actual y el maximo
     historico dentro de la ventana de datos usada (hasta 10 anios).
+  - beta: beta de mercado tal como lo publica Yahoo Finance (campo "beta"
+    para acciones/ADRs, o "beta3Year" para ETFs/fondos, que es el campo que
+    Yahoo usa para ese tipo de instrumento). Null si Yahoo no lo publica
+    para ese ticker. No se calcula localmente, es el dato de Yahoo tal cual.
 
 Fuentes:
   - Yahoo Finance via la libreria yfinance (sin API key), para precios de
@@ -45,6 +49,7 @@ Salida: data/metricas.json
 
 import json
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 
 import yfinance as yf
@@ -109,6 +114,34 @@ def armar_universo():
     for ticker in tickers_por_tipo["Acciones"]:
         universo[ticker] = ADR_MAP.get(ticker, None)
     return universo
+
+
+def obtener_beta_individual(ticker_yahoo):
+    """Trae el beta publicado por Yahoo Finance para un ticker. Para acciones
+    usa el campo "beta"; para ETFs/fondos Yahoo no completa ese campo y usa
+    en cambio "beta3Year" (verificado con SPY, QQQ, GLD, EEM). Se intenta
+    primero "beta" y si no esta se usa "beta3Year". None si Yahoo no publica
+    ninguno de los dos para ese ticker."""
+    try:
+        info = yf.Ticker(ticker_yahoo).info
+    except Exception:
+        return ticker_yahoo, None
+    beta = info.get("beta")
+    if beta is None:
+        beta = info.get("beta3Year")
+    return ticker_yahoo, beta
+
+
+def obtener_betas(tickers_yahoo):
+    """Trae el beta de una lista de tickers de Yahoo en paralelo (son llamadas
+    de red independientes por ticker, no hay endpoint batch para "info")."""
+    resultados = {}
+    with ThreadPoolExecutor(max_workers=12) as ex:
+        futuros = {ex.submit(obtener_beta_individual, t): t for t in tickers_yahoo}
+        for fut in as_completed(futuros):
+            ticker_yahoo, beta = fut.result()
+            resultados[ticker_yahoo] = beta
+    return resultados
 
 
 def obtener_serie_mep():
@@ -191,6 +224,7 @@ def procesar_circuito_usd_directo(universo, salida):
         tickers_yahoo, period="10y", group_by="ticker", threads=True, progress=False, auto_adjust=False
     )
     multi = len(tickers_yahoo) > 1
+    betas = obtener_betas(tickers_yahoo)
 
     for ticker_yahoo in tickers_yahoo:
         try:
@@ -208,6 +242,7 @@ def procesar_circuito_usd_directo(universo, salida):
             continue
         metricas = calcular_metricas_de_serie(pares)
         metricas["ticker_usd"] = ticker_yahoo
+        metricas["beta"] = betas.get(ticker_yahoo)
         for ticker_local, ty in universo.items():
             if ty == ticker_yahoo:
                 salida["tickers"][ticker_local] = metricas
@@ -231,6 +266,7 @@ def procesar_circuito_mep(salida):
         tickers_ba, period="10y", group_by="ticker", threads=True, progress=False, auto_adjust=False
     )
     multi = len(tickers_ba) > 1
+    betas = obtener_betas(tickers_ba)
 
     for ticker_local, ticker_ba in MEP_CONVERSION_MAP.items():
         try:
@@ -254,6 +290,7 @@ def procesar_circuito_mep(salida):
         metricas = calcular_metricas_de_serie(pares_usd)
         metricas["ticker_usd"] = ticker_ba
         metricas["conversion"] = "ARS -> USD via dolar MEP diario (api.argentinadatos.com)"
+        metricas["beta"] = betas.get(ticker_ba)
         salida["tickers"][ticker_local] = metricas
 
 
@@ -279,6 +316,7 @@ def generar():
         "moneda": "Todos los valores en dolares estadounidenses (USD).",
         "fuente": "Yahoo Finance (via yfinance) para precios; api.argentinadatos.com para el dolar MEP historico usado en la conversion de TGNO4, TRAN y TXAR.",
         "conversion_mep": "TGNO4, TRAN y TXAR cotizan solo en pesos en BYMA; se convierten a USD dividiendo el cierre diario en ARS por el dolar MEP (venta) del mismo dia.",
+        "beta": "Beta publicado por Yahoo Finance (campo 'beta' para acciones/ADRs, 'beta3Year' para ETFs/fondos). Null si Yahoo no lo publica para ese ticker.",
     }
 
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
