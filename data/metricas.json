@@ -97,7 +97,7 @@
       "maximo_periodo_usd": 26.6,
       "distancia_maximo_pct": -20.45,
       "ticker_usd": "BBAR",
-      "beta": 0.027
+      "beta": 0.88
     },
     "BKNG": {
       "precio_actual_usd": 178.39,
@@ -119,7 +119,7 @@
       "maximo_periodo_usd": 135.46,
       "distancia_maximo_pct": -29.88,
       "ticker_usd": "BMA",
-      "beta": 0.5
+      "beta": 0.909
     },
     "BRKB": {
       "precio_actual_usd": 493.71,
@@ -134,14 +134,14 @@
     },
     "BYMA": {
       "precio_actual_usd": 0.22,
-      "sma200_usd": 0.9923,
-      "distancia_sma200_pct": -77.83,
-      "rendimiento_anual_pct": -30.85,
+      "sma200_usd": 0.9804,
+      "distancia_sma200_pct": -77.56,
+      "rendimiento_anual_pct": -30.84,
       "anios_usados": 6.7,
       "maximo_periodo_usd": 2.6056,
       "distancia_maximo_pct": -91.56,
       "ticker_usd": "BYMAF",
-      "beta": 0.058
+      "beta": 0.679
     },
     "CEPU": {
       "precio_actual_usd": 15.26,
@@ -152,7 +152,7 @@
       "maximo_periodo_usd": 18.4,
       "distancia_maximo_pct": -17.07,
       "ticker_usd": "CEPU",
-      "beta": -0.173
+      "beta": 0.808
     },
     "COIN": {
       "precio_actual_usd": 159.07,
@@ -185,7 +185,7 @@
       "maximo_periodo_usd": 20.2909,
       "distancia_maximo_pct": -46.72,
       "ticker_usd": "CRESY",
-      "beta": -0.063
+      "beta": 0.741
     },
     "DISN": {
       "precio_actual_usd": 95.62,
@@ -207,7 +207,7 @@
       "maximo_periodo_usd": 62.55,
       "distancia_maximo_pct": -59.36,
       "ticker_usd": "EDN",
-      "beta": 0.036
+      "beta": 0.887
     },
     "EEM": {
       "precio_actual_usd": 66.9,
@@ -284,7 +284,7 @@
       "maximo_periodo_usd": 72.88,
       "distancia_maximo_pct": -26.28,
       "ticker_usd": "GGAL",
-      "beta": 0.367
+      "beta": 0.939
     },
     "GLD": {
       "precio_actual_usd": 377.01,
@@ -361,7 +361,7 @@
       "maximo_periodo_usd": 32.6914,
       "distancia_maximo_pct": -52.74,
       "ticker_usd": "IRS",
-      "beta": 0.037
+      "beta": 0.665
     },
     "KO": {
       "precio_actual_usd": 83.49,
@@ -383,7 +383,7 @@
       "maximo_periodo_usd": 25.02,
       "distancia_maximo_pct": -53.96,
       "ticker_usd": "LOMA",
-      "beta": 0.694
+      "beta": 0.667
     },
     "MCD": {
       "precio_actual_usd": 274.6,
@@ -420,14 +420,14 @@
     },
     "MOLI": {
       "precio_actual_usd": 2.35,
-      "sma200_usd": 1.891,
-      "distancia_sma200_pct": 24.27,
+      "sma200_usd": 1.9,
+      "distancia_sma200_pct": 23.68,
       "rendimiento_anual_pct": -7.48,
       "anios_usados": 10.0,
       "maximo_periodo_usd": 6.2677,
       "distancia_maximo_pct": -62.51,
       "ticker_usd": "MOPLF",
-      "beta": -0.108
+      "beta": -0.174
     },
     "MSFT": {
       "precio_actual_usd": 385.1,
@@ -526,7 +526,7 @@
       "maximo_periodo_usd": 94.88,
       "distancia_maximo_pct": -12.52,
       "ticker_usd": "PAM",
-      "beta": -0.218
+      "beta": 0.644
     },
     "PEP": {
       "precio_actual_usd": 137.38,
@@ -636,7 +636,7 @@
       "maximo_periodo_usd": 33.01,
       "distancia_maximo_pct": -70.1,
       "ticker_usd": "SUPV",
-      "beta": 0.424
+      "beta": 1.058
     },
     "TQQQ": {
       "precio_actual_usd": 77.03,
@@ -779,50 +779,50 @@
       "maximo_periodo_usd": 56.35,
       "distancia_maximo_pct": -15.56,
       "ticker_usd": "YPF",
-      "beta": -0.005
+      "beta": 0.728
     },
     "TGNO4": {
-      "precio_actual_usd": 2.628,
-      "sma200_usd": 2.7884,
-      "distancia_sma200_pct": -5.75,
-      "rendimiento_anual_pct": 9.32,
+      "precio_actual_usd": 2.6261,
+      "sma200_usd": 2.7883,
+      "distancia_sma200_pct": -5.82,
+      "rendimiento_anual_pct": 9.31,
       "anios_usados": 7.7,
       "maximo_periodo_usd": 3.9193,
-      "distancia_maximo_pct": -32.95,
+      "distancia_maximo_pct": -33.0,
       "ticker_usd": "TGNO4.BA",
       "conversion": "ARS -> USD via dolar MEP diario (api.argentinadatos.com)",
-      "beta": 0.138
+      "beta": 0.553
     },
     "TRAN": {
-      "precio_actual_usd": 2.4125,
+      "precio_actual_usd": 2.4108,
       "sma200_usd": 2.4273,
-      "distancia_sma200_pct": -0.61,
-      "rendimiento_anual_pct": 11.16,
+      "distancia_sma200_pct": -0.68,
+      "rendimiento_anual_pct": 11.14,
       "anios_usados": 7.7,
       "maximo_periodo_usd": 2.9794,
-      "distancia_maximo_pct": -19.03,
+      "distancia_maximo_pct": -19.09,
       "ticker_usd": "TRAN.BA",
       "conversion": "ARS -> USD via dolar MEP diario (api.argentinadatos.com)",
-      "beta": 0.37
+      "beta": 0.565
     },
     "TXAR": {
-      "precio_actual_usd": 0.4381,
+      "precio_actual_usd": 0.4378,
       "sma200_usd": 0.4733,
-      "distancia_sma200_pct": -7.44,
-      "rendimiento_anual_pct": 1.77,
+      "distancia_sma200_pct": -7.51,
+      "rendimiento_anual_pct": 1.76,
       "anios_usados": 7.7,
       "maximo_periodo_usd": 1.2934,
-      "distancia_maximo_pct": -66.13,
+      "distancia_maximo_pct": -66.15,
       "ticker_usd": "TXAR.BA",
       "conversion": "ARS -> USD via dolar MEP diario (api.argentinadatos.com)",
-      "beta": -0.32
+      "beta": 0.509
     },
     "PNIZF": {
       "sin_dato_usd": true,
       "motivo": "Fondo cerrado local (FCI Puerto Nizuc); no se encontro ningun ticker publico (ni USD ni ARS)."
     }
   },
-  "generado": "2026-07-10T23:51:02.016905+00:00",
+  "generado": "2026-07-11T21:35:20.218011+00:00",
   "metodologia": {
     "distancia_sma200_pct": "Distancia % entre precio actual y media movil de 200 ruedas.",
     "rendimiento_anual_pct": "CAGR anualizado sobre hasta 10 anios de historial disponible (ver anios_usados por ticker).",

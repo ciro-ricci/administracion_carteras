@@ -17,13 +17,28 @@ en dolares:
     para ese ticker. No se calcula localmente, es el dato de Yahoo tal cual,
     salvo las excepciones puntuales en BETA_OVERRIDE (ver mas abajo).
 
-  Excepcion: ETHA e IBIT (ETFs de Ether y Bitcoin) tienen "beta3Year"=0.0 en
+  Excepcion 1: ETHA e IBIT (ETFs de Ether y Bitcoin) tienen "beta3Year"=0.0 en
   Yahoo, pero no porque no se muevan con el mercado sino porque son
   productos demasiado nuevos y todavia no tienen 3 anios de historial para
   que Yahoo lo calcule (artefacto de datos, no una medida real). A pedido
-  del usuario, se reemplaza por un valor fijo: ETHA=2.6, IBIT=2.14 (ver
-  BETA_OVERRIDE). No es un dato de Yahoo, es una asuncion explicita del
-  usuario y se deja documentada aca para que quede clara la diferencia.
+  del usuario, se reemplaza por un valor fijo: ETHA=2.6, IBIT=2.14.
+
+  Excepcion 2: las acciones argentinas locales (tipo "Acciones") tienen en
+  Yahoo un beta practicamente nulo o negativo (ej. YPF -0.005, CRESY
+  -0.063), que el usuario considero implausible. Se verifico contra otras
+  fuentes: stockanalysis.com replica el numero de Yahoo, pero Investing.com
+  da valores bien distintos (ej. CRESY 0.36) - no hay consenso externo
+  claro. Se opto por calcularlo en forma propia: regresion de retornos
+  semanales de los ultimos 5 anios contra el S&P 500 (^GSPC), con los mismos
+  precios de yfinance. A pedido del usuario, estos valores quedan fijos
+  (no se recalculan solos en cada corrida, ver BETA_OVERRIDE). La
+  correlacion contra el S&P 500 es baja en todos los casos (esperable,
+  estas acciones se mueven mas por el ciclo politico/macro argentino que
+  por el mercado americano); MOLI en particular tiene correlacion casi nula
+  (ruido) y BYMA solo ~11 meses de historial (listado OTC reciente).
+
+  Todos los detalles de BETA_OVERRIDE (que reemplaza al dato de Yahoo) estan
+  documentados junto a esa constante mas abajo.
 
 Fuentes:
   - Yahoo Finance via la libreria yfinance (sin API key), para precios de
@@ -106,13 +121,49 @@ SIN_DATO_MOTIVO = {
 }
 
 # Override manual de beta, definido explicitamente por el usuario (NO es un
-# dato de Yahoo Finance). Yahoo reporta beta3Year=0.0 para ETHA e IBIT
-# porque son ETFs demasiado nuevos y no tienen 3 anios de historial todavia;
-# ese 0.0 no refleja sensibilidad real al mercado. Se pisa con estos valores
-# fijos hasta que Yahoo tenga historial suficiente para calcularlo.
+# dato de Yahoo Finance tal cual). Las claves son el ticker de YAHOO (el
+# mismo que usa obtener_betas), no el ticker local de tenencias.json.
+#
+# Grupo 1 - ETFs demasiado nuevos: Yahoo reporta beta3Year=0.0 para ETHA e
+# IBIT porque no tienen 3 anios de historial todavia; ese 0.0 no refleja
+# sensibilidad real al mercado. Se pisa con un valor fijo hasta que Yahoo
+# tenga historial suficiente para calcularlo.
+#
+# Grupo 2 - Acciones argentinas locales: el beta de Yahoo da practicamente
+# nulo o negativo para estos tickers, lo cual el usuario considero
+# implausible. Se verifico contra otras fuentes externas (stockanalysis.com
+# replica el numero de Yahoo, Investing.com da valores bien distintos) sin
+# encontrar consenso, asi que se calculo en forma propia: regresion de
+# retornos SEMANALES de los ultimos 5 ANIOS contra el S&P 500 (^GSPC),
+# usando los mismos precios de yfinance (ver metodologia completa en el
+# docstring del modulo). A pedido del usuario, quedan fijos como constante
+# (no se recalculan solos en cada corrida, a diferencia del resto de los
+# betas que se traen de Yahoo en vivo). MOLI tiene correlacion casi nula
+# contra el S&P 500 (resultado poco confiable, casi ruido) y BYMA solo tiene
+# ~11 meses de historial disponible (listado OTC reciente); se incluyen
+# igual por consistencia pero con menor confianza estadistica que el resto.
 BETA_OVERRIDE = {
+    # ETFs de cripto sin historial suficiente en Yahoo
     "ETHA": 2.6,
     "IBIT": 2.14,
+
+    # Acciones argentinas locales - beta propio (5y semanal vs ^GSPC)
+    "BBAR": 0.88,
+    "BMA": 0.909,
+    "CEPU": 0.808,
+    "CRESY": 0.741,
+    "EDN": 0.887,
+    "GGAL": 0.939,
+    "IRS": 0.665,
+    "LOMA": 0.667,
+    "PAM": 0.644,
+    "SUPV": 1.058,
+    "YPF": 0.728,
+    "BYMAF": 0.679,
+    "MOPLF": -0.174,
+    "TGNO4.BA": 0.553,
+    "TRAN.BA": 0.565,
+    "TXAR.BA": 0.509,
 }
 
 
@@ -343,7 +394,7 @@ def generar():
         "fuente": "Yahoo Finance (via yfinance) para precios; api.argentinadatos.com para el dolar MEP historico usado en la conversion de TGNO4, TRAN y TXAR.",
         "conversion_mep": "TGNO4, TRAN y TXAR cotizan solo en pesos en BYMA; se convierten a USD dividiendo el cierre diario en ARS por el dolar MEP (venta) del mismo dia.",
         "beta": "Beta publicado por Yahoo Finance (campo 'beta' para acciones/ADRs, 'beta3Year' para ETFs/fondos). Null si Yahoo no lo publica para ese ticker.",
-        "beta_override": "ETHA e IBIT usan un beta fijo definido por el usuario (2.6 y 2.14) en vez del beta3Year=0.0 de Yahoo, que es un artefacto por falta de 3 anios de historial y no una medida real.",
+        "beta_override": "ETHA (2.6) e IBIT (2.14): valor fijo por falta de 3 anios de historial en Yahoo. Acciones argentinas locales (BBAR, BMA, CEPU, CRES, EDN, GGAL, IRSA, LOMA, PAMP, SUPV, YPFD, BYMA, MOLI, TGNO4, TRAN, TXAR): beta calculado en forma propia (regresion de retornos semanales de 5 anios contra el S&P 500), porque el beta de Yahoo daba practicamente nulo o negativo para estos tickers. Valores fijos, no se recalculan solos en cada corrida.",
     }
 
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
