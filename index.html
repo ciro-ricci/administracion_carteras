@@ -124,6 +124,26 @@
     color: var(--cw-text-tertiary);
     font-variant-numeric: tabular-nums;
   }
+  .cw-header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--cw-sp-3);
+  }
+  .cw-lab-btn {
+    font-size: var(--cw-fs-label);
+    font-weight: 700;
+    color: #fff;
+    background: var(--cw-primary);
+    border: none;
+    border-radius: 20px;
+    padding: 5px 14px;
+    cursor: pointer;
+    letter-spacing: .03em;
+    transition: background .15s ease;
+  }
+  .cw-lab-btn:hover {
+    background: #2563eb;
+  }
 
   /* ---------- Layout principal ---------- */
   .cw-body {
@@ -627,6 +647,203 @@
     background: rgba(59, 130, 246, 0.24);
   }
 
+  /* ---------- Editor what-if (% hipotético dentro del detalle de escenario) ---------- */
+  .cw-hipo-input {
+    width: 68px;
+    padding: 4px 6px;
+    border: 1px solid var(--cw-border);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--cw-text);
+    font-size: var(--cw-fs-secondary);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+  .cw-hipo-remove {
+    margin-left: 6px;
+    border: none;
+    background: transparent;
+    color: var(--cw-text-tertiary);
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+  }
+  .cw-hipo-remove:hover {
+    color: var(--cw-red);
+  }
+  .cw-hipo-add-row {
+    display: flex;
+    align-items: center;
+    gap: var(--cw-sp-2);
+    margin-top: var(--cw-sp-4);
+    flex-wrap: wrap;
+  }
+  .cw-hipo-add-select, .cw-lab-add-row select {
+    padding: 7px 10px;
+    border: 1px solid var(--cw-border);
+    border-radius: var(--cw-radius-sm);
+    background: var(--cw-panel-2);
+    color: var(--cw-text);
+    font-size: var(--cw-fs-secondary);
+  }
+  .cw-hipo-compare {
+    display: flex;
+    gap: var(--cw-sp-5);
+    margin-top: var(--cw-sp-4);
+    padding-top: var(--cw-sp-4);
+    border-top: 1px solid var(--cw-border-strong);
+  }
+  .cw-hipo-compare-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .cw-hipo-compare-item span {
+    font-size: var(--cw-fs-label);
+    color: var(--cw-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .cw-hipo-compare-item strong {
+    font-size: 20px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- LAB (cartera hipotetica desde cero) ---------- */
+  .cw-lab-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: var(--cw-sp-5);
+    flex-wrap: wrap;
+    gap: var(--cw-sp-3);
+  }
+  .cw-lab-title {
+    font-size: var(--cw-fs-h1);
+    font-weight: 700;
+    color: var(--cw-text);
+  }
+  .cw-lab-capital {
+    font-size: var(--cw-fs-secondary);
+    color: var(--cw-text-tertiary);
+    font-variant-numeric: tabular-nums;
+  }
+  .cw-lab-modo-toggle {
+    display: flex;
+    gap: 6px;
+    margin-bottom: var(--cw-sp-4);
+  }
+  .cw-lab-modo-btn {
+    font-size: var(--cw-fs-label);
+    font-weight: 600;
+    color: var(--cw-text-tertiary);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--cw-border);
+    border-radius: 20px;
+    padding: 6px 14px;
+    cursor: pointer;
+  }
+  .cw-lab-modo-btn.is-active {
+    background: var(--cw-primary-soft);
+    color: var(--cw-primary);
+    border-color: transparent;
+  }
+  .cw-lab-capital-input {
+    display: flex;
+    align-items: center;
+    gap: var(--cw-sp-2);
+    margin-bottom: var(--cw-sp-4);
+    font-size: var(--cw-fs-secondary);
+    color: var(--cw-text-secondary);
+  }
+  .cw-lab-capital-input input {
+    width: 140px;
+    padding: 7px 10px;
+    border: 1px solid var(--cw-border);
+    border-radius: var(--cw-radius-sm);
+    background: var(--cw-panel-2);
+    color: var(--cw-text);
+    font-variant-numeric: tabular-nums;
+  }
+  .cw-lab-add-row {
+    display: flex;
+    align-items: center;
+    gap: var(--cw-sp-2);
+    flex-wrap: wrap;
+  }
+  .cw-lab-add-row input {
+    width: 160px;
+    padding: 7px 10px;
+    border: 1px solid var(--cw-border);
+    border-radius: var(--cw-radius-sm);
+    background: var(--cw-panel-2);
+    color: var(--cw-text);
+    font-variant-numeric: tabular-nums;
+  }
+  .cw-lab-remove-btn {
+    font-size: var(--cw-fs-label);
+    font-weight: 600;
+    color: var(--cw-text-tertiary);
+    background: transparent;
+    border: 1px solid var(--cw-border);
+    border-radius: 20px;
+    padding: 4px 10px;
+    cursor: pointer;
+  }
+  .cw-lab-remove-btn:hover {
+    color: var(--cw-red);
+    border-color: var(--cw-red);
+  }
+  .cw-lab-alertas {
+    background: rgba(59, 130, 246, 0.06);
+  }
+  .cw-lab-guardar-row {
+    display: flex;
+    gap: var(--cw-sp-2);
+    margin-bottom: var(--cw-sp-3);
+    flex-wrap: wrap;
+  }
+  .cw-lab-guardar-row input {
+    flex: 1;
+    min-width: 180px;
+    padding: 7px 10px;
+    border: 1px solid var(--cw-border);
+    border-radius: var(--cw-radius-sm);
+    background: var(--cw-panel-2);
+    color: var(--cw-text);
+  }
+  .cw-lab-saved-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cw-sp-2);
+  }
+  .cw-lab-saved-row {
+    display: flex;
+    align-items: center;
+    gap: var(--cw-sp-3);
+    padding: var(--cw-sp-2) 0;
+    border-top: 1px solid var(--cw-border);
+    font-size: var(--cw-fs-secondary);
+    flex-wrap: wrap;
+  }
+  .cw-lab-saved-row:first-child {
+    border-top: none;
+  }
+  .cw-lab-saved-check {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--cw-text-secondary);
+    flex: 1;
+    min-width: 140px;
+  }
+  .cw-lab-saved-meta {
+    font-size: var(--cw-fs-label);
+    color: var(--cw-text-tertiary);
+    font-variant-numeric: tabular-nums;
+  }
+
   ::-webkit-scrollbar { width: 8px; height: 8px; }
   ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.14); border-radius: 8px; }
   ::-webkit-scrollbar-track { background: transparent; }
@@ -657,7 +874,10 @@
 
 <div class="cw-app">
   <header class="cw-header">
-    <h1>Administración de Carteras</h1>
+    <div class="cw-header-left">
+      <h1>Administración de Carteras</h1>
+      <button type="button" id="cw-lab-btn" class="cw-lab-btn">LAB</button>
+    </div>
     <span class="cw-header-sub" id="cw-header-fecha"></span>
   </header>
 
@@ -680,6 +900,7 @@
         <div class="cw-placeholder-stats" id="cw-placeholder-stats"></div>
       </div>
       <div id="cw-detail" style="display:none;"></div>
+      <div id="cw-lab" style="display:none;"></div>
     </main>
   </div>
 </div>
@@ -697,6 +918,66 @@
   var TIPOS_CON_METRICAS = { 'Acciones': true, 'Cedear': true };
   var TIPOS_RENTA_FIJA = { 'ON': true, 'Bonos': true, 'Letras': true };
   var TIPOS_RENTA_VARIABLE = { 'Acciones': true, 'Cedear': true };
+
+  // Universo completo de tickers disponibles (ON, Bonos, Letras, Acciones,
+  // Cedear) para el LAB y el editor what-if: se arma escaneando una vez
+  // todas las tenencias de todos los comitentes (no hace falta pegar un
+  // listado aparte, ya esta todo en tenencias.json).
+  var TICKER_UNIVERSE = [];
+  function buildTickerUniverse() {
+    var seen = {};
+    var list = [];
+    data.comitentes.forEach(function (c) {
+      c.tenencias.forEach(function (t) {
+        if (!seen[t.ticker]) {
+          seen[t.ticker] = true;
+          list.push({ ticker: t.ticker, tipo: t.tipo });
+        }
+      });
+    });
+    list.sort(function (a, b) { return a.ticker < b.ticker ? -1 : (a.ticker > b.ticker ? 1 : 0); });
+    TICKER_UNIVERSE = list;
+  }
+  function buildTickerOptionsHtml(excludeMap) {
+    excludeMap = excludeMap || {};
+    var opts = ['<option value="">Elegí un ticker…</option>'];
+    TICKER_UNIVERSE.forEach(function (item) {
+      if (excludeMap[item.ticker]) return;
+      opts.push('<option value="' + item.ticker + '|' + item.tipo + '">' + item.ticker + ' (' + item.tipo + ')</option>');
+    });
+    return opts.join('');
+  }
+
+  // Estado del editor what-if (% hipotético dentro del detalle de cada
+  // escenario, en la vista de un comitente real). Es temporal: se resetea
+  // al cambiar de comitente o recargar la página (a pedido del usuario).
+  var whatIfState = { comitenteId: null, overrides: {}, added: [] };
+  function resetWhatIfState(comitenteId) {
+    if (whatIfState.comitenteId !== comitenteId) {
+      whatIfState = { comitenteId: comitenteId, overrides: {}, added: [] };
+    }
+  }
+
+  // Estado del LAB (cartera hipotética armada desde cero). También
+  // temporal en cuanto a la edición en curso; lo único persistente son las
+  // carteras que el usuario decide guardar explícitamente (localStorage).
+  var labState = { modo: 'pct', capitalTotal: 100000, items: [] };
+  var labOpen = false;
+  var labCompararSeleccion = [];
+  var LAB_STORAGE_KEY = 'cw_lab_carteras';
+  function leerCarterasGuardadas() {
+    try {
+      var raw = localStorage.getItem(LAB_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+  function guardarCarterasEnStorage(carteras) {
+    try {
+      localStorage.setItem(LAB_STORAGE_KEY, JSON.stringify(carteras));
+    } catch (e) { /* localStorage no disponible: se ignora silenciosamente */ }
+  }
 
   var ESCENARIOS_RV = [
     {
@@ -969,11 +1250,13 @@
     );
   }
 
-  // Construye el markup de las 3 tarjetas KPI de escenario (con click para
+  // Construye el markup de las tarjetas KPI de escenario (con click para
   // desplegar, debajo de la grilla, el detalle por instrumento de ESE
-  // escenario) y devuelve tambien la lista de esos detalles para poder
-  // insertarlos dinamicamente al hacer click (ver wireScenarioCards).
-  function buildEscenariosMarkup(comitente) {
+  // escenario). Si conHipo=true (vista de un comitente real), el detalle
+  // desplegado incluye el editor what-if de % hipotético; si es false (LAB),
+  // se muestra el detalle simple, sin edición (el LAB ya tiene su propio
+  // editor de composición en el panel principal).
+  function buildEscenariosMarkup(comitente, conHipo) {
     var r = computeRendimientoEsperado(comitente);
     if (!r) return null;
 
@@ -989,32 +1272,6 @@
       );
     }).join('');
 
-    var detallesHtml = r.escenarios.map(function (esc) {
-      var filasHtml = esc.filas.map(renderFilaDetalle).join('');
-      var coberturaNotas = [];
-      if (esc.rfCobertura !== null && esc.rfCobertura < 99.95) {
-        coberturaNotas.push('Renta fija con TIR disponible: ' + fmtPct(esc.rfCobertura) + ' del bloque.');
-      }
-      if (esc.rvCobertura !== null && esc.rvCobertura < 99.95) {
-        coberturaNotas.push('Renta variable con dato para este escenario: ' + fmtPct(esc.rvCobertura) + ' del bloque.');
-      }
-      var coberturaHtml = coberturaNotas.length
-        ? '<div class="cw-scenario-coverage">' + coberturaNotas.join(' ') + '</div>'
-        : '';
-      return (
-        '<div class="cw-card cw-scenario-detail">' +
-          '<div class="cw-card-title">Rendimientos considerados — ' + esc.label + '</div>' +
-          '<table class="cw-table">' +
-            '<thead><tr>' +
-              '<th>Ticker</th><th>Tipo</th><th class="cw-num">Rendimiento usado</th><th class="cw-num">% s/ total cartera</th>' +
-            '</tr></thead>' +
-            '<tbody>' + filasHtml + '</tbody>' +
-          '</table>' +
-          coberturaHtml +
-        '</div>'
-      );
-    });
-
     var html = (
       '<div class="cw-card">' +
         '<div class="cw-card-title">Rendimiento esperado por escenario</div>' +
@@ -1024,10 +1281,181 @@
       '<div id="cw-escenario-detalle" style="display:none;"></div>'
     );
 
-    return { html: html, detalles: detallesHtml };
+    return { html: html, escenarios: r.escenarios, conHipo: !!conHipo };
   }
 
-  function wireScenarioCards(detalles) {
+  function coberturaNotasHtml(esc) {
+    var notas = [];
+    if (esc.rfCobertura !== null && esc.rfCobertura < 99.95) {
+      notas.push('Renta fija con TIR disponible: ' + fmtPct(esc.rfCobertura) + ' del bloque.');
+    }
+    if (esc.rvCobertura !== null && esc.rvCobertura < 99.95) {
+      notas.push('Renta variable con dato para este escenario: ' + fmtPct(esc.rvCobertura) + ' del bloque.');
+    }
+    return notas.length ? '<div class="cw-scenario-coverage">' + notas.join(' ') + '</div>' : '';
+  }
+
+  // Detalle simple de escenario (sin editor what-if): usado en el LAB.
+  function renderEscenarioDetalleEstaticoHtml(esc) {
+    var filasHtml = esc.filas.map(renderFilaDetalle).join('');
+    return (
+      '<div class="cw-card cw-scenario-detail">' +
+        '<div class="cw-card-title">Rendimientos considerados — ' + esc.label + '</div>' +
+        '<table class="cw-table">' +
+          '<thead><tr>' +
+            '<th>Ticker</th><th>Tipo</th><th class="cw-num">Rendimiento usado</th><th class="cw-num">% s/ total cartera</th>' +
+          '</tr></thead>' +
+          '<tbody>' + filasHtml + '</tbody>' +
+        '</table>' +
+        coberturaNotasHtml(esc) +
+      '</div>'
+    );
+  }
+
+  // Combina, con la misma metodologia de "excluir y prorratear" que
+  // computeRendimientoEsperado, el rendimiento total hipotetico de la
+  // cartera bajo un escenario, a partir de una lista de filas con su %
+  // hipotetico (hipoPct) en vez de su importe real.
+  function computeHipoTotal(filas) {
+    var rf = filas.filter(function (f) { return !!TIPOS_RENTA_FIJA[f.tipo]; });
+    var rv = filas.filter(function (f) { return !!TIPOS_RENTA_VARIABLE[f.tipo]; });
+    function pesoDe(items) {
+      return items.reduce(function (s, f) { return s + f.hipoPct; }, 0) / 100;
+    }
+    function rendimientoPonderado(items) {
+      var sumP = 0, sumW = 0;
+      items.forEach(function (f) {
+        if (f.rendimiento !== null && f.rendimiento !== undefined && f.hipoPct > 0) {
+          sumP += f.hipoPct * f.rendimiento;
+          sumW += f.hipoPct;
+        }
+      });
+      return sumW > 0 ? sumP / sumW : null;
+    }
+    var pesoRF = pesoDe(rf);
+    var pesoRV = pesoDe(rv);
+    var rfRend = rendimientoPonderado(rf);
+    var rvRend = rendimientoPonderado(rv);
+    return pesoRF * (rfRend || 0) + pesoRV * (rvRend || 0);
+  }
+
+  // Detalle de escenario CON editor what-if: cada fila tiene, ademas del %
+  // actual (fijo, viene de la cartera real), un % hipotetico editable.
+  // Tambien permite agregar tickers nuevos (que no estan en la cartera
+  // real) con su propio % hipotetico. Todo esto vive en whatIfState, que es
+  // compartido entre las 4 tarjetas de escenario y se resetea al cambiar de
+  // comitente o recargar la pagina.
+  function renderEscenarioDetalleHtml(escIdx, esc) {
+    var escDef = ESCENARIOS_RV[escIdx];
+    var tickersExistentes = {};
+    esc.filas.forEach(function (f) { tickersExistentes[f.ticker] = true; });
+
+    var filasAgregadas = whatIfState.added.map(function (a) {
+      var rendimiento = null;
+      if (TIPOS_RENTA_FIJA[a.tipo]) {
+        var rf = rentaFijaDeTicker(a.ticker);
+        rendimiento = (rf && typeof rf.tir_usd_pct === 'number') ? rf.tir_usd_pct : null;
+      } else if (TIPOS_RENTA_VARIABLE[a.tipo]) {
+        var m = metricasDeTicker(a.ticker);
+        rendimiento = (m && !m.sin_dato_usd) ? escDef.retorno(m) : null;
+      }
+      return { ticker: a.ticker, tipo: a.tipo, rendimiento: rendimiento, pctTotal: 0, esNuevo: true };
+    });
+
+    var todas = esc.filas.map(function (f) {
+      return { ticker: f.ticker, tipo: f.tipo, rendimiento: f.rendimiento, pctTotal: f.pctTotal, esNuevo: false };
+    }).concat(filasAgregadas);
+
+    var filasConHipo = todas.map(function (f) {
+      var hipoPct = whatIfState.overrides[f.ticker];
+      if (hipoPct === undefined) hipoPct = f.esNuevo ? 0 : f.pctTotal;
+      return { ticker: f.ticker, tipo: f.tipo, rendimiento: f.rendimiento, pctTotal: f.pctTotal, esNuevo: f.esNuevo, hipoPct: hipoPct };
+    });
+
+    var hipoTotal = computeHipoTotal(filasConHipo);
+
+    var filasHtml = filasConHipo.map(function (f) {
+      var rendHtml = (f.rendimiento !== null && f.rendimiento !== undefined) ? fmtMetricPct(f.rendimiento) : '<span class="cw-metric-na">s/d</span>';
+      var quitarBtn = f.esNuevo ? '<button type="button" class="cw-hipo-remove" data-ticker="' + f.ticker + '" title="Quitar">&times;</button>' : '';
+      return (
+        '<tr>' +
+          '<td class="cw-ticker">' + f.ticker + (f.esNuevo ? ' <span class="cw-tipo-tag">nuevo</span>' : '') + '</td>' +
+          '<td><span class="cw-tipo-tag">' + f.tipo + '</span></td>' +
+          '<td class="cw-num">' + rendHtml + '</td>' +
+          '<td class="cw-num">' + fmtPct(f.pctTotal) + '</td>' +
+          '<td class="cw-num"><input type="number" class="cw-hipo-input" data-ticker="' + f.ticker + '" min="0" max="100" step="0.1" value="' + f.hipoPct.toFixed(2) + '"> %' + quitarBtn + '</td>' +
+        '</tr>'
+      );
+    }).join('');
+
+    var tickerOptionsHtml = buildTickerOptionsHtml(tickersExistentes);
+    var totalClsActual = esc.total > 0 ? 'cw-metric-pos' : (esc.total < 0 ? 'cw-metric-neg' : '');
+    var totalClsHipo = hipoTotal > 0 ? 'cw-metric-pos' : (hipoTotal < 0 ? 'cw-metric-neg' : '');
+
+    return (
+      '<div class="cw-card cw-scenario-detail">' +
+        '<div class="cw-card-title">Rendimientos considerados — ' + esc.label + '</div>' +
+        '<table class="cw-table">' +
+          '<thead><tr>' +
+            '<th>Ticker</th><th>Tipo</th><th class="cw-num">Rendimiento usado</th><th class="cw-num">% actual</th><th class="cw-num">% hipotético</th>' +
+          '</tr></thead>' +
+          '<tbody>' + filasHtml + '</tbody>' +
+        '</table>' +
+        coberturaNotasHtml(esc) +
+        '<div class="cw-hipo-add-row">' +
+          '<select class="cw-hipo-add-select">' + tickerOptionsHtml + '</select>' +
+          '<button type="button" class="cw-hipo-add-btn cw-toggle-btn">+ Agregar ticker</button>' +
+        '</div>' +
+        '<div class="cw-hipo-compare">' +
+          '<div class="cw-hipo-compare-item"><span>Rendimiento actual</span><strong class="' + totalClsActual + '">' + fmtSignedPct(esc.total) + '</strong></div>' +
+          '<div class="cw-hipo-compare-item"><span>Rendimiento hipotético</span><strong class="' + totalClsHipo + '">' + fmtSignedPct(hipoTotal) + '</strong></div>' +
+        '</div>' +
+        '<div class="cw-metric-note">Editá el % hipotético de cada fila o agregá tickers nuevos para simular otra composición. Es temporal: se pierde al cambiar de comitente o recargar la página.</div>' +
+      '</div>'
+    );
+  }
+
+  function wireEscenarioDetalle(escIdx, esc, contenedor) {
+    var inputs = contenedor.querySelectorAll('.cw-hipo-input');
+    inputs.forEach(function (inp) {
+      inp.addEventListener('change', function () {
+        var ticker = inp.getAttribute('data-ticker');
+        var val = parseFloat(inp.value);
+        if (isNaN(val) || val < 0) val = 0;
+        whatIfState.overrides[ticker] = val;
+        refrescarEscenarioDetalle(escIdx, esc, contenedor);
+      });
+    });
+    var removeButtons = contenedor.querySelectorAll('.cw-hipo-remove');
+    removeButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var ticker = btn.getAttribute('data-ticker');
+        whatIfState.added = whatIfState.added.filter(function (a) { return a.ticker !== ticker; });
+        delete whatIfState.overrides[ticker];
+        refrescarEscenarioDetalle(escIdx, esc, contenedor);
+      });
+    });
+    var addBtn = contenedor.querySelector('.cw-hipo-add-btn');
+    if (addBtn) {
+      addBtn.addEventListener('click', function () {
+        var select = contenedor.querySelector('.cw-hipo-add-select');
+        if (!select || !select.value) return;
+        var parts = select.value.split('|');
+        var ticker = parts[0], tipo = parts[1];
+        var yaExiste = esc.filas.some(function (f) { return f.ticker === ticker; }) || whatIfState.added.some(function (a) { return a.ticker === ticker; });
+        if (yaExiste) return;
+        whatIfState.added.push({ ticker: ticker, tipo: tipo, pct: 0 });
+        refrescarEscenarioDetalle(escIdx, esc, contenedor);
+      });
+    }
+  }
+
+  function refrescarEscenarioDetalle(escIdx, esc, contenedor) {
+    contenedor.innerHTML = renderEscenarioDetalleHtml(escIdx, esc);
+    wireEscenarioDetalle(escIdx, esc, contenedor);
+  }
+
+  function wireScenarioCards(built) {
     var cards = document.querySelectorAll('.cw-scenario-card');
     var contenedor = document.getElementById('cw-escenario-detalle');
     if (!cards.length || !contenedor) return;
@@ -1044,7 +1472,12 @@
         }
         cards.forEach(function (c) { c.classList.remove('is-active'); });
         card.classList.add('is-active');
-        contenedor.innerHTML = detalles[idx];
+        if (built.conHipo) {
+          contenedor.innerHTML = renderEscenarioDetalleHtml(idx, built.escenarios[idx]);
+          wireEscenarioDetalle(idx, built.escenarios[idx], contenedor);
+        } else {
+          contenedor.innerHTML = renderEscenarioDetalleEstaticoHtml(built.escenarios[idx]);
+        }
         contenedor.style.display = 'block';
         activo = idx;
       });
@@ -1135,10 +1568,14 @@
     };
   }
 
-  function renderDetail(comitente) {
-    var tipoRows = computeTipoBreakdown(comitente);
-    var betaInfo = computeBetaPonderado(comitente);
-    var sectorInfo = computeSectorBreakdown(comitente);
+  // Genera las tarjetas de "Composición por tipo" (con beta ponderado) y
+  // "Composición por sector" a partir de cualquier objeto con forma
+  // { tenencias: [...], total }. Reutilizado tanto por renderDetail (un
+  // comitente real) como por renderLab (la cartera hipotética del LAB).
+  function renderComposicionYSectorHtml(comitenteLike) {
+    var tipoRows = computeTipoBreakdown(comitenteLike);
+    var betaInfo = computeBetaPonderado(comitenteLike);
+    var sectorInfo = computeSectorBreakdown(comitenteLike);
 
     var stackedBarHtml = tipoRows.map(function (r) {
       return '<div class="cw-stacked-seg" style="width:' + r.pct.toFixed(2) + '%;background:' + tipoColor(r.tipo) + '" title="' + r.tipo + ' — ' + fmtPct(r.pct) + '"></div>';
@@ -1153,6 +1590,23 @@
         '</div>'
       );
     }).join('');
+
+    var composicionHtml = (
+      '<div class="cw-card">' +
+        '<div class="cw-card-title">Composición por tipo de instrumento</div>' +
+        '<div class="cw-stacked-bar">' + stackedBarHtml + '</div>' +
+        tipoRowsHtml +
+        (betaInfo ? (
+          '<div class="cw-beta-summary">' +
+            '<span class="cw-beta-label">Beta ponderado (renta variable)</span>' +
+            '<span class="cw-beta-value">' + betaInfo.beta.toFixed(2) + '</span>' +
+          '</div>' +
+          (betaInfo.cobertura < 99.95
+            ? '<div class="cw-metric-note">Calculado sobre el ' + fmtPct(betaInfo.cobertura) + ' del bloque de renta variable con beta disponible en Yahoo Finance (el resto no tiene beta publicado).</div>'
+            : '<div class="cw-metric-note">Promedio ponderado por importe del beta de mercado (Yahoo Finance) de Acciones y Cedear. No incluye renta fija.</div>')
+        ) : '') +
+      '</div>'
+    );
 
     var sectorCardHtml = '';
     if (sectorInfo) {
@@ -1177,6 +1631,37 @@
         '</div>'
       );
     }
+
+    return { composicionHtml: composicionHtml, sectorCardHtml: sectorCardHtml, tipoRows: tipoRows, betaInfo: betaInfo, sectorInfo: sectorInfo };
+  }
+
+  // Notas de diversificación con tono neutro/relajado (a pedido del
+  // usuario, nada de alertas agresivas): se disparan si un ticker o un
+  // sector concentran una porción grande de la cartera.
+  function computeConcentracionNotas(comitenteLike, sectorInfo) {
+    var notas = [];
+    var total = comitenteLike.total;
+    if (total > 0) {
+      comitenteLike.tenencias.forEach(function (t) {
+        var pct = (t.importe / total) * 100;
+        if (pct >= 25) {
+          notas.push(t.ticker + ' representa ' + fmtPct(pct) + ' de la cartera. No es necesariamente un problema, pero es una concentración a tener en el radar.');
+        }
+      });
+      if (sectorInfo) {
+        sectorInfo.rows.forEach(function (r) {
+          if (r.sector !== 'Otros' && r.pct >= 50) {
+            notas.push('El sector ' + r.sector + ' concentra ' + fmtPct(r.pct) + ' de la cartera. Podría valer la pena diversificar un poco más si buscás reducir ese riesgo puntual.');
+          }
+        });
+      }
+    }
+    return notas;
+  }
+
+  function renderDetail(comitente) {
+    resetWhatIfState(comitente.comitente);
+    var composicion = renderComposicionYSectorHtml(comitente);
 
     var tableRowsHtml = comitente.tenencias.map(function (t) {
       var esRentaVariable = !!TIPOS_CON_METRICAS[t.tipo];
@@ -1205,7 +1690,7 @@
       );
     }).join('');
 
-    var escenarios = buildEscenariosMarkup(comitente);
+    var escenarios = buildEscenariosMarkup(comitente, true);
     var fechaTexto = data && data.generado ? new Date(data.generado).toLocaleString('es-AR') : '';
 
     var html = (
@@ -1224,22 +1709,9 @@
         '</div>' +
       '</div>' +
 
-      '<div class="cw-card">' +
-        '<div class="cw-card-title">Composición por tipo de instrumento</div>' +
-        '<div class="cw-stacked-bar">' + stackedBarHtml + '</div>' +
-        tipoRowsHtml +
-        (betaInfo ? (
-          '<div class="cw-beta-summary">' +
-            '<span class="cw-beta-label">Beta ponderado (renta variable)</span>' +
-            '<span class="cw-beta-value">' + betaInfo.beta.toFixed(2) + '</span>' +
-          '</div>' +
-          (betaInfo.cobertura < 99.95
-            ? '<div class="cw-metric-note">Calculado sobre el ' + fmtPct(betaInfo.cobertura) + ' del bloque de renta variable con beta disponible en Yahoo Finance (el resto no tiene beta publicado).</div>'
-            : '<div class="cw-metric-note">Promedio ponderado por importe del beta de mercado (Yahoo Finance) de Acciones y Cedear. No incluye renta fija.</div>')
-        ) : '') +
-      '</div>' +
+      composicion.composicionHtml +
 
-      sectorCardHtml +
+      composicion.sectorCardHtml +
 
       (escenarios ? escenarios.html : '') +
 
@@ -1264,7 +1736,7 @@
     document.getElementById('cw-detail').innerHTML = html;
 
     if (escenarios) {
-      wireScenarioCards(escenarios.detalles);
+      wireScenarioCards(escenarios);
     }
 
     wireDetalleToggle();
@@ -1285,10 +1757,296 @@
     var comitente = data.comitentes.find(function (c) { return c.comitente === comitenteId; });
     if (!comitente) return;
     activeComitente = comitenteId;
+    closeLab();
     document.getElementById('cw-placeholder').style.display = 'none';
     document.getElementById('cw-detail').style.display = 'block';
     renderDetail(comitente);
     renderList();
+  }
+
+  // ===========================================================================
+  // LAB: cartera hipotética armada desde cero (no parte de ningún comitente
+  // real). Deja elegir cualquier ticker del universo ya presente en los
+  // datos (ON, Bonos, Letras, Acciones, Cedear), en % de la cartera o en
+  // capital USD, y muestra en vivo la misma composición/sector/beta/
+  // escenarios que la vista de un comitente real. Permite guardar varias
+  // carteras con nombre (localStorage) para comparar entre sí.
+  // ===========================================================================
+
+  function toggleLab() {
+    labOpen = !labOpen;
+    var btn = document.getElementById('cw-lab-btn');
+    if (labOpen) {
+      btn.textContent = 'Cerrar LAB';
+      document.getElementById('cw-placeholder').style.display = 'none';
+      document.getElementById('cw-detail').style.display = 'none';
+      document.getElementById('cw-lab').style.display = 'block';
+      renderLab();
+    } else {
+      btn.textContent = 'LAB';
+      document.getElementById('cw-lab').style.display = 'none';
+      if (activeComitente) {
+        document.getElementById('cw-detail').style.display = 'block';
+      } else {
+        document.getElementById('cw-placeholder').style.display = 'flex';
+      }
+    }
+  }
+
+  function closeLab() {
+    if (!labOpen) return;
+    labOpen = false;
+    var btn = document.getElementById('cw-lab-btn');
+    if (btn) btn.textContent = 'LAB';
+    document.getElementById('cw-lab').style.display = 'none';
+  }
+
+  function labComitenteVirtual() {
+    var total = labState.items.reduce(function (s, it) { return s + it.monto; }, 0);
+    var tenencias = labState.items.map(function (it) {
+      return { ticker: it.ticker, tipo: it.tipo, importe: it.monto, participacion_pct: total > 0 ? (it.monto / total * 100) : 0 };
+    });
+    return { tenencias: tenencias, total: total };
+  }
+
+  function renderLab() {
+    var wrap = document.getElementById('cw-lab');
+    var virtual = labComitenteVirtual();
+    var tieneItems = labState.items.length > 0;
+
+    var composicion = tieneItems ? renderComposicionYSectorHtml(virtual) : null;
+    var escenarios = tieneItems ? buildEscenariosMarkup(virtual, false) : null;
+    var concentracionNotas = tieneItems ? computeConcentracionNotas(virtual, composicion.sectorInfo) : [];
+
+    var tickersYaAgregados = {};
+    labState.items.forEach(function (it) { tickersYaAgregados[it.ticker] = true; });
+
+    var itemsTableHtml;
+    if (labState.items.length) {
+      var filasItems = labState.items.map(function (it) {
+        var pct = virtual.total > 0 ? (it.monto / virtual.total * 100) : 0;
+        return (
+          '<tr>' +
+            '<td class="cw-ticker">' + it.ticker + '</td>' +
+            '<td><span class="cw-tipo-tag">' + it.tipo + '</span></td>' +
+            '<td class="cw-num">' + fmtMoney(it.monto) + '</td>' +
+            '<td class="cw-num">' + fmtPct(pct) + '</td>' +
+            '<td class="cw-num"><button type="button" class="cw-lab-remove-btn" data-ticker="' + it.ticker + '">Quitar</button></td>' +
+          '</tr>'
+        );
+      }).join('');
+      itemsTableHtml = (
+        '<table class="cw-table" style="margin-top:var(--cw-sp-4);">' +
+          '<thead><tr><th>Ticker</th><th>Tipo</th><th class="cw-num">Monto</th><th class="cw-num">% cartera</th><th></th></tr></thead>' +
+          '<tbody>' + filasItems + '</tbody>' +
+        '</table>'
+      );
+    } else {
+      itemsTableHtml = '<div class="cw-metric-note" style="margin-top:var(--cw-sp-3);">Todavía no agregaste ningún instrumento.</div>';
+    }
+
+    var capitalInputHtml = labState.modo === 'pct'
+      ? ('<div class="cw-lab-capital-input"><label>Capital total de referencia (USD)</label><input type="number" id="cw-lab-capital-total" min="0" step="100" value="' + labState.capitalTotal + '"></div>')
+      : '';
+
+    var concentracionHtml = '';
+    if (concentracionNotas.length) {
+      concentracionHtml = (
+        '<div class="cw-card cw-lab-alertas">' +
+          '<div class="cw-card-title">Notas de diversificación</div>' +
+          concentracionNotas.map(function (n) { return '<div class="cw-metric-note" style="margin-bottom:6px;">' + n + '</div>'; }).join('') +
+        '</div>'
+      );
+    }
+
+    var carterasGuardadas = leerCarterasGuardadas();
+    var savedListHtml;
+    if (carterasGuardadas.length) {
+      var filasGuardadas = carterasGuardadas.map(function (c, idx) {
+        var checked = labCompararSeleccion.indexOf(idx) !== -1 ? ' checked' : '';
+        return (
+          '<div class="cw-lab-saved-row">' +
+            '<label class="cw-lab-saved-check"><input type="checkbox" class="cw-lab-comparar-check" data-idx="' + idx + '"' + checked + '> ' + c.nombre + '</label>' +
+            '<span class="cw-lab-saved-meta">' + fmtMoney(c.capitalTotal) + ' · ' + new Date(c.fecha).toLocaleDateString('es-AR') + '</span>' +
+            '<button type="button" class="cw-lab-cargar-btn cw-toggle-btn" data-idx="' + idx + '">Cargar</button>' +
+            '<button type="button" class="cw-lab-eliminar-btn cw-lab-remove-btn" data-idx="' + idx + '">Eliminar</button>' +
+          '</div>'
+        );
+      }).join('');
+      savedListHtml = '<div class="cw-lab-saved-list">' + filasGuardadas + '</div>';
+    } else {
+      savedListHtml = '<div class="cw-metric-note" style="margin-top:var(--cw-sp-3);">Todavía no guardaste ninguna cartera.</div>';
+    }
+
+    var comparacionHtml = '';
+    if (labCompararSeleccion.length) {
+      var filasComparacion = labCompararSeleccion.map(function (idx) {
+        var c = carterasGuardadas[idx];
+        if (!c) return '';
+        var total = c.items.reduce(function (s, it) { return s + it.monto; }, 0);
+        var tenencias = c.items.map(function (it) { return { ticker: it.ticker, tipo: it.tipo, importe: it.monto, participacion_pct: total > 0 ? (it.monto / total * 100) : 0 }; });
+        var virtualC = { tenencias: tenencias, total: total };
+        var betaC = computeBetaPonderado(virtualC);
+        var rendC = computeRendimientoEsperado(virtualC);
+        var escCols = rendC
+          ? rendC.escenarios.map(function (e) { return '<td class="cw-num">' + fmtSignedPct(e.total) + '</td>'; }).join('')
+          : ESCENARIOS_RV.map(function () { return '<td class="cw-num">s/d</td>'; }).join('');
+        return (
+          '<tr>' +
+            '<td class="cw-ticker">' + c.nombre + '</td>' +
+            '<td class="cw-num">' + fmtMoney(total) + '</td>' +
+            '<td class="cw-num">' + (betaC ? betaC.beta.toFixed(2) : 's/d') + '</td>' +
+            escCols +
+          '</tr>'
+        );
+      }).join('');
+      comparacionHtml = (
+        '<div style="margin-top:var(--cw-sp-4);overflow-x:auto;">' +
+          '<table class="cw-table">' +
+            '<thead><tr><th>Cartera</th><th class="cw-num">Capital</th><th class="cw-num">Beta</th>' +
+              ESCENARIOS_RV.map(function (e) { return '<th class="cw-num">' + e.label + '</th>'; }).join('') +
+            '</tr></thead>' +
+            '<tbody>' + filasComparacion + '</tbody>' +
+          '</table>' +
+        '</div>'
+      );
+    }
+
+    var html = (
+      '<div class="cw-lab-header">' +
+        '<div class="cw-lab-title">LAB — Cartera hipotética</div>' +
+        '<div class="cw-lab-capital">Capital total: ' + fmtMoney(virtual.total) + '</div>' +
+      '</div>' +
+
+      '<div class="cw-card">' +
+        '<div class="cw-card-title">Armar cartera</div>' +
+        '<div class="cw-lab-modo-toggle">' +
+          '<button type="button" class="cw-lab-modo-btn' + (labState.modo === 'pct' ? ' is-active' : '') + '" data-modo="pct">% de la cartera</button>' +
+          '<button type="button" class="cw-lab-modo-btn' + (labState.modo === 'usd' ? ' is-active' : '') + '" data-modo="usd">Capital en USD</button>' +
+        '</div>' +
+        capitalInputHtml +
+        '<div class="cw-lab-add-row">' +
+          '<select id="cw-lab-ticker-select">' + buildTickerOptionsHtml(tickersYaAgregados) + '</select>' +
+          '<input type="number" id="cw-lab-valor-input" min="0" step="0.1" placeholder="' + (labState.modo === 'pct' ? '% de la cartera' : 'Monto en USD') + '">' +
+          '<button type="button" id="cw-lab-add-btn" class="cw-toggle-btn">+ Agregar</button>' +
+        '</div>' +
+        itemsTableHtml +
+      '</div>' +
+
+      concentracionHtml +
+
+      (composicion ? (composicion.composicionHtml + composicion.sectorCardHtml) : '') +
+
+      (escenarios ? escenarios.html : '<div class="cw-card"><div class="cw-metric-note">Agregá al menos un instrumento para ver rendimiento esperado, beta y composición.</div></div>') +
+
+      '<div class="cw-card cw-lab-guardar">' +
+        '<div class="cw-card-title">Guardar y comparar carteras</div>' +
+        '<div class="cw-lab-guardar-row"><input type="text" id="cw-lab-nombre-input" placeholder="Nombre para esta cartera…"><button type="button" id="cw-lab-guardar-btn" class="cw-toggle-btn">Guardar</button></div>' +
+        savedListHtml +
+        comparacionHtml +
+      '</div>'
+    );
+
+    wrap.innerHTML = html;
+    wireLabControls();
+    if (escenarios) wireScenarioCards(escenarios);
+  }
+
+  function wireLabControls() {
+    var modoBtns = document.querySelectorAll('.cw-lab-modo-btn');
+    modoBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var nuevoModo = btn.getAttribute('data-modo');
+        if (nuevoModo === labState.modo) return;
+        labState.modo = nuevoModo;
+        renderLab();
+      });
+    });
+
+    var capitalInput = document.getElementById('cw-lab-capital-total');
+    if (capitalInput) {
+      capitalInput.addEventListener('change', function () {
+        var val = parseFloat(capitalInput.value);
+        if (!isNaN(val) && val >= 0) labState.capitalTotal = val;
+        renderLab();
+      });
+    }
+
+    var addBtn = document.getElementById('cw-lab-add-btn');
+    if (addBtn) {
+      addBtn.addEventListener('click', function () {
+        var select = document.getElementById('cw-lab-ticker-select');
+        var valorInput = document.getElementById('cw-lab-valor-input');
+        if (!select || !select.value) return;
+        var parts = select.value.split('|');
+        var ticker = parts[0], tipo = parts[1];
+        var valor = parseFloat(valorInput.value);
+        if (isNaN(valor) || valor <= 0) return;
+        var monto = labState.modo === 'pct' ? (valor / 100 * labState.capitalTotal) : valor;
+        labState.items.push({ ticker: ticker, tipo: tipo, monto: monto });
+        renderLab();
+      });
+    }
+
+    var removeBtns = document.querySelectorAll('.cw-lab-remove-btn[data-ticker]');
+    removeBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var ticker = btn.getAttribute('data-ticker');
+        labState.items = labState.items.filter(function (it) { return it.ticker !== ticker; });
+        renderLab();
+      });
+    });
+
+    var guardarBtn = document.getElementById('cw-lab-guardar-btn');
+    if (guardarBtn) {
+      guardarBtn.addEventListener('click', function () {
+        var nombreInput = document.getElementById('cw-lab-nombre-input');
+        var nombre = nombreInput && nombreInput.value.trim();
+        if (!nombre || !labState.items.length) return;
+        var carteras = leerCarterasGuardadas();
+        carteras.push({ nombre: nombre, fecha: new Date().toISOString(), capitalTotal: labState.capitalTotal, modo: labState.modo, items: labState.items.slice() });
+        guardarCarterasEnStorage(carteras);
+        renderLab();
+      });
+    }
+
+    var cargarBtns = document.querySelectorAll('.cw-lab-cargar-btn');
+    cargarBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var idx = parseInt(btn.getAttribute('data-idx'), 10);
+        var carteras = leerCarterasGuardadas();
+        var cartera = carteras[idx];
+        if (!cartera) return;
+        labState.items = cartera.items.slice();
+        labState.capitalTotal = cartera.capitalTotal;
+        labState.modo = cartera.modo || 'pct';
+        renderLab();
+      });
+    });
+
+    var eliminarBtns = document.querySelectorAll('.cw-lab-eliminar-btn');
+    eliminarBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var idx = parseInt(btn.getAttribute('data-idx'), 10);
+        var carteras = leerCarterasGuardadas();
+        carteras.splice(idx, 1);
+        guardarCarterasEnStorage(carteras);
+        var pos = labCompararSeleccion.indexOf(idx);
+        if (pos !== -1) labCompararSeleccion.splice(pos, 1);
+        renderLab();
+      });
+    });
+
+    var compararCheckboxes = document.querySelectorAll('.cw-lab-comparar-check');
+    compararCheckboxes.forEach(function (cb) {
+      cb.addEventListener('change', function () {
+        var idx = parseInt(cb.getAttribute('data-idx'), 10);
+        var pos = labCompararSeleccion.indexOf(idx);
+        if (cb.checked && pos === -1) labCompararSeleccion.push(idx);
+        if (!cb.checked && pos !== -1) labCompararSeleccion.splice(pos, 1);
+        renderLab();
+      });
+    });
   }
 
   function renderPlaceholderStats() {
@@ -1308,6 +2066,7 @@
       metricas = results[1];
       rentaFija = results[2];
       filtered = data.comitentes.slice();
+      buildTickerUniverse();
       renderList();
       renderPlaceholderStats();
       var fecha = new Date(data.generado);
@@ -1321,6 +2080,8 @@
   document.getElementById('cw-search').addEventListener('input', function (e) {
     applyFilter(e.target.value);
   });
+
+  document.getElementById('cw-lab-btn').addEventListener('click', toggleLab);
 })();
 </script>
 
