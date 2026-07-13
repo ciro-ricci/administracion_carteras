@@ -538,7 +538,7 @@
   /* ---------- Tarjetas KPI de escenario ---------- */
   .cw-scenario-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: var(--cw-sp-4);
     margin-bottom: var(--cw-sp-5);
   }
@@ -602,6 +602,31 @@
     background: var(--cw-panel-2);
   }
 
+  /* ---------- Card con boton de mostrar/ocultar (detalle por instrumento) --------- */
+  .cw-card-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--cw-sp-4);
+  }
+  .cw-card-title-row .cw-card-title {
+    margin: 0;
+  }
+  .cw-toggle-btn {
+    font-size: var(--cw-fs-label);
+    font-weight: 600;
+    color: var(--cw-primary);
+    background: var(--cw-primary-soft);
+    border: 1px solid transparent;
+    border-radius: 20px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: background .15s ease;
+  }
+  .cw-toggle-btn:hover {
+    background: rgba(59, 130, 246, 0.24);
+  }
+
   ::-webkit-scrollbar { width: 8px; height: 8px; }
   ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.14); border-radius: 8px; }
   ::-webkit-scrollbar-track { background: transparent; }
@@ -609,7 +634,6 @@
   /* ---------- Responsive ---------- */
   @media (max-width: 1024px) {
     .cw-sidebar { width: 260px; }
-    .cw-scenario-grid { grid-template-columns: repeat(2, 1fr); }
     .cw-main { padding: var(--cw-sp-5); }
   }
 
@@ -701,6 +725,15 @@
         if (!m || m.maximo_periodo_usd === null || m.maximo_periodo_usd === undefined || !m.precio_actual_usd) return null;
         return (m.maximo_periodo_usd - m.precio_actual_usd) / m.precio_actual_usd * 100;
       }
+    },
+    {
+      key: 'drawdown',
+      label: 'Caída histórica extrema',
+      descripcion: 'Escenario bajista: asume que cada acción/cedear repite su peor caída pico-a-valle real dentro de la ventana de datos, partiendo del precio actual.',
+      retorno: function (m) {
+        if (!m || m.maximo_drawdown_pct === null || m.maximo_drawdown_pct === undefined) return null;
+        return m.maximo_drawdown_pct;
+      }
     }
   ];
 
@@ -716,6 +749,89 @@
 
   function tipoColor(tipo) {
     return TYPE_COLOR[tipo] || 'var(--cw-c-default)';
+  }
+
+  // Mapa ticker -> sector. Cubre Acciones/Cedear (segun el negocio principal
+  // de cada compania/ETF) y ON (segun el sector de la empresa emisora,
+  // investigado manualmente). Tickers no mapeados caen en "Otros" al
+  // calcular la composicion por sector.
+  var SECTOR_MAP = {
+    // --- Acciones / Cedear ---
+    AAPL: 'Tecnología', ABT: 'Salud', ADBE: 'Tecnología', ADGO: 'Consumo/Agro',
+    AMD: 'Tecnología', AMZN: 'Consumo Discrecional', AXP: 'Financiero',
+    BABA: 'Consumo Discrecional', BBAR: 'Financiero', BKNG: 'Consumo Discrecional',
+    BMA: 'Financiero', BRKB: 'Financiero', BYMA: 'Financiero', CEPU: 'Energía',
+    COIN: 'Financiero', COPX: 'Minería', CRES: 'Real Estate/Agro', DISN: 'Comunicación',
+    EDN: 'Energía', EEM: 'Diversificado', ETHA: 'Cripto', EWZ: 'Diversificado',
+    FCX: 'Minería', FXI: 'Diversificado', GDX: 'Minería', GGAL: 'Financiero',
+    GLD: 'Commodities', GOOGL: 'Tecnología', GPRK: 'Energía', IBIT: 'Cripto',
+    IBM: 'Tecnología', ILF: 'Diversificado', IRSA: 'Real Estate', KO: 'Consumo Masivo',
+    LOMA: 'Materiales', MCD: 'Consumo Discrecional', MELI: 'Tecnología',
+    META: 'Tecnología', MOLI: 'Consumo Masivo', MSFT: 'Tecnología', MSTR: 'Tecnología',
+    NFLX: 'Comunicación', NKE: 'Consumo Discrecional', NU: 'Financiero', NVDA: 'Tecnología',
+    OKLO: 'Energía', ORCL: 'Tecnología', PAMP: 'Energía', PEP: 'Consumo Masivo',
+    PLTR: 'Tecnología', PYPL: 'Financiero', QQQ: 'Diversificado', SMH: 'Tecnología',
+    SPCX: 'Tecnología', SPOT: 'Comunicación', SPXL: 'Diversificado', SPY: 'Diversificado',
+    SUPV: 'Financiero', TQQQ: 'Diversificado', TSLA: 'Consumo Discrecional', TSM: 'Tecnología',
+    UBER: 'Tecnología', URA: 'Energía', V: 'Financiero', VEA: 'Diversificado',
+    VIST: 'Energía', WMT: 'Consumo Masivo', XLF: 'Financiero', XLP: 'Consumo Masivo',
+    XLV: 'Salud', YPFD: 'Energía', TGNO4: 'Energía', TRAN: 'Energía', TXAR: 'Materiales',
+    // --- ON, segun sector de la empresa emisora ---
+    YFCJO: 'Energía', YM34O: 'Energía', YM39O: 'Energía', YMCIO: 'Energía',
+    YMCJO: 'Energía', YMCXO: 'Energía', YMCYO: 'Energía',
+    MGCNO: 'Energía', MGCOO: 'Energía', MGCRO: 'Energía',
+    VSCRO: 'Energía', VSCTO: 'Energía', VSCUO: 'Energía', VSCVO: 'Energía',
+    PLC2O: 'Energía', PLC4O: 'Energía', PLC5O: 'Energía',
+    TSC3O: 'Energía', TSC4O: 'Energía', TTC9O: 'Energía',
+    PN35O: 'Energía', PNXCO: 'Energía', RUCDO: 'Energía', MSSEO: 'Energía',
+    GN43O: 'Energía', MRCAO: 'Energía', MR46O: 'Energía', MR47O: 'Energía',
+    PECMO: 'Energía', PECNO: 'Energía', ICC6O: 'Energía', TTCEO: 'Energía',
+    DEC2O: 'Energía', DNC3O: 'Energía', DNC5O: 'Energía',
+    IRCFO: 'Real Estate', IRCJO: 'Real Estate', IRCPO: 'Real Estate', IRCQO: 'Real Estate',
+    TLCPO: 'Comunicación', TLCWO: 'Comunicación',
+    LOC5O: 'Materiales', LMS7O: 'Materiales', CRCJO: 'Materiales',
+    AFCIO: 'Financiero', SBC1O: 'Financiero',
+    SNEBO: 'Consumo/Agro', CS47O: 'Consumo/Agro',
+    HJCIO: 'Industrial',
+    XMC1O: 'Minería'
+  };
+
+  var SECTOR_COLOR_PALETTE = ['#3b82f6', '#f59e0b', '#22c55e', '#a78bfa', '#38bdf8', '#fb923c', '#ec4899', '#84cc16'];
+
+  function sectorColor(sector, idx) {
+    if (sector === 'Otros') return 'var(--cw-c-default)';
+    return SECTOR_COLOR_PALETTE[idx % SECTOR_COLOR_PALETTE.length];
+  }
+
+  // Composicion por sector, solo sobre ON + Acciones + Cedear (a pedido del
+  // usuario; Bonos, Letras, Futuros y Opcion de Futuro no tienen un sector
+  // de negocio propio). Se muestran los 4 sectores de mayor peso y el resto
+  // se agrupa en "Otros" (incluye tambien los tickers sin sector mapeado).
+  var TIPOS_CON_SECTOR = { 'ON': true, 'Acciones': true, 'Cedear': true };
+  function computeSectorBreakdown(comitente) {
+    var items = comitente.tenencias.filter(function (t) { return !!TIPOS_CON_SECTOR[t.tipo]; });
+    var base = items.reduce(function (s, t) { return s + t.importe; }, 0);
+    if (base <= 0) return null;
+
+    var totals = {};
+    items.forEach(function (t) {
+      var sector = SECTOR_MAP[t.ticker] || 'Otros';
+      totals[sector] = (totals[sector] || 0) + t.importe;
+    });
+
+    var rows = Object.keys(totals).map(function (sector) {
+      return { sector: sector, importe: totals[sector] };
+    });
+    rows.sort(function (a, b) { return b.importe - a.importe; });
+
+    var top = rows.filter(function (r) { return r.sector !== 'Otros'; }).slice(0, 4);
+    var restoImporte = rows.reduce(function (s, r) { return s + r.importe; }, 0) - top.reduce(function (s, r) { return s + r.importe; }, 0);
+
+    var finalRows = top.map(function (r) { return { sector: r.sector, importe: r.importe, pct: (r.importe / base) * 100 }; });
+    if (restoImporte > 0) {
+      finalRows.push({ sector: 'Otros', importe: restoImporte, pct: (restoImporte / base) * 100 });
+    }
+    return { rows: finalRows, base: base };
   }
 
   function initials(nombre) {
@@ -1022,6 +1138,7 @@
   function renderDetail(comitente) {
     var tipoRows = computeTipoBreakdown(comitente);
     var betaInfo = computeBetaPonderado(comitente);
+    var sectorInfo = computeSectorBreakdown(comitente);
 
     var stackedBarHtml = tipoRows.map(function (r) {
       return '<div class="cw-stacked-seg" style="width:' + r.pct.toFixed(2) + '%;background:' + tipoColor(r.tipo) + '" title="' + r.tipo + ' — ' + fmtPct(r.pct) + '"></div>';
@@ -1036,6 +1153,30 @@
         '</div>'
       );
     }).join('');
+
+    var sectorCardHtml = '';
+    if (sectorInfo) {
+      var sectorBarHtml = sectorInfo.rows.map(function (r, idx) {
+        return '<div class="cw-stacked-seg" style="width:' + r.pct.toFixed(2) + '%;background:' + sectorColor(r.sector, idx) + '" title="' + r.sector + ' — ' + fmtPct(r.pct) + '"></div>';
+      }).join('');
+      var sectorRowsHtml = sectorInfo.rows.map(function (r, idx) {
+        return (
+          '<div class="cw-type-row">' +
+            '<div class="cw-type-name"><span class="cw-type-dot" style="background:' + sectorColor(r.sector, idx) + '"></span>' + r.sector + '</div>' +
+            '<div class="cw-type-amount">' + fmtMoney(r.importe) + '</div>' +
+            '<div class="cw-type-pct">' + fmtPct(r.pct) + '</div>' +
+          '</div>'
+        );
+      }).join('');
+      sectorCardHtml = (
+        '<div class="cw-card">' +
+          '<div class="cw-card-title">Composición por sector</div>' +
+          '<div class="cw-stacked-bar">' + sectorBarHtml + '</div>' +
+          sectorRowsHtml +
+          '<div class="cw-metric-note">Sobre ON, Acciones y Cedear (' + fmtMoney(sectorInfo.base) + '). Para ON el sector es el de la empresa emisora. Se muestran los 4 sectores de mayor peso; el resto se agrupa en "Otros". No incluye Bonos, Letras, Futuros ni Opción de Futuro.</div>' +
+        '</div>'
+      );
+    }
 
     var tableRowsHtml = comitente.tenencias.map(function (t) {
       var esRentaVariable = !!TIPOS_CON_METRICAS[t.tipo];
@@ -1098,18 +1239,25 @@
         ) : '') +
       '</div>' +
 
+      sectorCardHtml +
+
       (escenarios ? escenarios.html : '') +
 
       '<div class="cw-card">' +
-        '<div class="cw-card-title">Detalle por instrumento</div>' +
-        '<table class="cw-table">' +
-          '<thead><tr>' +
-            '<th>Ticker</th><th>Tipo</th><th class="cw-num">Importe</th><th class="cw-num">Participación %</th>' +
-            '<th class="cw-num">Dist. media 200d</th><th class="cw-num">Rend. anual (10a)</th><th class="cw-num">Dist. máximo</th>' +
-          '</tr></thead>' +
-          '<tbody>' + tableRowsHtml + '</tbody>' +
-        '</table>' +
-        '<div class="cw-metric-note">Métricas de renta variable (Acciones y Cedear) en dólares, vía Yahoo Finance. "s/d" = sin dato disponible.</div>' +
+        '<div class="cw-card-title-row">' +
+          '<div class="cw-card-title" style="margin:0;">Detalle por instrumento</div>' +
+          '<button type="button" class="cw-toggle-btn" id="cw-detalle-toggle">Mostrar detalle</button>' +
+        '</div>' +
+        '<div id="cw-detalle-tabla" style="display:none;">' +
+          '<table class="cw-table">' +
+            '<thead><tr>' +
+              '<th>Ticker</th><th>Tipo</th><th class="cw-num">Importe</th><th class="cw-num">Participación %</th>' +
+              '<th class="cw-num">Dist. media 200d</th><th class="cw-num">Rend. anual (10a)</th><th class="cw-num">Dist. máximo</th>' +
+            '</tr></thead>' +
+            '<tbody>' + tableRowsHtml + '</tbody>' +
+          '</table>' +
+          '<div class="cw-metric-note">Métricas de renta variable (Acciones y Cedear) en dólares, vía Yahoo Finance. "s/d" = sin dato disponible.</div>' +
+        '</div>' +
       '</div>'
     );
 
@@ -1118,6 +1266,19 @@
     if (escenarios) {
       wireScenarioCards(escenarios.detalles);
     }
+
+    wireDetalleToggle();
+  }
+
+  function wireDetalleToggle() {
+    var btn = document.getElementById('cw-detalle-toggle');
+    var tabla = document.getElementById('cw-detalle-tabla');
+    if (!btn || !tabla) return;
+    btn.addEventListener('click', function () {
+      var visible = tabla.style.display !== 'none';
+      tabla.style.display = visible ? 'none' : 'block';
+      btn.textContent = visible ? 'Mostrar detalle' : 'Ocultar detalle';
+    });
   }
 
   function selectComitente(comitenteId) {
@@ -1165,3 +1326,4 @@
 
 </body>
 </html>
+
