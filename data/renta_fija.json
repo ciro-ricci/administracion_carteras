@@ -1,53 +1,5 @@
 {
   "tickers": {
-    "M31G6": {
-      "tipo": "Letras",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
-    },
-    "S30N6": {
-      "tipo": "Letras",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
-    },
-    "S30O6": {
-      "tipo": "Letras",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
-    },
-    "S31G6": {
-      "tipo": "Letras",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
-    },
-    "S31L6": {
-      "tipo": "Letras",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
-    },
-    "T30J7": {
-      "tipo": "Letras",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
-    },
-    "T31Y7": {
-      "tipo": "Letras",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
-    },
-    "TNOTE150627": {
-      "tipo": "Letras",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
-    },
     "AFCIO": {
       "tipo": "ON",
       "tir_usd_pct": 6.0,
@@ -62,28 +14,28 @@
     },
     "CS47O": {
       "tipo": "ON",
-      "tir_usd_pct": 5.8,
+      "tir_usd_pct": 5.79,
       "fuente": "sheet",
       "empresa": "CRESUD",
       "vencimiento": "15/11/2028"
     },
     "DEC2O": {
       "tipo": "ON",
-      "tir_usd_pct": 6.3,
+      "tir_usd_pct": 8.01,
       "fuente": "sheet",
       "empresa": "EDESA",
       "vencimiento": "24/2/2027"
     },
     "DNC3O": {
       "tipo": "ON",
-      "tir_usd_pct": 5.11,
+      "tir_usd_pct": 4.45,
       "fuente": "sheet",
       "empresa": "EDENOR",
       "vencimiento": "22/11/2026"
     },
     "DNC5O": {
       "tipo": "ON",
-      "tir_usd_pct": 7.83,
+      "tir_usd_pct": 7.67,
       "fuente": "sheet",
       "empresa": "EDENOR",
       "vencimiento": "5/8/2028"
@@ -96,7 +48,7 @@
     },
     "HJCIO": {
       "tipo": "ON",
-      "tir_usd_pct": 5.98,
+      "tir_usd_pct": 4.99,
       "fuente": "sheet",
       "empresa": "John Deere",
       "vencimiento": "27/5/2027"
@@ -109,21 +61,21 @@
     },
     "IRCFO": {
       "tipo": "ON",
-      "tir_usd_pct": 4.26,
+      "tir_usd_pct": 3.92,
       "fuente": "sheet",
       "empresa": "IRSA",
       "vencimiento": "22/6/2028"
     },
     "IRCJO": {
       "tipo": "ON",
-      "tir_usd_pct": 3.42,
+      "tir_usd_pct": 4.15,
       "fuente": "sheet",
       "empresa": "IRSA",
       "vencimiento": "28/2/2027"
     },
     "IRCPO": {
       "tipo": "ON",
-      "tir_usd_pct": 7.06,
+      "tir_usd_pct": 7.11,
       "fuente": "sheet",
       "empresa": "IRSA",
       "vencimiento": "31/3/2035"
@@ -136,35 +88,35 @@
     },
     "LMS7O": {
       "tipo": "ON",
-      "tir_usd_pct": 15.22,
+      "tir_usd_pct": 3.39,
       "fuente": "sheet",
       "empresa": "ALUAR",
       "vencimiento": "12/10/2028"
     },
     "LOC5O": {
       "tipo": "ON",
-      "tir_usd_pct": 4.42,
+      "tir_usd_pct": 3.64,
       "fuente": "sheet",
       "empresa": "LOMA NEGRA",
       "vencimiento": "24/7/2027"
     },
     "MGCNO": {
       "tipo": "ON",
-      "tir_usd_pct": 4.9,
+      "tir_usd_pct": 4.59,
       "fuente": "sheet",
       "empresa": "PAMPA ENERGIA",
       "vencimiento": "4/10/2028"
     },
     "MGCOO": {
       "tipo": "ON",
-      "tir_usd_pct": 6.94,
+      "tir_usd_pct": 6.83,
       "fuente": "sheet",
       "empresa": "PAMPA ENERGIA",
       "vencimiento": "16/12/2034"
     },
     "MGCRO": {
       "tipo": "ON",
-      "tir_usd_pct": 7.2,
+      "tir_usd_pct": 7.19,
       "fuente": "sheet",
       "empresa": "PAMPA ENERGIA",
       "vencimiento": "14/11/2037"
@@ -183,15 +135,17 @@
     },
     "MRCAO": {
       "tipo": "ON",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "TIR desde USD sin dato (#N/A o vacio) en la planilla; se aplica la regla fija de 6% definida por el usuario."
+      "tir_usd_pct": 165.19,
+      "fuente": "sheet",
+      "empresa": "GRUPO ALBANESI",
+      "vencimiento": "1/12/2027"
     },
     "MSSEO": {
       "tipo": "ON",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "TIR desde USD sin dato (#N/A o vacio) en la planilla; se aplica la regla fija de 6% definida por el usuario."
+      "tir_usd_pct": 50.96,
+      "fuente": "sheet",
+      "empresa": "MSU ENERGY",
+      "vencimiento": "17/7/2026"
     },
     "PECMO": {
       "tipo": "ON",
@@ -207,28 +161,28 @@
     },
     "PLC2O": {
       "tipo": "ON",
-      "tir_usd_pct": 5.93,
+      "tir_usd_pct": 5.99,
       "fuente": "sheet",
       "empresa": "PLUSPETROL",
       "vencimiento": "27/1/2030"
     },
     "PLC4O": {
       "tipo": "ON",
-      "tir_usd_pct": 6.93,
+      "tir_usd_pct": 6.88,
       "fuente": "sheet",
       "empresa": "PLUSPETROL",
       "vencimiento": "30/5/2025"
     },
     "PLC5O": {
       "tipo": "ON",
-      "tir_usd_pct": 6.61,
+      "tir_usd_pct": 6.48,
       "fuente": "sheet",
       "empresa": "PLUSPETROL",
       "vencimiento": "30/5/2030"
     },
     "PN35O": {
       "tipo": "ON",
-      "tir_usd_pct": 4.89,
+      "tir_usd_pct": 5.08,
       "fuente": "sheet",
       "empresa": "PAN AMERICAN ENERGY",
       "vencimiento": "27/3/2029"
@@ -241,7 +195,7 @@
     },
     "RUCDO": {
       "tipo": "ON",
-      "tir_usd_pct": 7.73,
+      "tir_usd_pct": 8.16,
       "fuente": "sheet",
       "empresa": "MSU ENERGY",
       "vencimiento": "5/12/2030"
@@ -254,14 +208,14 @@
     },
     "SNEBO": {
       "tipo": "ON",
-      "tir_usd_pct": 17.38,
+      "tir_usd_pct": 17.17,
       "fuente": "sheet",
       "empresa": "SAN MIGUEL",
       "vencimiento": "14/7/2029"
     },
     "TLCPO": {
       "tipo": "ON",
-      "tir_usd_pct": 7.39,
+      "tir_usd_pct": 7.37,
       "fuente": "sheet",
       "empresa": "TELECOM",
       "vencimiento": "28/5/2033"
@@ -274,21 +228,21 @@
     },
     "TSC3O": {
       "tipo": "ON",
-      "tir_usd_pct": 6.52,
+      "tir_usd_pct": 6.49,
       "fuente": "sheet",
       "empresa": "TGS",
       "vencimiento": "24/7/2031"
     },
     "TSC4O": {
       "tipo": "ON",
-      "tir_usd_pct": 6.97,
+      "tir_usd_pct": 6.98,
       "fuente": "sheet",
       "empresa": "TGS",
       "vencimiento": "20/11/2035"
     },
     "TTC9O": {
       "tipo": "ON",
-      "tir_usd_pct": 5.56,
+      "tir_usd_pct": 5.55,
       "fuente": "sheet",
       "empresa": "Tecpetrol",
       "vencimiento": "24/10/2029"
@@ -301,63 +255,63 @@
     },
     "VSCRO": {
       "tipo": "ON",
-      "tir_usd_pct": 5.9,
+      "tir_usd_pct": 5.7,
       "fuente": "sheet",
       "empresa": "VISTA ENERGY",
       "vencimiento": "10/10/2031"
     },
     "VSCTO": {
       "tipo": "ON",
-      "tir_usd_pct": 6.82,
+      "tir_usd_pct": 6.77,
       "fuente": "sheet",
       "empresa": "VISTA ENERGY",
       "vencimiento": "10/12/2035"
     },
     "VSCUO": {
       "tipo": "ON",
-      "tir_usd_pct": 7.66,
+      "tir_usd_pct": 7.69,
       "fuente": "sheet",
       "empresa": "VISTA ENERGY",
       "vencimiento": "7/3/2030"
     },
     "VSCVO": {
       "tipo": "ON",
-      "tir_usd_pct": 6.64,
+      "tir_usd_pct": 6.73,
       "fuente": "sheet",
       "empresa": "VISTA ENERGY",
       "vencimiento": "10/6/2033"
     },
     "XMC1O": {
       "tipo": "ON",
-      "tir_usd_pct": 6.05,
+      "tir_usd_pct": 6.08,
       "fuente": "sheet",
       "empresa": "MINERA EXAR",
       "vencimiento": "11/11/2027"
     },
     "YFCJO": {
       "tipo": "ON",
-      "tir_usd_pct": 6.63,
+      "tir_usd_pct": 6.57,
       "fuente": "sheet",
       "empresa": "YPF",
       "vencimiento": "16/10/2032"
     },
     "YM34O": {
       "tipo": "ON",
-      "tir_usd_pct": 6.74,
+      "tir_usd_pct": 6.79,
       "fuente": "sheet",
       "empresa": "YPF",
       "vencimiento": "17/1/2034"
     },
     "YM39O": {
       "tipo": "ON",
-      "tir_usd_pct": 5.89,
+      "tir_usd_pct": 5.77,
       "fuente": "sheet",
       "empresa": "YPF",
       "vencimiento": "22/7/2030"
     },
     "YMCIO": {
       "tipo": "ON",
-      "tir_usd_pct": 4.05,
+      "tir_usd_pct": 3.95,
       "fuente": "sheet",
       "empresa": "YPF",
       "vencimiento": "30/6/2029"
@@ -371,56 +325,56 @@
     },
     "YMCXO": {
       "tipo": "ON",
-      "tir_usd_pct": 6.23,
+      "tir_usd_pct": 6.19,
       "fuente": "sheet",
       "empresa": "YPF",
       "vencimiento": "11/9/2031"
     },
     "YMCYO": {
       "tipo": "ON",
-      "tir_usd_pct": 4.79,
+      "tir_usd_pct": 4.54,
       "fuente": "sheet",
       "empresa": "YPF",
       "vencimiento": "10/10/2028"
     },
     "AE38": {
       "tipo": "Bonos",
-      "tir_usd_pct": 9.13,
+      "tir_usd_pct": 9.02,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "1/9/2038"
     },
     "AL29": {
       "tipo": "Bonos",
-      "tir_usd_pct": 6.17,
+      "tir_usd_pct": 6.03,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "7/9/2029"
     },
     "AL30": {
       "tipo": "Bonos",
-      "tir_usd_pct": 7.75,
+      "tir_usd_pct": 7.65,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "9/7/2030"
     },
     "AL35": {
       "tipo": "Bonos",
-      "tir_usd_pct": 9.06,
+      "tir_usd_pct": 8.98,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "7/9/2035"
     },
     "AL41": {
       "tipo": "Bonos",
-      "tir_usd_pct": 8.58,
+      "tir_usd_pct": 8.68,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "7/9/2041"
     },
     "AN29": {
       "tipo": "Bonos",
-      "tir_usd_pct": 8.46,
+      "tir_usd_pct": 8.26,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "30/11/2029"
@@ -433,7 +387,7 @@
     },
     "BPOB8": {
       "tipo": "Bonos",
-      "tir_usd_pct": 7.21,
+      "tir_usd_pct": 6.99,
       "fuente": "sheet",
       "empresa": "Bono BCRA",
       "vencimiento": "31/10/2028"
@@ -447,7 +401,7 @@
     },
     "CO35": {
       "tipo": "Bonos",
-      "tir_usd_pct": 8.25,
+      "tir_usd_pct": 8.28,
       "fuente": "sheet",
       "empresa": "Gobierno de Cordoba",
       "vencimiento": "3/2/2035"
@@ -466,28 +420,28 @@
     },
     "GD30": {
       "tipo": "Bonos",
-      "tir_usd_pct": 6.38,
+      "tir_usd_pct": 6.15,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "7/9/2030"
     },
     "GD35": {
       "tipo": "Bonos",
-      "tir_usd_pct": 8.33,
+      "tir_usd_pct": 8.31,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "7/9/2035"
     },
     "GD41": {
       "tipo": "Bonos",
-      "tir_usd_pct": 8.43,
+      "tir_usd_pct": 8.4,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "7/9/2041"
     },
     "GD46": {
       "tipo": "Bonos",
-      "tir_usd_pct": 8.33,
+      "tir_usd_pct": 8.46,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "9/7/2046"
@@ -578,7 +532,7 @@
     },
     "TZV28": {
       "tipo": "Bonos",
-      "tir_usd_pct": 9.3,
+      "tir_usd_pct": 9.62,
       "fuente": "sheet",
       "empresa": null,
       "vencimiento": "30/6/2028"
@@ -637,6 +591,12 @@
       "fuente": "default_6pct",
       "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
     },
+    "TZXO7": {
+      "tipo": "Bonos",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+    },
     "TZXS7": {
       "tipo": "Bonos",
       "tir_usd_pct": 6.0,
@@ -648,9 +608,57 @@
       "tir_usd_pct": 6.0,
       "fuente": "default_6pct",
       "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "M31G6": {
+      "tipo": "Letras",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "S30N6": {
+      "tipo": "Letras",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "S30O6": {
+      "tipo": "Letras",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "S31G6": {
+      "tipo": "Letras",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "S31L6": {
+      "tipo": "Letras",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "T30J7": {
+      "tipo": "Letras",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "T31Y7": {
+      "tipo": "Letras",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "TNOTE150627": {
+      "tipo": "Letras",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
     }
   },
-  "generado": "2026-07-10T02:01:49.188054+00:00",
+  "generado": "2026-07-14T21:06:57.007439+00:00",
   "metodologia": {
     "fuente_principal": "Google Sheet publica de seguimiento de ONs y Bonos (columna 'TIR desde USD').",
     "regla_default": "Para ONs, Bonos y Letras sin TIR de mercado disponible, se usa una TIR fija de 6.0% (regla definida explicitamente por el usuario, no calculada)."
