@@ -1,393 +1,97 @@
 {
   "tickers": {
-    "AFCIO": {
-      "tipo": "ON",
+    "M31G6": {
+      "tipo": "Letras",
       "tir_usd_pct": 6.0,
       "fuente": "default_6pct",
-      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
     },
-    "BACGO": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.77,
-      "fuente": "sheet",
-      "empresa": "BANCO MACRO",
-      "vencimiento": "25/6/2029"
-    },
-    "CRCJO": {
-      "tipo": "ON",
+    "S13N6": {
+      "tipo": "Letras",
       "tir_usd_pct": 6.0,
       "fuente": "default_6pct",
-      "motivo": "TIR desde USD sin dato (#N/A o vacio) en la planilla; se aplica la regla fija de 6% definida por el usuario."
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
     },
-    "CS47O": {
-      "tipo": "ON",
-      "tir_usd_pct": 5.76,
-      "fuente": "sheet",
-      "empresa": "CRESUD",
-      "vencimiento": "15/11/2028"
-    },
-    "DEC2O": {
-      "tipo": "ON",
-      "tir_usd_pct": 7.73,
-      "fuente": "sheet",
-      "empresa": "EDESA",
-      "vencimiento": "24/2/2027"
-    },
-    "DNC3O": {
-      "tipo": "ON",
-      "tir_usd_pct": 4.52,
-      "fuente": "sheet",
-      "empresa": "EDENOR",
-      "vencimiento": "22/11/2026"
-    },
-    "DNC5O": {
-      "tipo": "ON",
-      "tir_usd_pct": 7.7,
-      "fuente": "sheet",
-      "empresa": "EDENOR",
-      "vencimiento": "5/8/2028"
-    },
-    "GN43O": {
-      "tipo": "ON",
+    "S30N6": {
+      "tipo": "Letras",
       "tir_usd_pct": 6.0,
       "fuente": "default_6pct",
-      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
     },
-    "HJCIO": {
-      "tipo": "ON",
-      "tir_usd_pct": 5.27,
-      "fuente": "sheet",
-      "empresa": "John Deere",
-      "vencimiento": "27/5/2027"
-    },
-    "ICC6O": {
-      "tipo": "ON",
+    "S30O6": {
+      "tipo": "Letras",
       "tir_usd_pct": 6.0,
       "fuente": "default_6pct",
-      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
     },
-    "IRCFO": {
-      "tipo": "ON",
-      "tir_usd_pct": 3.79,
-      "fuente": "sheet",
-      "empresa": "IRSA",
-      "vencimiento": "22/6/2028"
-    },
-    "IRCJO": {
-      "tipo": "ON",
-      "tir_usd_pct": 3.53,
-      "fuente": "sheet",
-      "empresa": "IRSA",
-      "vencimiento": "28/2/2027"
-    },
-    "IRCPO": {
-      "tipo": "ON",
-      "tir_usd_pct": 7.13,
-      "fuente": "sheet",
-      "empresa": "IRSA",
-      "vencimiento": "31/3/2035"
-    },
-    "IRCQO": {
-      "tipo": "ON",
+    "S31G6": {
+      "tipo": "Letras",
       "tir_usd_pct": 6.0,
       "fuente": "default_6pct",
-      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
     },
-    "LMS7O": {
-      "tipo": "ON",
-      "tir_usd_pct": 3.46,
-      "fuente": "sheet",
-      "empresa": "ALUAR",
-      "vencimiento": "12/10/2028"
-    },
-    "LOC5O": {
-      "tipo": "ON",
-      "tir_usd_pct": 4.41,
-      "fuente": "sheet",
-      "empresa": "LOMA NEGRA",
-      "vencimiento": "24/7/2027"
-    },
-    "MGCNO": {
-      "tipo": "ON",
-      "tir_usd_pct": 4.57,
-      "fuente": "sheet",
-      "empresa": "PAMPA ENERGIA",
-      "vencimiento": "4/10/2028"
-    },
-    "MGCOO": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.9,
-      "fuente": "sheet",
-      "empresa": "PAMPA ENERGIA",
-      "vencimiento": "16/12/2034"
-    },
-    "MGCRO": {
-      "tipo": "ON",
-      "tir_usd_pct": 7.16,
-      "fuente": "sheet",
-      "empresa": "PAMPA ENERGIA",
-      "vencimiento": "14/11/2037"
-    },
-    "MR46O": {
-      "tipo": "ON",
+    "S31L6": {
+      "tipo": "Letras",
       "tir_usd_pct": 6.0,
       "fuente": "default_6pct",
-      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
     },
-    "MR47O": {
-      "tipo": "ON",
+    "T30J7": {
+      "tipo": "Letras",
       "tir_usd_pct": 6.0,
       "fuente": "default_6pct",
-      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
     },
-    "MRCAO": {
-      "tipo": "ON",
-      "tir_usd_pct": 167.1,
-      "fuente": "sheet",
-      "empresa": "GRUPO ALBANESI",
-      "vencimiento": "1/12/2027"
-    },
-    "MSSEO": {
-      "tipo": "ON",
+    "T31Y7": {
+      "tipo": "Letras",
       "tir_usd_pct": 6.0,
       "fuente": "default_6pct",
-      "motivo": "TIR desde USD sin dato (#N/A o vacio) en la planilla; se aplica la regla fija de 6% definida por el usuario."
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
     },
-    "PECMO": {
-      "tipo": "ON",
+    "TNOTE150627": {
+      "tipo": "Letras",
       "tir_usd_pct": 6.0,
       "fuente": "default_6pct",
-      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
-    },
-    "PECNO": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
-    },
-    "PLC2O": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.03,
-      "fuente": "sheet",
-      "empresa": "PLUSPETROL",
-      "vencimiento": "27/1/2030"
-    },
-    "PLC4O": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.85,
-      "fuente": "sheet",
-      "empresa": "PLUSPETROL",
-      "vencimiento": "30/5/2025"
-    },
-    "PLC5O": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.51,
-      "fuente": "sheet",
-      "empresa": "PLUSPETROL",
-      "vencimiento": "30/5/2030"
-    },
-    "PN35O": {
-      "tipo": "ON",
-      "tir_usd_pct": 4.87,
-      "fuente": "sheet",
-      "empresa": "PAN AMERICAN ENERGY",
-      "vencimiento": "27/3/2029"
-    },
-    "PNXCO": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
-    },
-    "RUCDO": {
-      "tipo": "ON",
-      "tir_usd_pct": 7.99,
-      "fuente": "sheet",
-      "empresa": "MSU ENERGY",
-      "vencimiento": "5/12/2030"
-    },
-    "SBC1O": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
-    },
-    "SNEBO": {
-      "tipo": "ON",
-      "tir_usd_pct": 17.57,
-      "fuente": "sheet",
-      "empresa": "SAN MIGUEL",
-      "vencimiento": "14/7/2029"
-    },
-    "TLCMO": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.01,
-      "fuente": "sheet",
-      "empresa": "TELECOM",
-      "vencimiento": "18/7/2031"
-    },
-    "TLCPO": {
-      "tipo": "ON",
-      "tir_usd_pct": 7.27,
-      "fuente": "sheet",
-      "empresa": "TELECOM",
-      "vencimiento": "28/5/2033"
-    },
-    "TLCWO": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
-    },
-    "TSC3O": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.5,
-      "fuente": "sheet",
-      "empresa": "TGS",
-      "vencimiento": "24/7/2031"
-    },
-    "TSC4O": {
-      "tipo": "ON",
-      "tir_usd_pct": 7.06,
-      "fuente": "sheet",
-      "empresa": "TGS",
-      "vencimiento": "20/11/2035"
-    },
-    "TTC9O": {
-      "tipo": "ON",
-      "tir_usd_pct": 5.58,
-      "fuente": "sheet",
-      "empresa": "Tecpetrol",
-      "vencimiento": "24/10/2029"
-    },
-    "TTCEO": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
-    },
-    "VSCRO": {
-      "tipo": "ON",
-      "tir_usd_pct": 5.6,
-      "fuente": "sheet",
-      "empresa": "VISTA ENERGY",
-      "vencimiento": "10/10/2031"
-    },
-    "VSCTO": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.55,
-      "fuente": "sheet",
-      "empresa": "VISTA ENERGY",
-      "vencimiento": "10/12/2035"
-    },
-    "VSCUO": {
-      "tipo": "ON",
-      "tir_usd_pct": 7.71,
-      "fuente": "sheet",
-      "empresa": "VISTA ENERGY",
-      "vencimiento": "7/3/2030"
-    },
-    "VSCVO": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.66,
-      "fuente": "sheet",
-      "empresa": "VISTA ENERGY",
-      "vencimiento": "10/6/2033"
-    },
-    "XMC1O": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.12,
-      "fuente": "sheet",
-      "empresa": "MINERA EXAR",
-      "vencimiento": "11/11/2027"
-    },
-    "YFCJO": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.55,
-      "fuente": "sheet",
-      "empresa": "YPF",
-      "vencimiento": "16/10/2032"
-    },
-    "YM34O": {
-      "tipo": "ON",
-      "tir_usd_pct": 5.99,
-      "fuente": "sheet",
-      "empresa": "YPF",
-      "vencimiento": "17/1/2034"
-    },
-    "YM39O": {
-      "tipo": "ON",
-      "tir_usd_pct": 5.69,
-      "fuente": "sheet",
-      "empresa": "YPF",
-      "vencimiento": "22/7/2030"
-    },
-    "YMCIO": {
-      "tipo": "ON",
-      "tir_usd_pct": 4.05,
-      "fuente": "sheet",
-      "empresa": "YPF",
-      "vencimiento": "30/6/2029"
-    },
-    "YMCJO": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.0,
-      "fuente": "sheet",
-      "empresa": "YPF",
-      "vencimiento": "30/9/2033"
-    },
-    "YMCXO": {
-      "tipo": "ON",
-      "tir_usd_pct": 6.19,
-      "fuente": "sheet",
-      "empresa": "YPF",
-      "vencimiento": "11/9/2031"
-    },
-    "YMCYO": {
-      "tipo": "ON",
-      "tir_usd_pct": 4.46,
-      "fuente": "sheet",
-      "empresa": "YPF",
-      "vencimiento": "10/10/2028"
+      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
     },
     "AE38": {
       "tipo": "Bonos",
-      "tir_usd_pct": 8.85,
+      "tir_usd_pct": 8.82,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "1/9/2038"
     },
     "AL29": {
       "tipo": "Bonos",
-      "tir_usd_pct": 6.13,
+      "tir_usd_pct": 5.92,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "7/9/2029"
     },
     "AL30": {
       "tipo": "Bonos",
-      "tir_usd_pct": 7.41,
+      "tir_usd_pct": 7.33,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "9/7/2030"
     },
     "AL35": {
       "tipo": "Bonos",
-      "tir_usd_pct": 8.9,
+      "tir_usd_pct": 8.91,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "7/9/2035"
     },
     "AL41": {
       "tipo": "Bonos",
-      "tir_usd_pct": 8.68,
+      "tir_usd_pct": 8.67,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "7/9/2041"
     },
     "AN29": {
       "tipo": "Bonos",
-      "tir_usd_pct": 8.1,
+      "tir_usd_pct": 7.93,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "30/11/2029"
@@ -400,21 +104,21 @@
     },
     "BPOB8": {
       "tipo": "Bonos",
-      "tir_usd_pct": 6.91,
+      "tir_usd_pct": 7.12,
       "fuente": "sheet",
       "empresa": "Bono BCRA",
       "vencimiento": "31/10/2028"
     },
     "BPOC7": {
       "tipo": "Bonos",
-      "tir_usd_pct": 3.45,
+      "tir_usd_pct": 3.53,
       "fuente": "sheet",
       "empresa": "Bono BCRA",
       "vencimiento": "31/10/2027"
     },
     "CO35": {
       "tipo": "Bonos",
-      "tir_usd_pct": 8.21,
+      "tir_usd_pct": 8.18,
       "fuente": "sheet",
       "empresa": "Gobierno de Cordoba",
       "vencimiento": "3/2/2035"
@@ -433,28 +137,28 @@
     },
     "GD30": {
       "tipo": "Bonos",
-      "tir_usd_pct": 6.0,
+      "tir_usd_pct": 5.92,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "7/9/2030"
     },
     "GD35": {
       "tipo": "Bonos",
-      "tir_usd_pct": 8.2,
+      "tir_usd_pct": 8.21,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "7/9/2035"
     },
     "GD41": {
       "tipo": "Bonos",
-      "tir_usd_pct": 8.35,
+      "tir_usd_pct": 8.31,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "7/9/2041"
     },
     "GD46": {
       "tipo": "Bonos",
-      "tir_usd_pct": 8.45,
+      "tir_usd_pct": 8.38,
       "fuente": "sheet",
       "empresa": "Bono del Tesoro Nacional",
       "vencimiento": "9/7/2046"
@@ -545,7 +249,7 @@
     },
     "TZV28": {
       "tipo": "Bonos",
-      "tir_usd_pct": 9.6,
+      "tir_usd_pct": 9.89,
       "fuente": "sheet",
       "empresa": null,
       "vencimiento": "30/6/2028"
@@ -622,56 +326,365 @@
       "fuente": "default_6pct",
       "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
     },
-    "M31G6": {
-      "tipo": "Letras",
+    "AFCIO": {
+      "tipo": "ON",
       "tir_usd_pct": 6.0,
       "fuente": "default_6pct",
-      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
+      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
     },
-    "S30N6": {
-      "tipo": "Letras",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
+    "BACGO": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.79,
+      "fuente": "sheet",
+      "empresa": "BANCO MACRO",
+      "vencimiento": "25/6/2029"
     },
-    "S30O6": {
-      "tipo": "Letras",
+    "CRCJO": {
+      "tipo": "ON",
       "tir_usd_pct": 6.0,
       "fuente": "default_6pct",
-      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
+      "motivo": "TIR desde USD sin dato (#N/A o vacio) en la planilla; se aplica la regla fija de 6% definida por el usuario."
     },
-    "S31G6": {
-      "tipo": "Letras",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
+    "CS47O": {
+      "tipo": "ON",
+      "tir_usd_pct": 5.81,
+      "fuente": "sheet",
+      "empresa": "CRESUD",
+      "vencimiento": "15/11/2028"
     },
-    "S31L6": {
-      "tipo": "Letras",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
+    "DEC2O": {
+      "tipo": "ON",
+      "tir_usd_pct": 7.4,
+      "fuente": "sheet",
+      "empresa": "EDESA",
+      "vencimiento": "24/2/2027"
     },
-    "T30J7": {
-      "tipo": "Letras",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
+    "DNC3O": {
+      "tipo": "ON",
+      "tir_usd_pct": 4.34,
+      "fuente": "sheet",
+      "empresa": "EDENOR",
+      "vencimiento": "22/11/2026"
     },
-    "T31Y7": {
-      "tipo": "Letras",
-      "tir_usd_pct": 6.0,
-      "fuente": "default_6pct",
-      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
+    "DNC5O": {
+      "tipo": "ON",
+      "tir_usd_pct": 7.41,
+      "fuente": "sheet",
+      "empresa": "EDENOR",
+      "vencimiento": "5/8/2028"
     },
-    "TNOTE150627": {
-      "tipo": "Letras",
+    "GN43O": {
+      "tipo": "ON",
       "tir_usd_pct": 6.0,
       "fuente": "default_6pct",
-      "motivo": "Letra/LECAP: no se conecta fuente de TIR para letras; se aplica la regla fija de 6% definida por el usuario."
+      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "HJCIO": {
+      "tipo": "ON",
+      "tir_usd_pct": 4.71,
+      "fuente": "sheet",
+      "empresa": "John Deere",
+      "vencimiento": "27/5/2027"
+    },
+    "ICC6O": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "IRCFO": {
+      "tipo": "ON",
+      "tir_usd_pct": 3.47,
+      "fuente": "sheet",
+      "empresa": "IRSA",
+      "vencimiento": "22/6/2028"
+    },
+    "IRCJO": {
+      "tipo": "ON",
+      "tir_usd_pct": 4.24,
+      "fuente": "sheet",
+      "empresa": "IRSA",
+      "vencimiento": "28/2/2027"
+    },
+    "IRCOO": {
+      "tipo": "ON",
+      "tir_usd_pct": 5.78,
+      "fuente": "sheet",
+      "empresa": "IRSA",
+      "vencimiento": "23/10/2029"
+    },
+    "IRCPO": {
+      "tipo": "ON",
+      "tir_usd_pct": 7.09,
+      "fuente": "sheet",
+      "empresa": "IRSA",
+      "vencimiento": "31/3/2035"
+    },
+    "IRCQO": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "LMS7O": {
+      "tipo": "ON",
+      "tir_usd_pct": 2.71,
+      "fuente": "sheet",
+      "empresa": "ALUAR",
+      "vencimiento": "12/10/2028"
+    },
+    "LOC5O": {
+      "tipo": "ON",
+      "tir_usd_pct": 4.35,
+      "fuente": "sheet",
+      "empresa": "LOMA NEGRA",
+      "vencimiento": "24/7/2027"
+    },
+    "MGCNO": {
+      "tipo": "ON",
+      "tir_usd_pct": 4.76,
+      "fuente": "sheet",
+      "empresa": "PAMPA ENERGIA",
+      "vencimiento": "4/10/2028"
+    },
+    "MGCOO": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.87,
+      "fuente": "sheet",
+      "empresa": "PAMPA ENERGIA",
+      "vencimiento": "16/12/2034"
+    },
+    "MGCRO": {
+      "tipo": "ON",
+      "tir_usd_pct": 7.16,
+      "fuente": "sheet",
+      "empresa": "PAMPA ENERGIA",
+      "vencimiento": "14/11/2037"
+    },
+    "MR46O": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "MR47O": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "MRCAO": {
+      "tipo": "ON",
+      "tir_usd_pct": 170.05,
+      "fuente": "sheet",
+      "empresa": "GRUPO ALBANESI",
+      "vencimiento": "1/12/2027"
+    },
+    "PECMO": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "PECNO": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "PLC2O": {
+      "tipo": "ON",
+      "tir_usd_pct": 5.88,
+      "fuente": "sheet",
+      "empresa": "PLUSPETROL",
+      "vencimiento": "27/1/2030"
+    },
+    "PLC4O": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.76,
+      "fuente": "sheet",
+      "empresa": "PLUSPETROL",
+      "vencimiento": "30/5/2025"
+    },
+    "PLC5O": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.44,
+      "fuente": "sheet",
+      "empresa": "PLUSPETROL",
+      "vencimiento": "30/5/2030"
+    },
+    "PN35O": {
+      "tipo": "ON",
+      "tir_usd_pct": 4.85,
+      "fuente": "sheet",
+      "empresa": "PAN AMERICAN ENERGY",
+      "vencimiento": "27/3/2029"
+    },
+    "PNXCO": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "RUCDO": {
+      "tipo": "ON",
+      "tir_usd_pct": 7.84,
+      "fuente": "sheet",
+      "empresa": "MSU ENERGY",
+      "vencimiento": "5/12/2030"
+    },
+    "SBC1O": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "SNEBO": {
+      "tipo": "ON",
+      "tir_usd_pct": 18.15,
+      "fuente": "sheet",
+      "empresa": "SAN MIGUEL",
+      "vencimiento": "14/7/2029"
+    },
+    "TLCMO": {
+      "tipo": "ON",
+      "tir_usd_pct": 4.71,
+      "fuente": "sheet",
+      "empresa": "TELECOM",
+      "vencimiento": "18/7/2031"
+    },
+    "TLCPO": {
+      "tipo": "ON",
+      "tir_usd_pct": 7.26,
+      "fuente": "sheet",
+      "empresa": "TELECOM",
+      "vencimiento": "28/5/2033"
+    },
+    "TLCWO": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "TSC3O": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.4,
+      "fuente": "sheet",
+      "empresa": "TGS",
+      "vencimiento": "24/7/2031"
+    },
+    "TSC4O": {
+      "tipo": "ON",
+      "tir_usd_pct": 7.0,
+      "fuente": "sheet",
+      "empresa": "TGS",
+      "vencimiento": "20/11/2035"
+    },
+    "TTC9O": {
+      "tipo": "ON",
+      "tir_usd_pct": 5.39,
+      "fuente": "sheet",
+      "empresa": "Tecpetrol",
+      "vencimiento": "24/10/2029"
+    },
+    "TTCEO": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "VSCRO": {
+      "tipo": "ON",
+      "tir_usd_pct": 5.6,
+      "fuente": "sheet",
+      "empresa": "VISTA ENERGY",
+      "vencimiento": "10/10/2031"
+    },
+    "VSCTO": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.58,
+      "fuente": "sheet",
+      "empresa": "VISTA ENERGY",
+      "vencimiento": "10/12/2035"
+    },
+    "VSCUO": {
+      "tipo": "ON",
+      "tir_usd_pct": 7.73,
+      "fuente": "sheet",
+      "empresa": "VISTA ENERGY",
+      "vencimiento": "7/3/2030"
+    },
+    "VSCVO": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.56,
+      "fuente": "sheet",
+      "empresa": "VISTA ENERGY",
+      "vencimiento": "10/6/2033"
+    },
+    "XMC1O": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.17,
+      "fuente": "sheet",
+      "empresa": "MINERA EXAR",
+      "vencimiento": "11/11/2027"
+    },
+    "YFCJO": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.23,
+      "fuente": "sheet",
+      "empresa": "YPF",
+      "vencimiento": "16/10/2032"
+    },
+    "YM34O": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.64,
+      "fuente": "sheet",
+      "empresa": "YPF",
+      "vencimiento": "17/1/2034"
+    },
+    "YM39O": {
+      "tipo": "ON",
+      "tir_usd_pct": 5.83,
+      "fuente": "sheet",
+      "empresa": "YPF",
+      "vencimiento": "22/7/2030"
+    },
+    "YMCIO": {
+      "tipo": "ON",
+      "tir_usd_pct": 3.89,
+      "fuente": "sheet",
+      "empresa": "YPF",
+      "vencimiento": "30/6/2029"
+    },
+    "YMCJO": {
+      "tipo": "ON",
+      "tir_usd_pct": 5.9,
+      "fuente": "sheet",
+      "empresa": "YPF",
+      "vencimiento": "30/9/2033"
+    },
+    "YMCTO": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.0,
+      "fuente": "default_6pct",
+      "motivo": "El ticker no aparece en la planilla de seguimiento de ONs/Bonos; se aplica la regla fija de 6% definida por el usuario."
+    },
+    "YMCXO": {
+      "tipo": "ON",
+      "tir_usd_pct": 6.19,
+      "fuente": "sheet",
+      "empresa": "YPF",
+      "vencimiento": "11/9/2031"
+    },
+    "YMCYO": {
+      "tipo": "ON",
+      "tir_usd_pct": 4.86,
+      "fuente": "sheet",
+      "empresa": "YPF",
+      "vencimiento": "10/10/2028"
     }
   },
-  "generado": "2026-07-16T14:18:56.415558+00:00",
+  "generado": "2026-07-17T21:07:45.980041+00:00",
   "metodologia": {
     "fuente_principal": "Google Sheet publica de seguimiento de ONs y Bonos (columna 'TIR desde USD').",
     "regla_default": "Para ONs, Bonos y Letras sin TIR de mercado disponible, se usa una TIR fija de 6.0% (regla definida explicitamente por el usuario, no calculada)."
